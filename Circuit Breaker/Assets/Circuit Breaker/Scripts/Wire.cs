@@ -152,11 +152,13 @@ public class Wire : MonoBehaviour
     {
         if (isOpen)
         {
+            Debug.Log("Wire is open. Cannot traverse.");
             return false;
         }
 
         if (!IsConnectedTo(node))
         {
+            Debug.Log("Node not connected. Cannot traverse from " + node.name);
             return false;
         }
 
@@ -164,10 +166,12 @@ public class Wire : MonoBehaviour
         {
             if(GetNodeIndex(node) != 0)
             {
+                Debug.Log("Wire is polarized. " + node.name + " is on the wrong side.");
                 return false;
             }
         }
 
+        Debug.Log("Wire is able to be traversed from " + node.name);
         return true;
     }
 
