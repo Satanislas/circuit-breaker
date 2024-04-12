@@ -6,29 +6,33 @@ using UnityEngine;
 public class Wire : MonoBehaviour
 {
     [Header("Required")]
-    [Tooltip("The first node to connect to. Do not leave empty.")]
+    [Tooltip("The first node to connect to.\nDo not leave empty.")]
     public Transform nodeOne;
-    [Tooltip("The second node to connect to. Do not leave empty.")]
+    [Tooltip("The second node to connect to.\nDo not leave empty.")]
     public Transform nodeTwo;
 
     [Header("Prefab Settings")]
-    [Tooltip("The transform that controls where the tile is located. Can also be used to position components.")]
+    [Tooltip("The transform that controls where the tile is located.\nCan also be used to position components.")]
     public Transform tileSpot;
     [Range(0,1)]
-    [Tooltip("Specifies where on the wire the tileSpot resides. 0.5 indicates perfectly in the middle.")]
+    [Tooltip("Specifies where on the wire the tileSpot resides.\nCloser to 0 indicates closer to nodeOne.\nCloser to 1 indicates closer to nodeTwo.\n0.5 indicates perfectly in the middle.")]
     public float tileOffset;
 
     [Header("Optional")]
-    [Tooltip("Component to default to on wire. Fill with a CircuitComponent prefab.")]
+    [Tooltip("Component to default to on wire.\nFill with a CircuitComponent prefab.")]
     public GameObject defaultComponent;
     [Tooltip("Turn on to disable changing a component once it's placed")]
-    [Space]
     public bool isLocked;
 
     [HideInInspector]
     public bool isOpen;
     [HideInInspector]
-    public Transform activeComponent;
+    private Transform activeComponent;
+
+    public Transform ActiveComponent{
+        get { return activeComponent; }
+        set { activeComponent = value; }
+    }
 
     private LineRenderer lineRenderer;
     
