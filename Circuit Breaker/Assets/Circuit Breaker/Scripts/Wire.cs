@@ -9,13 +9,6 @@ public class Wire : MonoBehaviour
     [Tooltip("Nodes this wire connects. Will only ever be two nodes.\nDo not leave empty.")]
     public Transform[] nodes;
 
-    [Header("Prefab Settings")]
-    [Tooltip("The transform that controls where the tile is located.\nCan also be used to position components.")]
-    public Transform tileSpot;
-    [Range(0,1)]
-    [Tooltip("Specifies where on the wire the tileSpot resides.\nCloser to 0 indicates closer to nodes[0].\nCloser to 1 indicates closer to nodes[1].\n0.5 indicates perfectly in the middle.")]
-    public float tileOffset;
-
     [Header("Optional")]
     [Tooltip("Component to default to on wire.\nFill with a CircuitComponent prefab.")]
     public GameObject defaultComponent;
@@ -25,7 +18,19 @@ public class Wire : MonoBehaviour
     public bool isPolarized;
     [Tooltip("Turn on to open this wire. Will not allow traversal across in any direction.")]
     public bool isOpen;
-    
+
+    [Header("Prefab Settings")]
+    [Range(0, 1)]
+    [Tooltip("Specifies where on the wire the tileSpot resides.\nCloser to 0 indicates closer to nodes[0].\nCloser to 1 indicates closer to nodes[1].\n0.5 indicates perfectly in the middle.")]
+    public float tileOffset;
+
+    [Header("Unity Settings")]
+    [Tooltip("The transform that controls where the tile is located.\nCan also be used to position components.\nDo not change.")]
+    public Transform tileSpot;
+    [Tooltip("The visual of the empty tile. Child of tileSpot\nCan also be used to position components.\nDo not change.")]
+    public Transform tileIcon;
+
+
     [HideInInspector]
     private Transform activeComponent;
 
@@ -79,7 +84,9 @@ public class Wire : MonoBehaviour
 
         Vector3 pos = new Vector3(lerpX, lerpY, 0f);
         tileSpot.position = pos;
-        tileSpot.LookAt(nodes[0]);
+        tileSpot.LookAt(nodes[0], Vector3.up);
+
+        tileIcon.LookAt(tileIcon.position + Vector3.back, tileSpot.up);
     }
 
     // if the given node is connected to this wire, return the other node.
