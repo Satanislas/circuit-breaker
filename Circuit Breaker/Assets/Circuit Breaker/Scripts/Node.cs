@@ -13,11 +13,6 @@ public class Node : MonoBehaviour
         get { return connectedWires.Length; }
     }
 
-    private void Awake()
-    {
-        Debug.Log(GetWireIndex(connectedWires[1]));
-    }
-
     // returns the next node along a given wire, indicated by wireIndex
     public Transform GetNextNode(int wireIndex)
     {
