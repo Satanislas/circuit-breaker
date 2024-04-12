@@ -82,17 +82,23 @@ public class Wire : MonoBehaviour
     // if not, return null
     public Transform GetOtherNode(Transform node)
     {
+        if (!IsConnectedTo(node))
+        {
+            return null;
+        }
+
         if(node == nodeOne)
         {
             return nodeTwo;
         }
+        
+        return nodeOne;
+    }
 
-        if (node == nodeTwo)
-        {
-            return nodeOne;
-        }
-
-        return null;
+    // returns true if the given node is one of the nodes this wire connects
+    public bool IsConnectedTo(Transform node)
+    {
+        return node == nodeOne || node == nodeTwo;
     }
 
     /*
