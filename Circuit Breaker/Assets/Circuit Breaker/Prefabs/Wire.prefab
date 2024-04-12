@@ -257,6 +257,11 @@ MonoBehaviour:
   nodeOne: {fileID: 0}
   nodeTwo: {fileID: 0}
   tileSpot: {fileID: 877098823587280278}
+  tileOffset: 0.5
+  defaultComponent: {fileID: 0}
+  isLocked: 0
+  isOpen: 0
+  activeComponent: {fileID: 0}
 --- !u!1 &9132418674070613384
 GameObject:
   m_ObjectHideFlags: 0
