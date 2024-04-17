@@ -8,8 +8,14 @@ public class Spark : MonoBehaviour
     [Header("Required")]
     public int initialValue;
     public Transform startNode; //is also the current node
-    public float speed;
-    
+    private float speed;
+    public float maxSpeed;
+    public float minSpeed;
+
+    [Header("Visuals")] 
+    public Gradient gradient;
+    public float smallestSize;
+    public float biggestSize;
     
     
     [Header("Debug : not to be serialized")]
@@ -22,6 +28,7 @@ public class Spark : MonoBehaviour
         GetNextNode();
         currentValue = initialValue;
         transform.position = startNode.transform.position;
+        UpdateSpeed();
     }
 
     private void GetNextNode()
@@ -36,8 +43,25 @@ public class Spark : MonoBehaviour
         }
     }
 
+    private void UpdateVisual()
+    {
+        var ratio = (float)currentValue / initialValue;
+        GetComponent<Renderer>().material.color = gradient.Evaluate(ratio);
+
+        var size = Mathf.Lerp(smallestSize, biggestSize, ratio);
+        transform.localScale = new Vector3(size,size,size);
+        
+        UpdateSpeed();
+    }
+
+    private void UpdateSpeed()
+    {
+        speed = Mathf.Lerp(minSpeed, maxSpeed, (float)currentValue / initialValue);
+    }
+
     private void Update()
     {
+        UpdateVisual();
         if (Vector3.Distance(transform.position, targetNode.position) <= 0.01f)
         {
             ReachTargetNode();
