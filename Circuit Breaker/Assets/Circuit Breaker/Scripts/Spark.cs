@@ -11,6 +11,7 @@ public class Spark : MonoBehaviour
     private float speed;
     public float maxSpeed;
     public float minSpeed;
+    public GameObject sparkPrefab;
 
     [Header("Visuals")] 
     public Gradient gradient;
@@ -18,14 +19,17 @@ public class Spark : MonoBehaviour
     public float biggestSize;
     
     
-    [Header("Debug : not to be serialized")]
+    [Header("Debug : don't need to be serialized")]
     public int currentValue;
-    public Transform targetNode;
+    private Transform targetNode;
+    public bool wasIntantiated;
 
 
     private void Start()
     {
-        GetNextNode();
+        if (wasIntantiated) return;
+        if (!targetNode) // prevent a death recursive loop
+            GetNextNode();
         currentValue = initialValue;
         transform.position = startNode.transform.position;
         UpdateSpeed();
@@ -35,11 +39,40 @@ public class Spark : MonoBehaviour
     {
         try
         {
-            targetNode = startNode.GetComponent<Node>().GetNextNode();
+            Node node = startNode.GetComponent<Node>();
+
+            if (node.IsSplit)
+            {
+                Split(node);
+                Destroy(this.gameObject);
+            }
+            else
+            {
+                targetNode = startNode.GetComponent<Node>().GetNextNode();
+            }
         }
         catch (Exception)
         {
             targetNode = null;
+        }
+    }
+
+    private void Split(Node node)
+    {
+        int numberOfNodes = node.connectedWires.Length;
+        foreach (Wire wire in node.connectedWires)
+        {
+            Spark spark = Instantiate(sparkPrefab,transform.position,Quaternion.identity).GetComponent<Spark>();
+            spark.initialValue = initialValue;
+            spark.currentValue = currentValue / numberOfNodes;
+            spark.startNode = node.transform;
+            spark.targetNode = wire.GetOtherNode(node.transform);
+            spark.wasIntantiated = true;
+            spark.gradient = gradient;
+            spark.smallestSize = smallestSize;
+            spark.biggestSize = biggestSize;
+            spark.minSpeed = minSpeed;
+            spark.maxSpeed = maxSpeed;
         }
     }
 
