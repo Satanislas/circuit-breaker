@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Node : MonoBehaviour
@@ -13,9 +14,32 @@ public class Node : MonoBehaviour
         get { return connectedWires.Length; }
     }
 
+    public bool IsSplit{
+        get{ return connectedWires.Length > 0;}
+    }
+
+    // returns the next node along the wire.
+    // only used for wires with no splits.
+    public Transform GetNextNode()
+    {
+        if (connectedWires.Length == 0){
+            Debug.Log(name + " has no connections.");
+            return null;
+        }
+        
+        Transform otherNode = connectedWires[0].GetOtherNode(this.transform);
+        Debug.Log(name + " is connected to " + otherNode.name + " by " + connectedWires[0].name);
+        return otherNode;
+    }
+
     // returns the next node along a given wire, indicated by wireIndex
     public Transform GetNextNode(int wireIndex)
     {
+        if (connectedWires.Length == 0){
+            Debug.Log(name + " has no connections.");
+            return null;
+        }
+
         // sanity checks
         if(wireIndex >= connectedWires.Length || wireIndex < 0)
         {
