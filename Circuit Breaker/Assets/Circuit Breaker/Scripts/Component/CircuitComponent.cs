@@ -21,10 +21,6 @@ public class CircuitComponent : MonoBehaviour {
         componentSprite = GetComponent<SpriteRenderer>().sprite;
     }
 
-    // This function will be over overridden by each component to do a different action
-    public void CalculateSparkOutput(int inputSpark) {
-    }
-
     void OnMouseDrag() {
         transform.rotation = Quaternion.identity;
 
