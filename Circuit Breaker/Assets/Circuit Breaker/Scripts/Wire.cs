@@ -18,6 +18,8 @@ public class Wire : MonoBehaviour
     public bool isPolarized;
     [Tooltip("Turn on to open this wire. Will not allow traversal across in any direction.")]
     public bool isOpen;
+    [Tooltip("Turn on to short circuit this wire. Will force an entire Spark to traverse without splitting at the node.")]
+    public bool isShort;
 
     [Header("Prefab Settings")]
     [Range(0, 1)]

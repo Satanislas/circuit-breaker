@@ -9,13 +9,17 @@ public class Node : MonoBehaviour
     [Tooltip("Fill with all the wires that connect to this node.\nShould never be empty.")]
     public Wire[] connectedWires;
 
+    [Header("Optional")]
+    [Tooltip("Turn on to make this node Ground. Will destroy a Spark when encountered.")]
+    public bool isGround;
+
     public int ConnectionNum
     {
         get { return connectedWires.Length; }
     }
 
     public bool IsSplit{
-        get{ return connectedWires.Length > 0;}
+        get{ return connectedWires.Length > 1;}
     }
 
     // returns the next node along the wire.
@@ -68,4 +72,10 @@ public class Node : MonoBehaviour
         Debug.Log(wireCheck.name + " is not connected to " + name);
         return -1;
     }
+
+    /*
+    public void GroundSpark(Spark spark){
+        Destroy(spark.gameObject);
+    }
+    */
 }
