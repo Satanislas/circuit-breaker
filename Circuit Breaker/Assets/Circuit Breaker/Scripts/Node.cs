@@ -19,7 +19,7 @@ public class Node : MonoBehaviour
     }
 
     public bool IsSplit{
-        get{ return connectedWires.Length > 0;}
+        get{ return connectedWires.Length > 1;}
     }
 
     // returns the next node along the wire.
