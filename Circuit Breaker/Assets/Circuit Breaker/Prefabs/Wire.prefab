@@ -266,11 +266,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4e8e79f798d0af47a85d2ca165c93bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nodes: []
+  nodes:
+  - {fileID: 0}
+  - {fileID: 0}
   defaultComponent: {fileID: 0}
   isLocked: 0
   isPolarized: 0
   isOpen: 0
+  isShort: 0
   tileOffset: 0.5
   tileSpot: {fileID: 877098823587280278}
   tileIcon: {fileID: 6431502978701752608}
