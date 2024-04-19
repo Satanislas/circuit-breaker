@@ -72,6 +72,7 @@ public class CircuitComponent : MonoBehaviour {
         if (lastPlacedTileSlot != null) {
             lastPlacedTileSlot.transform.parent.gameObject.GetComponent<Wire>().ActiveComponent = null;
             lastPlacedTileSlot = null;
+            GetComponent<ComponentFunction>().parentWire = null;
             // sparkParticles.Stop();
         }
     }

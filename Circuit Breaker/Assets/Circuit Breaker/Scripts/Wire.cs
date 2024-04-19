@@ -39,7 +39,10 @@ public class Wire : MonoBehaviour
         set 
         {
             //sets parentWire within ComponentFunction
-            value.transform.GetComponent<ComponentFunction>().parentWire = this;
+            if(value != null)
+            {
+                value.transform.GetComponent<ComponentFunction>().parentWire = this;
+            }
             activeComponent = value; 
         }
     }
