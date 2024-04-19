@@ -81,8 +81,8 @@ public class CircuitComponent : MonoBehaviour {
         if (currentlyHoveredTileSpot) {
             Destroy(instantiatedHoverHighlight.gameObject);
             transform.position = new Vector3(currentlyHoveredTileSpot.transform.position.x, currentlyHoveredTileSpot.transform.position.y, -1f);
-            // float xRotation = currentlyHoveredTileSpot.transform.rotation.eulerAngles.x > 45f ? 0f : 180f;
-            transform.rotation = Quaternion.Euler(0f, 0f, currentlyHoveredTileSpot.transform.rotation.eulerAngles.x);
+            // float yRotation = currentlyHoveredTileSpot.transform.rotation.y
+            transform.rotation = Quaternion.Euler(0f, currentlyHoveredTileSpot.transform.rotation.y, currentlyHoveredTileSpot.transform.rotation.eulerAngles.x);
             currentlyHoveredTileSpot.transform.parent.gameObject.GetComponent<Wire>().ActiveComponent = transform;
             lastPlacedTileSlot = currentlyHoveredTileSpot;
             // sparkParticles.Play();
