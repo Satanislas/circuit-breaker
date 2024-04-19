@@ -184,10 +184,8 @@ public class Wire : MonoBehaviour
         return true;
     }
 
-    /*
     public void InteractWithComponent(Spark spark)
     {
-        activeComponent.GetComponent<CircuitComponent>().Activate(spark);
+        activeComponent.GetComponent<ComponentFunction>().SparkActivate(spark);
     }
-    */
 }
