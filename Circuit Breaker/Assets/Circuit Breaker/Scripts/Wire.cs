@@ -94,6 +94,7 @@ public class Wire : MonoBehaviour
         tileSpot.position = pos;
         tileSpot.LookAt(nodes[0], Vector3.up);
 
+        tileIcon.Translate(Vector3.back, Space.World);
         tileIcon.LookAt(tileIcon.position + Vector3.back, tileSpot.up);
     }
 

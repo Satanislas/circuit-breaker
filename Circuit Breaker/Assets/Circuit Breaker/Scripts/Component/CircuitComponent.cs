@@ -60,8 +60,9 @@ public class CircuitComponent : MonoBehaviour {
         // If the component was being hovered over a component slot, snap it into place and assign it to the wire
         if (currentlyHoveredTileSpot) {
             Destroy(instantiatedHoverHighlight.gameObject);
-            transform.position = new Vector3(currentlyHoveredTileSpot.transform.position.x, currentlyHoveredTileSpot.transform.position.y, -1f);
-            transform.rotation = Quaternion.Euler(0f, 0f, currentlyHoveredTileSpot.transform.rotation.eulerAngles.x);
+            transform.position = new Vector3(currentlyHoveredTileSpot.transform.position.x, currentlyHoveredTileSpot.transform.position.y, -2f);
+            transform.rotation = currentlyHoveredTileSpot.transform.GetChild(0).transform.rotation;
+            transform.Rotate(Vector3.up, 180f);
             currentlyHoveredTileSpot.transform.parent.gameObject.GetComponent<Wire>().ActiveComponent = transform;
             lastPlacedTileSlot = currentlyHoveredTileSpot;
             // sparkParticles.Play();
