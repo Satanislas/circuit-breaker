@@ -13,12 +13,16 @@ public class CircuitComponent : MonoBehaviour {
 
     private GameObject currentlyHoveredTileSpot;
     private Sprite componentSprite;
+    private Color highlightColor;
 
     private bool isActivated;
     private GameObject lastPlacedTileSlot;
 
     void Start() {
         componentSprite = GetComponent<SpriteRenderer>().sprite;
+        highlightColor = GetComponent<SpriteRenderer>().color;
+        highlightColor.a = .39f;
+
     }
 
     void OnMouseDrag() {
@@ -35,12 +39,17 @@ public class CircuitComponent : MonoBehaviour {
         GameObject[] allTileSpots = GameObject.FindGameObjectsWithTag("TileSpot");
         foreach (GameObject tileSpot in allTileSpots) {
             // If nearby a component slot, show a transparent version of the component over the nearby slot
-            if (Vector3.Distance(transform.position, tileSpot.transform.position) < 2f) {
+            if (Vector3.Distance(transform.position, tileSpot.transform.position) < 3f) {
+                // Ignore tile slots that already have a component on them
+                if (tileSpot.transform.parent.gameObject.GetComponent<Wire>().ActiveComponent != null) {
+                    break;
+                }
                 currentlyHoveredTileSpot = tileSpot;
                 if (instantiatedHoverHighlight == null) {
                     instantiatedHoverHighlight = Instantiate(hoverHighlight);
                     hoverHighlightScript = instantiatedHoverHighlight.GetComponent<ComponentHoverHighlight>();
                     instantiatedHoverHighlight.GetComponent<SpriteRenderer>().sprite = componentSprite;
+                    instantiatedHoverHighlight.GetComponent<SpriteRenderer>().color = highlightColor;
                 }
                 hoverHighlightScript.SnapToComponentSlot(tileSpot.transform);
                 break;
@@ -52,21 +61,11 @@ public class CircuitComponent : MonoBehaviour {
             Destroy(instantiatedHoverHighlight.gameObject);
         }
 
-        // If not nearby a component slot, follow the mouse
-        transform.position = new Vector3(mousePositionOnScreen.x, mousePositionOnScreen.y, -1f);
+        // Follow the mouse
+        transform.position = new Vector3(mousePositionOnScreen.x, mousePositionOnScreen.y, -2f);
     }
 
-    void OnMouseUp() {
-        // If the component was being hovered over a component slot, snap it into place and assign it to the wire
-        if (currentlyHoveredTileSpot) {
-            Destroy(instantiatedHoverHighlight.gameObject);
-            transform.position = new Vector3(currentlyHoveredTileSpot.transform.position.x, currentlyHoveredTileSpot.transform.position.y, -1f);
-            transform.rotation = Quaternion.Euler(0f, 0f, currentlyHoveredTileSpot.transform.rotation.eulerAngles.x);
-            currentlyHoveredTileSpot.transform.parent.gameObject.GetComponent<Wire>().ActiveComponent = transform;
-            lastPlacedTileSlot = currentlyHoveredTileSpot;
-            // sparkParticles.Play();
-            return;
-        }
+    void OnMouseDown() {
 
         // If the component was previously on a slot, but now is not, clear the previous wire's component slot
         if (lastPlacedTileSlot != null) {
@@ -74,5 +73,20 @@ public class CircuitComponent : MonoBehaviour {
             lastPlacedTileSlot = null;
             // sparkParticles.Stop();
         }
+    }
+
+    void OnMouseUp() {
+
+        // If the component was being hovered over a component slot, snap it into place and assign it to the wire
+        if (currentlyHoveredTileSpot) {
+            Destroy(instantiatedHoverHighlight.gameObject);
+            transform.position = new Vector3(currentlyHoveredTileSpot.transform.position.x, currentlyHoveredTileSpot.transform.position.y, -1f);
+            // float xRotation = currentlyHoveredTileSpot.transform.rotation.eulerAngles.x > 45f ? 0f : 180f;
+            transform.rotation = Quaternion.Euler(0f, 0f, currentlyHoveredTileSpot.transform.rotation.eulerAngles.x);
+            currentlyHoveredTileSpot.transform.parent.gameObject.GetComponent<Wire>().ActiveComponent = transform;
+            lastPlacedTileSlot = currentlyHoveredTileSpot;
+            // sparkParticles.Play();
+        }
+
     }
 }
