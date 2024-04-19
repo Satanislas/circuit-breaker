@@ -4,8 +4,25 @@ using UnityEngine;
 
 public class ComponentFunction : MonoBehaviour
 {
+    [Header("Prefab Settings")]
+    [Tooltip("Determines what kind of component this is." +
+        "\n0: RESISTOR" +
+        "\n1: BATTERY" +
+        "\n2: SWITCH" +
+        "\n3: FUSE" +
+        "\n4: LAMP" +
+        "\n5: CAPACITOR")]
     public int componentType;
+    [Tooltip("Determines amount of charge to interact with. Has different uses per component" +
+        "\nRESISTOR: How much charge to remove" +
+        "\nBATTERY: How much charge to add" +
+        "\nSWITCH: No use" +
+        "\nFUSE: How big a spark the fuse can handle." +
+        "\nLAMP: How much charge a spark must have in order to light" +
+        "\nCAPACITOR: How much charge is currently being stored")]
     public int value;
+    [Tooltip("The wire this component is currently on.")]
+    public Wire parentWire;
 
     // various components have states. Here is what isActive = false means for all of them
     // Switch: switch is closed
@@ -68,6 +85,7 @@ public class ComponentFunction : MonoBehaviour
             case SWITCH:
                 //switches the... switch... state
                 isActive = !isActive;
+                //open wire
                 break;
             case CAPACITOR:
                 if (isActive)

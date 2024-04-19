@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2578324752300412894}
   - component: {fileID: 6164160007024322872}
   m_Layer: 0
-  m_Name: CircuitComponent
+  m_Name: Resistor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -159,5 +159,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   componentType: 0
-  value: 0
+  value: 1
   parentWire: {fileID: 0}

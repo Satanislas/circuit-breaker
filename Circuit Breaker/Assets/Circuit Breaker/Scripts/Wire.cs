@@ -32,13 +32,16 @@ public class Wire : MonoBehaviour
     [Tooltip("The visual of the empty tile. Child of tileSpot\nCan also be used to position components.\nDo not change.")]
     public Transform tileIcon;
 
-
-    [HideInInspector]
     private Transform activeComponent;
 
     public Transform ActiveComponent{
         get { return activeComponent; }
-        set { activeComponent = value; }
+        set 
+        {
+            //sets parentWire within ComponentFunction
+            value.transform.GetComponent<ComponentFunction>().parentWire = this;
+            activeComponent = value; 
+        }
     }
 
     private LineRenderer lineRenderer;
