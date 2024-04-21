@@ -66,11 +66,11 @@ public class CircuitComponent : MonoBehaviour {
     }
 
     void OnMouseDown() {
-
         // If the component was previously on a slot, but now is not, clear the previous wire's component slot
         if (lastPlacedTileSlot != null) {
             lastPlacedTileSlot.transform.parent.gameObject.GetComponent<Wire>().ActiveComponent = null;
             lastPlacedTileSlot = null;
+            GetComponent<ComponentFunction>().parentWire = null;
             // sparkParticles.Stop();
         }
     }
@@ -80,7 +80,7 @@ public class CircuitComponent : MonoBehaviour {
         // If the component was being hovered over a component slot, snap it into place and assign it to the wire
         if (currentlyHoveredTileSpot) {
             Destroy(instantiatedHoverHighlight.gameObject);
-            transform.position = new Vector3(currentlyHoveredTileSpot.transform.position.x, currentlyHoveredTileSpot.transform.position.y, -1f);
+            transform.position = new Vector3(currentlyHoveredTileSpot.transform.position.x, currentlyHoveredTileSpot.transform.position.y, -2f);
             // float yRotation = currentlyHoveredTileSpot.transform.rotation.y
             transform.rotation = Quaternion.Euler(0f, currentlyHoveredTileSpot.transform.rotation.y, currentlyHoveredTileSpot.transform.rotation.eulerAngles.x);
             currentlyHoveredTileSpot.transform.parent.gameObject.GetComponent<Wire>().ActiveComponent = transform;
