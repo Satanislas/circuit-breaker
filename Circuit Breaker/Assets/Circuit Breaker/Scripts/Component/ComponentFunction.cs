@@ -24,6 +24,11 @@ public class ComponentFunction : MonoBehaviour
     [Tooltip("The wire this component is currently on.")]
     public Wire parentWire;
 
+    public bool IsPlaced
+    {
+        get { return parentWire != null; }
+    }
+
     [Header("Unity Setup")]
     public GameObject sparkPrefab;
 
@@ -48,10 +53,12 @@ public class ComponentFunction : MonoBehaviour
             case RESISTOR:
                 // removes value amount of charge
                 spark.currentValue -= value;
+                Debug.Log("Resistor. Spark: " + spark.currentValue);
                 break;
             case BATTERY:
                 // adds value amount of charge
                 spark.currentValue += value;
+                Debug.Log("Battery. Spark: " + spark.currentValue);
                 break;
             case FUSE:
                 // breaks if too much charge goes across it
@@ -59,6 +66,7 @@ public class ComponentFunction : MonoBehaviour
                 {
                     isActive = true;
                     parentWire.isOpen = true;
+                    Debug.Log("Fuse Broken. Spark: " + spark.currentValue);
                 }
                 break;
             case LAMP:
@@ -67,6 +75,7 @@ public class ComponentFunction : MonoBehaviour
                 {
                     spark.currentValue -= value;
                     isActive = true;
+                    Debug.Log("Lamp lit. Spark: " + spark.currentValue);
                 }
                 break;
             case CAPACITOR:
@@ -75,15 +84,21 @@ public class ComponentFunction : MonoBehaviour
                 isActive = true;
                 spark.currentValue--;
                 value++;
+                Debug.Log("Capacitor. Spark: " + spark.currentValue);
+                Debug.Log("Capacitor. Stored: " + value);
                 break;
             default:
                 break;
         }
     }
 
-    private void OnMouseDown()
+    private void ClickInteract()
     {
-        //TODO: CHECK FOR PLAY MODE. ONLY DO THE REST IF PLAYING
+        if (!IsPlaced)
+        {
+            return;
+        }
+
         switch (componentType)
         {
             case SWITCH:
@@ -94,7 +109,7 @@ public class ComponentFunction : MonoBehaviour
             case CAPACITOR:
                 if (isActive)
                 {
-                    // Instantiate(sparkPrefab,)
+                    //Instantiate new spark
                     value = 0;
                     isActive = false;
                 }

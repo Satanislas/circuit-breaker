@@ -4,8 +4,15 @@ using UnityEngine;
 
 public class SparkInteraction : MonoBehaviour
 {
+    [Header("Unity Setup")]
+    public Spark sparkScript;
+
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Enter " + other.transform.name);
+        ComponentFunction functionScript = other.GetComponent<ComponentFunction>();
+        if (functionScript.IsPlaced)
+        {
+            functionScript.SparkActivate(sparkScript);
+        }
     }
 }
