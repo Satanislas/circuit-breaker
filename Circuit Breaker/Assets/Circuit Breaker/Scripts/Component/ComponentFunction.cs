@@ -24,12 +24,15 @@ public class ComponentFunction : MonoBehaviour
     [Tooltip("The wire this component is currently on.")]
     public Wire parentWire;
 
+    [Header("Unity Setup")]
+    public GameObject sparkPrefab;
+
     // various components have states. Here is what isActive = false means for all of them
     // Switch: switch is closed
     // Fuse: fuse has not broken
     // Lamp: lamp has not been lit
     // Capacitor: capacitor has no charge
-    private bool isActive = false;
+    public bool isActive = false;
 
     private const int RESISTOR = 0;
     private const int BATTERY = 1;
@@ -55,7 +58,7 @@ public class ComponentFunction : MonoBehaviour
                 if(spark.currentValue >= value)
                 {
                     isActive = true;
-                    // open wire
+                    parentWire.isOpen = true;
                 }
                 break;
             case LAMP:
@@ -80,17 +83,18 @@ public class ComponentFunction : MonoBehaviour
 
     private void OnMouseDown()
     {
+        //TODO: CHECK FOR PLAY MODE. ONLY DO THE REST IF PLAYING
         switch (componentType)
         {
             case SWITCH:
                 //switches the... switch... state
                 isActive = !isActive;
-                //open wire
+                parentWire.isOpen = true;
                 break;
             case CAPACITOR:
                 if (isActive)
                 {
-                    //instantiate a new spark with the current value of value
+                    // Instantiate(sparkPrefab,)
                     value = 0;
                     isActive = false;
                 }
