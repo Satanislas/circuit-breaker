@@ -48,6 +48,11 @@ public class ComponentFunction : MonoBehaviour
 
     public void SparkActivate(Spark spark)
     {
+        if (!parentWire.IsConnectedTo(spark.startNode))
+        {
+            return;
+        }
+
         switch (componentType)
         {
             case RESISTOR:
