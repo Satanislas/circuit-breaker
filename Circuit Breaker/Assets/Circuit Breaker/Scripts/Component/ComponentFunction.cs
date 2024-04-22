@@ -24,12 +24,20 @@ public class ComponentFunction : MonoBehaviour
     [Tooltip("The wire this component is currently on.")]
     public Wire parentWire;
 
+    public bool IsPlaced
+    {
+        get { return parentWire != null; }
+    }
+
+    [Header("Unity Setup")]
+    public GameObject sparkPrefab;
+
     // various components have states. Here is what isActive = false means for all of them
     // Switch: switch is closed
     // Fuse: fuse has not broken
     // Lamp: lamp has not been lit
     // Capacitor: capacitor has no charge
-    private bool isActive = false;
+    public bool isActive = false;
 
     private const int RESISTOR = 0;
     private const int BATTERY = 1;
@@ -40,22 +48,30 @@ public class ComponentFunction : MonoBehaviour
 
     public void SparkActivate(Spark spark)
     {
+        if (!parentWire.IsConnectedTo(spark.startNode))
+        {
+            return;
+        }
+
         switch (componentType)
         {
             case RESISTOR:
                 // removes value amount of charge
                 spark.currentValue -= value;
+                Debug.Log("Resistor. Spark: " + spark.currentValue);
                 break;
             case BATTERY:
                 // adds value amount of charge
                 spark.currentValue += value;
+                Debug.Log("Battery. Spark: " + spark.currentValue);
                 break;
             case FUSE:
                 // breaks if too much charge goes across it
                 if(spark.currentValue >= value)
                 {
                     isActive = true;
-                    // open wire
+                    parentWire.isOpen = true;
+                    Debug.Log("Fuse Broken. Spark: " + spark.currentValue);
                 }
                 break;
             case LAMP:
@@ -64,6 +80,7 @@ public class ComponentFunction : MonoBehaviour
                 {
                     spark.currentValue -= value;
                     isActive = true;
+                    Debug.Log("Lamp lit. Spark: " + spark.currentValue);
                 }
                 break;
             case CAPACITOR:
@@ -72,25 +89,32 @@ public class ComponentFunction : MonoBehaviour
                 isActive = true;
                 spark.currentValue--;
                 value++;
+                Debug.Log("Capacitor. Spark: " + spark.currentValue);
+                Debug.Log("Capacitor. Stored: " + value);
                 break;
             default:
                 break;
         }
     }
 
-    private void OnMouseDown()
+    private void ClickInteract()
     {
+        if (!IsPlaced)
+        {
+            return;
+        }
+
         switch (componentType)
         {
             case SWITCH:
                 //switches the... switch... state
                 isActive = !isActive;
-                //open wire
+                parentWire.isOpen = true;
                 break;
             case CAPACITOR:
                 if (isActive)
                 {
-                    //instantiate a new spark with the current value of value
+                    //Instantiate new spark
                     value = 0;
                     isActive = false;
                 }
