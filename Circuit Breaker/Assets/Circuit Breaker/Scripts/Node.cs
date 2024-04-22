@@ -13,6 +13,19 @@ public class Node : MonoBehaviour
     [Header("Optional")]
     [Tooltip("Turn on to make this node Ground. Will destroy a Spark when encountered.")]
     public bool isGround;
+    [Header("Lamp")]
+    public bool isLamp; //A LAMP NODE CANNOT ALSO BE A SPLIT NODE
+    public GameObject lamp;
+    public int amountOfChargeNeeded = 1;
+
+    void Start()
+    {
+        if (isLamp)
+        {
+            LampUI.Instance.lampCount++;
+            Debug.Log($"LAMPCOUNT: {LampUI.Instance.lampCount}");
+        }
+    }
 
     // [Tooltip("Component to default to on wire.\nFill with a CircuitComponent prefab.")]
     // public GameObject defaultComponent;
@@ -57,12 +70,12 @@ public class Node : MonoBehaviour
     public Transform GetNextNode()
     {
         if (connectedWires.Length == 0){
-            Debug.Log(name + " has no connections.");
+            //Debug.Log(name + " has no connections.");
             return null;
         }
         
         Transform otherNode = connectedWires[0].GetOtherNode(this.transform);
-        Debug.Log(name + " is connected to " + otherNode.name + " by " + connectedWires[0].name);
+        //Debug.Log(name + " is connected to " + otherNode.name + " by " + connectedWires[0].name);
         return otherNode;
     }
 
@@ -70,19 +83,19 @@ public class Node : MonoBehaviour
     public Transform GetNextNode(int wireIndex)
     {
         if (connectedWires.Length == 0){
-            Debug.Log(name + " has no connections.");
+            //Debug.Log(name + " has no connections.");
             return null;
         }
 
         // sanity checks
         if(wireIndex >= connectedWires.Length || wireIndex < 0)
         {
-            Debug.Log(wireIndex + "Not within connectedWires index range.");
+            //Debug.Log(wireIndex + "Not within connectedWires index range.");
             return null;
         }
 
         Transform otherNode = connectedWires[wireIndex].GetOtherNode(this.transform);
-        Debug.Log(name + " is connected to " + otherNode.name + " by " + connectedWires[wireIndex].name);
+        //Debug.Log(name + " is connected to " + otherNode.name + " by " + connectedWires[wireIndex].name);
         return otherNode;
     }
 
@@ -94,14 +107,23 @@ public class Node : MonoBehaviour
         {
             if(connectedWires[i] == wireCheck)
             {
-                Debug.Log(wireCheck.name + " has an index of " + i +" in " + name + "'s connectedWires.");
+                //Debug.Log(wireCheck.name + " has an index of " + i +" in " + name + "'s connectedWires.");
                 return i;
             }
         }
 
-        Debug.Log(wireCheck.name + " is not connected to " + name);
+        //Debug.Log(wireCheck.name + " is not connected to " + name);
         return -1;
     }
+
+    public void TurnOnLamp()
+    {
+        lamp.SetActive(true);
+    }
+
+    
+
+
 
     /*
     public void GroundSpark(Spark spark){

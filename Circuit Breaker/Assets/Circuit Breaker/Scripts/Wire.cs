@@ -36,6 +36,31 @@ public class Wire : MonoBehaviour
         GetComponent<ComponentSlot>().PositionTileSpot(nodes, tileOffset);
     }
 
+    private void Update()
+    {
+        UpdateColor();
+    }
+
+    private void UpdateColor()
+    {
+        if (isOpen)
+        {
+            lineRenderer.startColor = Color.red;
+            lineRenderer.endColor = Color.red;
+            return;
+        }
+
+        if (isShort)
+        {
+            lineRenderer.startColor = Color.red;
+            lineRenderer.endColor = Color.red;
+            return;
+        }
+
+        lineRenderer.startColor = Color.black;
+        lineRenderer.endColor = Color.black;
+    }
+
     // draws the line between nodes
     public void DrawLine()
     {
@@ -73,7 +98,7 @@ public class Wire : MonoBehaviour
         // sanity check
         if(i != 0 || i != 1)
         {
-            Debug.Log(i + " is not one of the two nodes.");
+            //Debug.Log(i + " is not one of the two nodes.");
             return;
         }
 
@@ -101,12 +126,12 @@ public class Wire : MonoBehaviour
         {
             if (nodes[i] == node)
             {
-                Debug.Log(node.name + " has an index of " + i + " in " + name + "'s nodes.");
+                //Debug.Log(node.name + " has an index of " + i + " in " + name + "'s nodes.");
                 return i;
             }
         }
 
-        Debug.Log(node.name + " is not connected to " + name);
+        //Debug.Log(node.name + " is not connected to " + name);
         return -1;
     }
 
@@ -115,13 +140,13 @@ public class Wire : MonoBehaviour
     {
         if (isOpen)
         {
-            Debug.Log("Wire is open. Cannot traverse.");
+            //Debug.Log("Wire is open. Cannot traverse.");
             return false;
         }
 
         if (!IsConnectedTo(node))
         {
-            Debug.Log("Node not connected. Cannot traverse from " + node.name);
+            //Debug.Log("Node not connected. Cannot traverse from " + node.name);
             return false;
         }
 
@@ -129,12 +154,12 @@ public class Wire : MonoBehaviour
         {
             if(GetNodeIndex(node) != 0)
             {
-                Debug.Log("Wire is polarized. " + node.name + " is on the wrong side.");
+                //Debug.Log("Wire is polarized. " + node.name + " is on the wrong side.");
                 return false;
             }
         }
 
-        Debug.Log("Wire is able to be traversed from " + node.name);
+        //Debug.Log("Wire is able to be traversed from " + node.name);
         return true;
     }
 
