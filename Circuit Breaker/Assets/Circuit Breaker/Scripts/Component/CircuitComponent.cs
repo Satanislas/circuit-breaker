@@ -41,13 +41,14 @@ public class CircuitComponent : MonoBehaviour {
             // If nearby a component slot, show a transparent version of the component over the nearby slot
             if (Vector3.Distance(transform.position, tileSpot.transform.position) < 3f) {
                 // Ignore tile slots that already have a component on them
-                if (tileSpot.transform.parent.gameObject.GetComponent<Wire>().ActiveComponent != null) {
+                if (tileSpot.transform.parent.gameObject.GetComponent<ComponentSlot>().ActiveComponent != null) {
                     break;
                 }
                 currentlyHoveredTileSpot = tileSpot;
                 if (instantiatedHoverHighlight == null) {
                     instantiatedHoverHighlight = Instantiate(hoverHighlight);
                     hoverHighlightScript = instantiatedHoverHighlight.GetComponent<ComponentHoverHighlight>();
+                    instantiatedHoverHighlight.transform.rotation = Quaternion.Euler(0f, 0f, tileSpot.transform.eulerAngles.x);
                     instantiatedHoverHighlight.GetComponent<SpriteRenderer>().sprite = componentSprite;
                     instantiatedHoverHighlight.GetComponent<SpriteRenderer>().color = highlightColor;
                 }
@@ -68,7 +69,7 @@ public class CircuitComponent : MonoBehaviour {
     void OnMouseDown() {
         // If the component was previously on a slot, but now is not, clear the previous wire's component slot
         if (lastPlacedTileSlot != null) {
-            lastPlacedTileSlot.transform.parent.gameObject.GetComponent<Wire>().ActiveComponent = null;
+            lastPlacedTileSlot.transform.parent.gameObject.GetComponent<ComponentSlot>().ActiveComponent = null;
             lastPlacedTileSlot = null;
             GetComponent<ComponentFunction>().parentWire = null;
             // sparkParticles.Stop();
@@ -81,9 +82,11 @@ public class CircuitComponent : MonoBehaviour {
         if (currentlyHoveredTileSpot) {
             Destroy(instantiatedHoverHighlight.gameObject);
             transform.position = new Vector3(currentlyHoveredTileSpot.transform.position.x, currentlyHoveredTileSpot.transform.position.y, -2f);
-            // float yRotation = currentlyHoveredTileSpot.transform.rotation.y
-            transform.rotation = Quaternion.Euler(0f, currentlyHoveredTileSpot.transform.rotation.y, currentlyHoveredTileSpot.transform.rotation.eulerAngles.x);
-            currentlyHoveredTileSpot.transform.parent.gameObject.GetComponent<Wire>().ActiveComponent = transform;
+            float yRotation = currentlyHoveredTileSpot.transform.eulerAngles.y == 0f ? 180f : 0f;
+            float zRotation = currentlyHoveredTileSpot.transform.eulerAngles.y == 90f ? -currentlyHoveredTileSpot.transform.eulerAngles.x : currentlyHoveredTileSpot.transform.eulerAngles.x;
+            // float zRotation = -currentlyHoveredTileSpot.transform.eulerAngles.x;
+            transform.rotation = Quaternion.Euler(0f, yRotation, zRotation);
+            currentlyHoveredTileSpot.transform.parent.gameObject.GetComponent<ComponentSlot>().ActiveComponent = transform;
             lastPlacedTileSlot = currentlyHoveredTileSpot;
             // sparkParticles.Play();
         }
