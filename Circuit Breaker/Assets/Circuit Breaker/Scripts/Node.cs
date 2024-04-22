@@ -15,9 +15,9 @@ public class Node : MonoBehaviour
     [Header("Lamp")]
     public bool isLamp; //A LAMP NODE CANNOT ALSO BE A SPLIT NODE
     public GameObject lamp;
-    public int amountOfChargeNeeded = 1;
+    public int lampChargeNeeded = 0;
 
-    void Start()
+    void Awake()
     {
         if (isLamp)
         {
