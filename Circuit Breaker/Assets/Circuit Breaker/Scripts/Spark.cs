@@ -21,12 +21,16 @@ public class Spark : MonoBehaviour
     
     [Header("Debug : don't need to be serialized")]
     public int currentValue;
-    private Transform targetNode;
+    public Transform targetNode;
     public bool wasIntantiated;
+
+    [Header("Lamp UI")]
+    public LampUI lampUI;
 
 
     private void Start()
     {
+        Debug.Log($"{startNode.gameObject.name} is the starting node");
         if (wasIntantiated) return;
         if (!targetNode) // prevent a death recursive loop
             GetNextNode();
@@ -45,6 +49,13 @@ public class Spark : MonoBehaviour
             {
                 Split(node);
                 Destroy(this.gameObject);
+            }
+            else if(node.isLamp)
+            {
+                Debug.Log($"{node.gameObject.name} is a lamp");
+                lampUI.IncreaseLampCount();
+                node.TurnOnLamp();
+                targetNode = startNode.GetComponent<Node>().GetNextNode();
             }
             else
             {
@@ -115,6 +126,24 @@ public class Spark : MonoBehaviour
             //disable the script
             print("Spark " + name + " arrived with a value of " + currentValue);
             enabled = false;
+            WinCondition();
         }
     }
+
+    //not sure if we want to check end node like this or if we want to actually make a node an endnode by bool up top
+    public bool IsEndNode()
+    {
+        if(targetNode == null)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void WinCondition()
+    {
+        LampUI.Instance.SparksReachEnd();
+        LampUI.Instance.GameComplete();
+    }
+
 }

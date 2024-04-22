@@ -12,6 +12,19 @@ public class Node : MonoBehaviour
     [Header("Optional")]
     [Tooltip("Turn on to make this node Ground. Will destroy a Spark when encountered.")]
     public bool isGround;
+    [Header("Lamp")]
+    public bool isLamp; //A LAMP NODE CANNOT ALSO BE A SPLIT NODE
+    public GameObject lamp;
+    public int amountOfChargeNeeded = 1;
+
+    void Start()
+    {
+        if (isLamp)
+        {
+            LampUI.Instance.lampCount++;
+            Debug.Log($"LAMPCOUNT: {LampUI.Instance.lampCount}");
+        }
+    }
 
     public int ConnectionNum
     {
@@ -72,6 +85,15 @@ public class Node : MonoBehaviour
         Debug.Log(wireCheck.name + " is not connected to " + name);
         return -1;
     }
+
+    public void TurnOnLamp()
+    {
+        lamp.SetActive(true);
+    }
+
+    
+
+
 
     /*
     public void GroundSpark(Spark spark){
