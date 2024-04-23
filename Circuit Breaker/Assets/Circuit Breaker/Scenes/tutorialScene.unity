@@ -934,6 +934,30 @@ PrefabInstance:
       propertyPath: nodes.Array.data[1]
       value: 
       objectReference: {fileID: 227752696}
+    - target: {fileID: 3626574890098543469, guid: 607ee00e260108646b35e6e461018795, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 0.18244925
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626574890098543469, guid: 607ee00e260108646b35e6e461018795, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0.2861208
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626574890098543469, guid: 607ee00e260108646b35e6e461018795, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.r
+      value: 0.9433962
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626574890098543469, guid: 607ee00e260108646b35e6e461018795, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626574890098543469, guid: 607ee00e260108646b35e6e461018795, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626574890098543469, guid: 607ee00e260108646b35e6e461018795, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4459861473427306715, guid: 607ee00e260108646b35e6e461018795, type: 3}
       propertyPath: m_Name
       value: Wire (1)
@@ -2797,6 +2821,30 @@ PrefabInstance:
       propertyPath: nodes.Array.data[1]
       value: 
       objectReference: {fileID: 2033367308}
+    - target: {fileID: 3626574890098543469, guid: 607ee00e260108646b35e6e461018795, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 0.18244925
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626574890098543469, guid: 607ee00e260108646b35e6e461018795, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0.2861208
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626574890098543469, guid: 607ee00e260108646b35e6e461018795, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.r
+      value: 0.9433962
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626574890098543469, guid: 607ee00e260108646b35e6e461018795, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626574890098543469, guid: 607ee00e260108646b35e6e461018795, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626574890098543469, guid: 607ee00e260108646b35e6e461018795, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4459861473427306715, guid: 607ee00e260108646b35e6e461018795, type: 3}
       propertyPath: m_Name
       value: Wire (2)
@@ -4192,6 +4240,30 @@ PrefabInstance:
       propertyPath: nodes.Array.data[1]
       value: 
       objectReference: {fileID: 276494039}
+    - target: {fileID: 3626574890098543469, guid: 607ee00e260108646b35e6e461018795, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.b
+      value: 0.18244925
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626574890098543469, guid: 607ee00e260108646b35e6e461018795, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.g
+      value: 0.2861208
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626574890098543469, guid: 607ee00e260108646b35e6e461018795, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.r
+      value: 0.9433962
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626574890098543469, guid: 607ee00e260108646b35e6e461018795, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626574890098543469, guid: 607ee00e260108646b35e6e461018795, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3626574890098543469, guid: 607ee00e260108646b35e6e461018795, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4459861473427306715, guid: 607ee00e260108646b35e6e461018795, type: 3}
       propertyPath: m_Name
       value: Wire
