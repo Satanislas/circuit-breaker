@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ComponentFunction : MonoBehaviour
@@ -97,7 +98,7 @@ public class ComponentFunction : MonoBehaviour
         }
     }
 
-    private void ClickInteract()
+    public void ClickInteract()
     {
         if (!IsPlaced)
         {
@@ -109,7 +110,7 @@ public class ComponentFunction : MonoBehaviour
             case SWITCH:
                 //switches the... switch... state
                 isActive = !isActive;
-                parentWire.isOpen = true;
+                parentWire.isOpen = !parentWire.isOpen;
                 break;
             case CAPACITOR:
                 if (isActive)
