@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Node : MonoBehaviour
 {
@@ -26,6 +27,15 @@ public class Node : MonoBehaviour
         }
     }
 
+    // [Tooltip("Component to default to on wire.\nFill with a CircuitComponent prefab.")]
+    // public GameObject defaultComponent;
+
+    // [Header("Unity Settings")]
+    // [Tooltip("The transform that controls where the tile is located.\nCan also be used to position components.\nDo not change.")]
+    // public Transform tileSpot;
+    // [Tooltip("The visual of the empty tile. Child of tileSpot\nCan also be used to position components.\nDo not change.")]
+    // public Transform tileIcon;
+
     public int ConnectionNum
     {
         get { return connectedWires.Length; }
@@ -34,6 +44,26 @@ public class Node : MonoBehaviour
     public bool IsSplit{
         get{ return connectedWires.Length > 1;}
     }
+
+    // private Transform activeComponent;
+
+    // public Transform ActiveComponent{
+    //     get { return activeComponent; }
+    //     set 
+    //     {
+    //         // //sets parentWire within ComponentFunction
+    //         // if(value != null)
+    //         // {
+    //         //     value.transform.GetComponent<ComponentFunction>().parentWire = this;
+    //         // }
+    //         activeComponent = value; 
+    //     }
+    // }
+
+    // void Start() {
+    //     PositionTileSpot();
+    //     SpawnComponent();
+    // }
 
     // returns the next node along the wire.
     // only used for wires with no splits.
@@ -100,4 +130,41 @@ public class Node : MonoBehaviour
         Destroy(spark.gameObject);
     }
     */
+
+    // positions the tile graphic
+    // public void PositionTileSpot()
+    // {
+    //     // float lerpX = Mathf.Lerp(nodes[0].position.x, nodes[1].position.x, tileOffset);
+    //     // float lerpY = Mathf.Lerp(nodes[0].position.y, nodes[1].position.y, tileOffset);
+
+    //     // Vector3 pos = new Vector3(lerpX, lerpY, 0f);
+    //     tileSpot.position = transform.position;
+    //     // tileSpot.LookAt(nodes[0], Vector3.up);
+
+    //     // tileIcon.Translate(Vector3.back, Space.World);
+    //     // tileIcon.LookAt(tileIcon.position + Vector3.back, tileSpot.up);
+    // }
+
+    // // spawns a default component if needed
+    // public void SpawnComponent()
+    // {
+    //     // check if we should spawn with a component
+    //     if (defaultComponent == null)
+    //     {
+    //         return;
+    //     }
+
+    //     // check if component already on wire
+    //     if (activeComponent != null)
+    //     {
+    //         return;
+    //     }
+
+    //     Instantiate(defaultComponent, transform.position, Quaternion.identity);
+    // }
+
+    // public void InteractWithComponent(Spark spark)
+    // {
+    //     activeComponent.GetComponent<ComponentFunction>().SparkActivate(spark);
+    // }
 }

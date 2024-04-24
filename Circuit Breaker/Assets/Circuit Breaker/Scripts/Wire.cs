@@ -26,27 +26,6 @@ public class Wire : MonoBehaviour
     [Tooltip("Specifies where on the wire the tileSpot resides.\nCloser to 0 indicates closer to nodes[0].\nCloser to 1 indicates closer to nodes[1].\n0.5 indicates perfectly in the middle.")]
     public float tileOffset;
 
-    [Header("Unity Settings")]
-    [Tooltip("The transform that controls where the tile is located.\nCan also be used to position components.\nDo not change.")]
-    public Transform tileSpot;
-    [Tooltip("The visual of the empty tile. Child of tileSpot\nCan also be used to position components.\nDo not change.")]
-    public Transform tileIcon;
-
-    private Transform activeComponent;
-
-    public Transform ActiveComponent{
-        get { return activeComponent; }
-        set 
-        {
-            //sets parentWire within ComponentFunction
-            if(value != null)
-            {
-                value.transform.GetComponent<ComponentFunction>().parentWire = this;
-            }
-            activeComponent = value; 
-        }
-    }
-
     private LineRenderer lineRenderer;
     
     private void Awake()
@@ -54,8 +33,7 @@ public class Wire : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
 
         DrawLine();
-        PositionTileSpot();
-        SpawnComponent();
+        GetComponent<ComponentSlot>().PositionTileSpot(nodes, tileOffset);
     }
 
     private void Update()
@@ -83,24 +61,6 @@ public class Wire : MonoBehaviour
         lineRenderer.endColor = Color.black;
     }
 
-    // spawns a default component if needed
-    public void SpawnComponent()
-    {
-        // check if we should spawn with a component
-        if (defaultComponent == null)
-        {
-            return;
-        }
-
-        // check if component already on wire
-        if (activeComponent != null)
-        {
-            return;
-        }
-
-        Instantiate(defaultComponent, tileSpot.position, tileSpot.rotation);
-    }
-
     // draws the line between nodes
     public void DrawLine()
     {
@@ -109,19 +69,6 @@ public class Wire : MonoBehaviour
         lineRenderer.enabled = true;
     }
 
-    // positions the tile graphic
-    public void PositionTileSpot()
-    {
-        float lerpX = Mathf.Lerp(nodes[0].position.x, nodes[1].position.x, tileOffset);
-        float lerpY = Mathf.Lerp(nodes[0].position.y, nodes[1].position.y, tileOffset);
-
-        Vector3 pos = new Vector3(lerpX, lerpY, 0f);
-        tileSpot.position = pos;
-        tileSpot.LookAt(nodes[0], Vector3.up);
-
-        tileIcon.Translate(Vector3.back, Space.World);
-        tileIcon.LookAt(tileIcon.position + Vector3.back, tileSpot.up);
-    }
 
     // if the given node is connected to this wire, return the other node.
     // if not, return null
@@ -216,8 +163,8 @@ public class Wire : MonoBehaviour
         return true;
     }
 
-    public void InteractWithComponent(Spark spark)
-    {
-        activeComponent.GetComponent<ComponentFunction>().SparkActivate(spark);
-    }
+    // public void InteractWithComponent(Spark spark)
+    // {
+    //     activeComponent.GetComponent<ComponentFunction>().SparkActivate(spark);
+    // }
 }
