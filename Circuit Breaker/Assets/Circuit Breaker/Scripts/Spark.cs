@@ -24,10 +24,6 @@ public class Spark : MonoBehaviour
     public Transform targetNode;
     public bool wasIntantiated;
 
-    [Header("Lamp UI")]
-    public LampUI lampUI;
-
-
     private void Start()
     {
         Debug.Log($"{startNode.gameObject.name} is the starting node");
@@ -52,10 +48,16 @@ public class Spark : MonoBehaviour
             }
             else if(node.isLamp)
             {
-                Debug.Log($"{node.gameObject.name} is a lamp");
-                lampUI.IncreaseLampCount();
-                node.TurnOnLamp();
-                targetNode = startNode.GetComponent<Node>().GetNextNode();
+                if(currentValue >= node.lampChargeNeeded)
+                {
+                    Debug.Log($"{node.gameObject.name} is a lamp");
+                    LampUI.Instance.IncreaseLampCount();
+                    node.TurnOnLamp();
+                    targetNode = startNode.GetComponent<Node>().GetNextNode();
+                }else
+                {
+                    targetNode = startNode.GetComponent<Node>().GetNextNode();
+                }
             }
             else
             {
@@ -126,7 +128,7 @@ public class Spark : MonoBehaviour
             //disable the script
             print("Spark " + name + " arrived with a value of " + currentValue);
             enabled = false;
-            WinCondition();
+            LampUI.Instance.WinCondition();
         }
     }
 
@@ -140,10 +142,6 @@ public class Spark : MonoBehaviour
         return false;
     }
 
-    public void WinCondition()
-    {
-        LampUI.Instance.SparksReachEnd();
-        LampUI.Instance.GameComplete();
-    }
+    
 
 }

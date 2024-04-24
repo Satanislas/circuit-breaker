@@ -12,17 +12,27 @@ public class LampUI : MonoBehaviour
     {
         Instance = this;
     }
+    [Header("Win Conditions")]
+    public bool lampsWin = false;
+    private bool isLampsOn = false;
+    public bool reachEndWin = false;
+    private bool allSparksOn = false;
 
+    [Header("FOR UI")]
     public int lampCount = 0;
     public TextMeshProUGUI lampText;
     private int lampsOn = 0;
-    private bool isLampsOn = false;
-    private bool allSparksOn = false;
+
     private bool gameEnd = false;
 
     void Start()
     {
-        lampText.SetText($"Lamps: {lampsOn}/{lampCount}");
+        // lampText.gameObject.SetActive(false);
+        if(lampsWin)
+        {
+            // lampText.gameObject.SetActive(true);
+            lampText.SetText($"Lamps: {lampsOn}/{lampCount}");
+        }
     }
     
 
@@ -39,6 +49,19 @@ public class LampUI : MonoBehaviour
         if(lampsOn == lampCount)
         {
             isLampsOn = true;
+        }
+    }
+
+    public void WinCondition()
+    {
+        if(lampsWin)
+        {
+            SparksReachEnd();
+            GameComplete();
+        }else if(reachEndWin)
+        {
+            SparksReachEnd();
+            GameComplete();
         }
     }
 
@@ -61,11 +84,23 @@ public class LampUI : MonoBehaviour
 
     public void GameComplete()
     {
-        if(isLampsOn && allSparksOn)
+        if(lampsWin)
         {
-            gameEnd = true;
-            Debug.Log("LEVEL COMPLETE");
-            Debug.Log("GO TO NEXT LEVEL");
+            if(isLampsOn && allSparksOn)
+            {
+                gameEnd = true;
+                Debug.Log("Win Condition: allLampsOn");
+                Debug.Log("LEVEL COMPLETE");
+                
+            }
+        }else if(reachEndWin)
+        {
+            if(allSparksOn)
+            {
+                gameEnd = true;
+                Debug.Log("Win Condition: reachEnd");
+                Debug.Log("LEVEL COMPLETE");
+            }
         }
     }
 }
