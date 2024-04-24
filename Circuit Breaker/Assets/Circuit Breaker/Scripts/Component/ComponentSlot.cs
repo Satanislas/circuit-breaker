@@ -35,6 +35,12 @@ public class ComponentSlot : MonoBehaviour
         SpawnComponent();
     }
 
+    private void Update(){
+        if(activeComponent != null){
+            GetComponent<Wire>().isOpen = false;
+        }
+    }
+
     // spawns a default component if needed
     public void SpawnComponent()
     {
