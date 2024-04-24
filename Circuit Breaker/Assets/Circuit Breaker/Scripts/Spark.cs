@@ -107,6 +107,13 @@ public class Spark : MonoBehaviour
     private void ReachTargetNode()
     {
         startNode = targetNode;
+        Node node = startNode.GetComponent<Node>();
+        Spark spark = sparkPrefab.GetComponent<Spark>();
+        if(node.isGround){
+            node.GroundSpark(spark);
+        }
+
+
         GetNextNode();
         
         //if there is no wire connected

@@ -73,9 +73,9 @@ public class Node : MonoBehaviour
         return -1;
     }
 
-    /*
     public void GroundSpark(Spark spark){
+        Debug.Log("Spark successfully grounded!");
         Destroy(spark.gameObject);
     }
-    */
+
 }
