@@ -112,7 +112,7 @@ public class ComponentFunction : MonoBehaviour
                     Debug.Log("Lamp lit. Spark: " + spark.currentValue);
                     break;
                 }
-                Destroy(spark);
+                Destroy(spark.gameObject);
                 break;
             case CAPACITOR:
                 //stores 1 charge for each spark that passes through it
