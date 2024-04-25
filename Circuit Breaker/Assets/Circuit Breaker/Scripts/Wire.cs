@@ -6,7 +6,7 @@ using UnityEngine;
 public class Wire : MonoBehaviour
 {
     [Header("Required")]
-    [Tooltip("Nodes this wire connects. Will only ever be two nodes.\nThe first node is considered the in node while the second is considered the out node.\nDo not leave empty.")]
+    [Tooltip("Nodes this wire connects. Will only ever be two nodes.\nThe first node is considered the in node while the second is considered the out node. Wires are now polarized by default, by proxy of how the nodes now point to only out wires.\nDo not leave empty.")]
     public Transform[] nodes;
 
     [Header("Optional")]
