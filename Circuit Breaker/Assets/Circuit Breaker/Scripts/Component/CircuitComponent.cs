@@ -29,7 +29,7 @@ public class CircuitComponent : MonoBehaviour {
 
     }
 
-    void OnMouseDrag() {
+    public void OnMouseDrag() {
         // Check if the mouse has been pressed for some length of time to detect a drag instead of click
         if (Time.time - clickStartTime < .1f) {
             return;
@@ -96,7 +96,7 @@ public class CircuitComponent : MonoBehaviour {
         clickStartTime = Time.time;
     }
 
-    void OnMouseUp() {
+    public void OnMouseUp() {
         if (Time.time - clickStartTime < .1f) {
             componentFunction.ClickInteract();
         }
