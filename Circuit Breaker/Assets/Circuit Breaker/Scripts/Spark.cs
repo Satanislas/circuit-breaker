@@ -40,15 +40,20 @@ public class Spark : MonoBehaviour
         try
         {
             Node node = startNode.GetComponent<Node>();
-
-            if (node.IsSplit)
+            if(node.isShort == true)
             {
-                Split(node);
-                Destroy(this.gameObject);
+               targetNode = startNode.GetComponent<Node>().GetNextNode();
             }
-            else
-            {
-                targetNode = startNode.GetComponent<Node>().GetNextNode();
+            else{
+                if (node.IsSplit)
+                {
+                    Split(node);
+                    Destroy(this.gameObject);
+                }
+                else
+                {
+                    targetNode = startNode.GetComponent<Node>().GetNextNode();
+                }
             }
         }
         catch (Exception)
@@ -112,8 +117,6 @@ public class Spark : MonoBehaviour
         if(node.isGround){
             node.GroundSpark(spark);
         }
-
-
         GetNextNode();
         
         //if there is no wire connected

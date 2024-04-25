@@ -12,7 +12,7 @@ public class Node : MonoBehaviour
     [Header("Optional")]
     [Tooltip("Turn on to make this node Ground. Will destroy a Spark when encountered.")]
     public bool isGround;
-
+    public bool isShort;
     public int ConnectionNum
     {
         get { return connectedWires.Length; }
