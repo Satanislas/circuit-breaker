@@ -43,22 +43,22 @@ public class Wire : MonoBehaviour
 
     private void UpdateColor()
     {
+        Color endColor = Color.black;
+        Color startColor = Color.white;
         if (isOpen)
         {
-            lineRenderer.startColor = Color.red;
-            lineRenderer.endColor = Color.red;
-            return;
+            endColor = Color.red;
+            startColor = Color.red;
         }
 
         if (isShort)
         {
-            lineRenderer.startColor = Color.red;
-            lineRenderer.endColor = Color.red;
-            return;
+            endColor = Color.blue;
+            endColor = Color.cyan;
         }
 
-        lineRenderer.startColor = Color.black;
-        lineRenderer.endColor = Color.black;
+        lineRenderer.startColor = startColor;
+        lineRenderer.endColor = endColor;
     }
 
     // draws the line between nodes

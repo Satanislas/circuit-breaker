@@ -97,20 +97,22 @@ public class ComponentFunction : MonoBehaviour
                     isActive = true;
                     parentWire.isOpen = true;
                     Debug.Log("Fuse Broken. Spark: " + spark.currentValue);
+                    Destroy(spark.gameObject);
                 }
-                Destroy(spark.gameObject);
                 break;
             case LAMP:
                 if(isActive){
                     return;
                 }
-                //lights if spark has enough to power it
+                //lights if spark has enough to power it. otherwise, destroys the spark
                 if(spark.currentValue >= value)
                 {
                     spark.currentValue -= value;
                     isActive = true;
                     Debug.Log("Lamp lit. Spark: " + spark.currentValue);
+                    break;
                 }
+                Destroy(spark);
                 break;
             case CAPACITOR:
                 //stores 1 charge for each spark that passes through it
@@ -138,12 +140,18 @@ public class ComponentFunction : MonoBehaviour
             case SWITCH:
                 //switches the... switch... state
                 isActive = !isActive;
-                parentWire.isOpen = !parentWire.isOpen;
+                parentWire.isOpen = isActive;
                 break;
             case CAPACITOR:
                 if (isActive)
                 {
-                    //Instantiate new spark
+                    GameObject newSpark = Instantiate(sparkPrefab, transform.position, Quaternion.identity);
+                    Spark sparkScript = newSpark.GetComponent<Spark>();
+                    sparkScript.wasIntantiated = true;
+                    sparkScript.currentValue = value;
+                    sparkScript.startNode = parentWire.nodes[0];
+                    sparkScript.targetNode = parentWire.GetOtherNode(parentWire.nodes[0]);
+
                     value = 0;
                     isActive = false;
                 }
