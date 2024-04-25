@@ -17,8 +17,10 @@ public class Node : MonoBehaviour
     public bool isLamp; //A LAMP NODE CANNOT ALSO BE A SPLIT NODE
     public GameObject lamp;
     public int lampChargeNeeded = 0;
+    [HideInInspector] public bool isLit;
 
-    void Awake()
+    /*  //GOT HANDLED BY THE LAMPUI SCRIPT
+    void Start()
     {
         if (isLamp)
         {
@@ -26,6 +28,7 @@ public class Node : MonoBehaviour
             Debug.Log($"LAMPCOUNT: {LampUI.Instance.lampCount}");
         }
     }
+    */
 
     // [Tooltip("Component to default to on wire.\nFill with a CircuitComponent prefab.")]
     // public GameObject defaultComponent;
@@ -119,6 +122,7 @@ public class Node : MonoBehaviour
     public void TurnOnLamp()
     {
         lamp.SetActive(true);
+        isLit = true;
     }
 
     
