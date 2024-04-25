@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ComponentFunction : MonoBehaviour
@@ -31,6 +32,9 @@ public class ComponentFunction : MonoBehaviour
 
     [Header("Unity Setup")]
     public GameObject sparkPrefab;
+    public Sprite defaultSprite;
+    public Sprite activeSprite;
+    private SpriteRenderer spriteRenderer;
 
     // various components have states. Here is what isActive = false means for all of them
     // Switch: switch is closed
@@ -45,6 +49,27 @@ public class ComponentFunction : MonoBehaviour
     private const int FUSE = 3;
     private const int LAMP = 4;
     private const int CAPACITOR = 5;
+
+    private void Awake(){
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+    private void Update(){
+        if (!isActive){
+            spriteRenderer.sprite = defaultSprite;
+
+            if(componentType == SWITCH && parentWire != null){
+                parentWire.isOpen = true;
+            }
+
+            return;
+        }
+
+        if(componentType == SWITCH && parentWire != null){
+            parentWire.isOpen = false;
+        }
+
+        spriteRenderer.sprite = activeSprite;
+    }
 
     public void SparkActivate(Spark spark)
     {
@@ -73,8 +98,12 @@ public class ComponentFunction : MonoBehaviour
                     parentWire.isOpen = true;
                     Debug.Log("Fuse Broken. Spark: " + spark.currentValue);
                 }
+                Destroy(spark.gameObject);
                 break;
             case LAMP:
+                if(isActive){
+                    return;
+                }
                 //lights if spark has enough to power it
                 if(spark.currentValue >= value)
                 {
@@ -97,7 +126,7 @@ public class ComponentFunction : MonoBehaviour
         }
     }
 
-    private void ClickInteract()
+    public void ClickInteract()
     {
         if (!IsPlaced)
         {
@@ -109,7 +138,7 @@ public class ComponentFunction : MonoBehaviour
             case SWITCH:
                 //switches the... switch... state
                 isActive = !isActive;
-                parentWire.isOpen = true;
+                parentWire.isOpen = !parentWire.isOpen;
                 break;
             case CAPACITOR:
                 if (isActive)
