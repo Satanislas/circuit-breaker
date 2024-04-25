@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - TileSpot
+  - Circuit Component
   layers:
   - Default
   - TransparentFX

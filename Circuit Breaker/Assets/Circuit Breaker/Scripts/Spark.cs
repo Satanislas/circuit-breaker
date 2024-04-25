@@ -23,10 +23,7 @@ public class Spark : MonoBehaviour
     public int currentValue;
     public Transform targetNode;
     public bool wasIntantiated;
-
-    [Header("Lamp UI")]
-    public LampUI lampUI;
-
+    private Transform lastNode;
 
     private void Start()
     {
@@ -48,19 +45,28 @@ public class Spark : MonoBehaviour
             if (node.IsSplit)
             {
                 Split(node);
-                Destroy(this.gameObject);
+                Destroy(gameObject);
             }
-            else if(node.isLamp)
+            else if(node.isLamp && !node.isLit)
             {
-                Debug.Log($"{node.gameObject.name} is a lamp");
-                lampUI.IncreaseLampCount();
-                node.TurnOnLamp();
-                targetNode = startNode.GetComponent<Node>().GetNextNode();
+                if(currentValue >= node.lampChargeNeeded)
+                {
+                    Debug.Log($"{node.gameObject.name} is a lamp");
+                    LampUI.Instance.IncreaseLampCount();
+                    node.TurnOnLamp();
+                    
+                    //We don't need the spark anymore
+                    Destroy(gameObject);
+                }
             }
-            else
+            
+            //assign the next node
+            if (node.connectedWires[0].isOpen)
             {
-                targetNode = startNode.GetComponent<Node>().GetNextNode();
+                targetNode = null;
+                return;
             }
+            targetNode = node.GetNextNode();
         }
         catch (Exception)
         {
@@ -71,8 +77,25 @@ public class Spark : MonoBehaviour
     private void Split(Node node)
     {
         int numberOfNodes = node.connectedWires.Length;
+        
+        //check if we don't come back from last node
+        foreach (var wire in node.connectedWires)
+        {
+            if (wire.GetOtherNode(node.transform) == lastNode || wire.isOpen)
+            {
+                numberOfNodes--;
+                break;
+            }
+        }
+        
         foreach (Wire wire in node.connectedWires)
         {
+            if (wire.GetOtherNode(node.transform) == lastNode || wire.isOpen)
+            {
+                //Debug.Log(node.name + "is same as " + wire.GetOtherNode(node.transform).name);
+                continue;
+            }
+            
             Spark spark = Instantiate(sparkPrefab,transform.position,Quaternion.identity).GetComponent<Spark>();
             spark.initialValue = initialValue;
             spark.currentValue = currentValue / numberOfNodes;
@@ -105,6 +128,10 @@ public class Spark : MonoBehaviour
 
     private void Update()
     {
+        //if target node gets destroyed or anything happen
+        if (!targetNode) return;
+        
+        
         UpdateVisual();
         if (Vector3.Distance(transform.position, targetNode.position) <= 0.01f)
         {
@@ -117,6 +144,7 @@ public class Spark : MonoBehaviour
 
     private void ReachTargetNode()
     {
+        lastNode = startNode;
         startNode = targetNode;
         GetNextNode();
         
@@ -126,7 +154,7 @@ public class Spark : MonoBehaviour
             //disable the script
             print("Spark " + name + " arrived with a value of " + currentValue);
             enabled = false;
-            WinCondition();
+            LampUI.Instance.WinCondition();
         }
     }
 
@@ -140,10 +168,19 @@ public class Spark : MonoBehaviour
         return false;
     }
 
-    public void WinCondition()
+
+    public void KillMe()
     {
-        LampUI.Instance.SparksReachEnd();
-        LampUI.Instance.GameComplete();
+        Destroy(gameObject);
     }
 
+    private IEnumerator Shrink() //we'll do an animation instead
+    {
+        while (transform.localScale.x > 0.01)
+        {
+            transform.localScale = new Vector3(transform.localScale.x * 0.8f ,transform.localScale.y* 0.8f,transform.localScale.z* 0.8f);
+            currentValue--;
+            yield return new WaitForSeconds(0.05f);
+        } 
+    }
 }
