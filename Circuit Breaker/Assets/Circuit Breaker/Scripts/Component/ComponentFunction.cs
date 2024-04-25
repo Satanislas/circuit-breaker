@@ -97,7 +97,7 @@ public class ComponentFunction : MonoBehaviour
                     isActive = true;
                     parentWire.isOpen = true;
                     Debug.Log("Fuse Broken. Spark: " + spark.currentValue);
-                    Destroy(spark.gameObject);
+                    spark.KillMe();
                 }
                 break;
             case LAMP:
@@ -112,7 +112,7 @@ public class ComponentFunction : MonoBehaviour
                     Debug.Log("Lamp lit. Spark: " + spark.currentValue);
                     break;
                 }
-                Destroy(spark.gameObject);
+                spark.KillMe();
                 break;
             case CAPACITOR:
                 //stores 1 charge for each spark that passes through it

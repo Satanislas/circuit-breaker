@@ -131,6 +131,10 @@ public class Spark : MonoBehaviour
         //if target node gets destroyed or anything happen
         if (!targetNode) return;
         
+        if(currentValue < 1)
+        {
+            KillMe();
+        }
         
         UpdateVisual();
         if (Vector3.Distance(transform.position, targetNode.position) <= 0.01f)
