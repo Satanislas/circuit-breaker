@@ -17,10 +17,11 @@ public class Node : MonoBehaviour
     public GameObject lamp;
     public int lampChargeNeeded = 0;
 
-    void Awake()
+    void Start()
     {
         if (isLamp)
         {
+            Debug.Log($"{gameObject.name} is lamp");
             LampUI.Instance.lampCount++;
             Debug.Log($"LAMPCOUNT: {LampUI.Instance.lampCount}");
         }
