@@ -13,6 +13,7 @@ public class LampUI : MonoBehaviour
     {
         Instance = this;
     }
+    
     [Header("Win Conditions")]
     public bool lampsWin = false;
     private bool isLampsOn = false;
@@ -25,15 +26,25 @@ public class LampUI : MonoBehaviour
     private int lampsOn = 0;
 
     private bool gameEnd = false;
+    public GameObject EndGameCanvas;
 
     void Start()
     {
         // lampText.gameObject.SetActive(false);
         if(lampsWin)
         {
+            lampCount = 0;
+            Node[] nodes = FindObjectsOfType<Node>();
+            foreach (var node in nodes)
+                if (node.isLamp)
+                    lampCount++;
+            
             // lampText.gameObject.SetActive(true);
             lampText.SetText($"Lamps: {lampsOn}/{lampCount}");
         }
+        
+        
+        
     }
     
 
@@ -41,7 +52,6 @@ public class LampUI : MonoBehaviour
     {
         lampsOn++;
         lampText.SetText($"Lamps: {lampsOn}/{lampCount}");
-        Debug.Log(lampsOn);
         LampsOn();
     }
 
@@ -87,12 +97,12 @@ public class LampUI : MonoBehaviour
     {
         if(lampsWin)
         {
-            if(isLampsOn && allSparksOn)
+            if(lampCount == lampsOn)
             {
                 gameEnd = true;
                 Debug.Log("Win Condition: allLampsOn");
-                Debug.Log("LEVEL COMPLETE");
-                
+                Win();
+
             }
         }else if(reachEndWin)
         {
@@ -100,8 +110,19 @@ public class LampUI : MonoBehaviour
             {
                 gameEnd = true;
                 Debug.Log("Win Condition: reachEnd");
-                Debug.Log("LEVEL COMPLETE");
+                Win();
             }
         }
+    }
+
+    private void Win()
+    {
+        Debug.Log("LEVEL COMPLETE");
+        var sparks = FindObjectsOfType<Spark>();
+        foreach (var spark in sparks)
+        {
+            spark.KillMe();
+        }
+        EndGameCanvas.SetActive(true);
     }
 }

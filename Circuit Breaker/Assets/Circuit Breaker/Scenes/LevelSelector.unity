@@ -1109,6 +1109,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &2115007006
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2676624591300472701, guid: 6ef1fc99832f5cb4ca89a31deccbbf28, type: 3}
+      propertyPath: m_Name
+      value: Scene Fader
+      objectReference: {fileID: 0}
+    - target: {fileID: 6754163273822815901, guid: 6ef1fc99832f5cb4ca89a31deccbbf28, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 400.6026
+      objectReference: {fileID: 0}
+    - target: {fileID: 6754163273822815901, guid: 6ef1fc99832f5cb4ca89a31deccbbf28, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 218.06116
+      objectReference: {fileID: 0}
+    - target: {fileID: 6754163273822815901, guid: 6ef1fc99832f5cb4ca89a31deccbbf28, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.4165449
+      objectReference: {fileID: 0}
+    - target: {fileID: 6754163273822815901, guid: 6ef1fc99832f5cb4ca89a31deccbbf28, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6754163273822815901, guid: 6ef1fc99832f5cb4ca89a31deccbbf28, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6754163273822815901, guid: 6ef1fc99832f5cb4ca89a31deccbbf28, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6754163273822815901, guid: 6ef1fc99832f5cb4ca89a31deccbbf28, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6754163273822815901, guid: 6ef1fc99832f5cb4ca89a31deccbbf28, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6754163273822815901, guid: 6ef1fc99832f5cb4ca89a31deccbbf28, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6754163273822815901, guid: 6ef1fc99832f5cb4ca89a31deccbbf28, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6ef1fc99832f5cb4ca89a31deccbbf28, type: 3}
+--- !u!114 &2115007007 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7793346450690063472, guid: 6ef1fc99832f5cb4ca89a31deccbbf28, type: 3}
+  m_PrefabInstance: {fileID: 2115007006}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06cfb1a9831f93748871957973df2035, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2274651001010336875
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1128,22 +1196,22 @@ PrefabInstance:
     - target: {fileID: 1104211536573923627, guid: da12ae902d2fb9642ace3072bf353bc5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 362528459}
+      objectReference: {fileID: 2115007007}
     - target: {fileID: 1104211536573923627, guid: da12ae902d2fb9642ace3072bf353bc5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1104211536573923627, guid: da12ae902d2fb9642ace3072bf353bc5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SelectLevel
+      value: FadeScene
       objectReference: {fileID: 0}
     - target: {fileID: 1104211536573923627, guid: da12ae902d2fb9642ace3072bf353bc5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: LevelSelector, Assembly-CSharp
+      value: SceneFader, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1104211536573923627, guid: da12ae902d2fb9642ace3072bf353bc5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Level01
+      value: Level1 Test
       objectReference: {fileID: 0}
     - target: {fileID: 1104211536573923627, guid: da12ae902d2fb9642ace3072bf353bc5, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
@@ -1246,3 +1314,4 @@ SceneRoots:
   - {fileID: 1172549607}
   - {fileID: 1772716983}
   - {fileID: 362528460}
+  - {fileID: 2115007006}

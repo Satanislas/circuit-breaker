@@ -1,7 +1,7 @@
-using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class PanelController : MonoBehaviour
+public class PanelController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public RectTransform panelRect; 
     public float hiddenY; 
@@ -26,16 +26,32 @@ public class PanelController : MonoBehaviour
     public void TogglePanel()
     {
         Debug.Log("Toggle Panel Running");
-        if (isExpanded)
+        isExpanded = !isExpanded;
+        UpdatePanelPosition();
+    }
+
+    public void UpdatePanelPosition()
+    {
+        if (!isExpanded)
         {
             panelRect.anchoredPosition = new Vector2(panelRect.anchoredPosition.x, hiddenY); //hide
-            isExpanded = false; 
         }
         else
         {
             panelRect.anchoredPosition = new Vector2(panelRect.anchoredPosition.x, shownY); //show
-            isExpanded = true; 
         }
     }
     
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        isExpanded = true; 
+        UpdatePanelPosition();
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        isExpanded = false; 
+        UpdatePanelPosition();
+    }
 }
