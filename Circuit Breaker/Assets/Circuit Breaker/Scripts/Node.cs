@@ -41,9 +41,14 @@ public class Node : MonoBehaviour
         get { return connectedWires.Length; }
     }
 
-    public bool IsSplit{
-        get{ return connectedWires.Length > 1;}
+    // TEMPORARY ONLY
+    public bool IsSplit {
+        get { return false; }
     }
+
+    // public bool IsSplit{
+    //     get{ return connectedWires.Length > 1;}
+    // }
 
     // private Transform activeComponent;
 

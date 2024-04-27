@@ -95,8 +95,8 @@ GameObject:
   - component: {fileID: 8566131623658950503}
   - component: {fileID: 342210915411432200}
   - component: {fileID: 5067534274292289785}
-  - component: {fileID: 2578324752300412894}
   - component: {fileID: 6164160007024322872}
+  - component: {fileID: 571586474416622478}
   m_Layer: 0
   m_Name: LogicGateComponent
   m_TagString: Untagged
@@ -207,20 +207,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2578324752300412894
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8361794868765055550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fde7209492cc9e49bac70c9752bfa3d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sparkParticles: {fileID: 0}
-  hoverHighlight: {fileID: 5590290102864646252, guid: c805eb6cd5a2cd348bd516f971842e23, type: 3}
 --- !u!114 &6164160007024322872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,3 +224,17 @@ MonoBehaviour:
   parentWire: {fileID: 0}
   sparkPrefab: {fileID: 0}
   isActive: 0
+--- !u!114 &571586474416622478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8361794868765055550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c423df4e28459f042a25c69571c83547, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sparkParticles: {fileID: 0}
+  hoverHighlight: {fileID: 5590290102864646252, guid: c805eb6cd5a2cd348bd516f971842e23, type: 3}

@@ -27,6 +27,10 @@ public class Spark : MonoBehaviour
     [Header("Lamp UI")]
     public LampUI lampUI;
 
+    // TEMPORARY
+    public void setCharge(int charge) {
+        initialValue = charge;
+    }
 
     private void Start()
     {
@@ -59,6 +63,7 @@ public class Spark : MonoBehaviour
             }
             else
             {
+                Debug.Log("Trying to get target node");
                 targetNode = startNode.GetComponent<Node>().GetNextNode();
             }
         }
@@ -118,6 +123,14 @@ public class Spark : MonoBehaviour
     private void ReachTargetNode()
     {
         startNode = targetNode;
+
+        // If the startNode is a logic node input, destroy the spark and defer handling to the node
+        if (startNode.GetComponent<Node>() == null) {
+            GetComponent<SparkInteraction>().HitLogicComponentInput(startNode);
+            Destroy(gameObject);
+            return;
+        }
+
         GetNextNode();
         
         //if there is no wire connected
