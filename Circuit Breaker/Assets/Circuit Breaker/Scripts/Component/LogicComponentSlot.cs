@@ -39,7 +39,7 @@ public class LogicComponentSlot : MonoBehaviour
             GameObject outputSpark = Instantiate(sparkPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
             Spark sparkScript = outputSpark.GetComponent<Spark>();
             sparkScript.startNode = transform;
-            sparkScript.setCharge(charge);
+            sparkScript.currentValue = charge;
             return;
         }
 
@@ -49,7 +49,7 @@ public class LogicComponentSlot : MonoBehaviour
             GameObject outputSpark = Instantiate(sparkPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
             Spark sparkScript = outputSpark.GetComponent<Spark>();
             sparkScript.startNode = transform;
-            sparkScript.setCharge(leftCharge + rightCharge);
+            sparkScript.currentValue = leftCharge + rightCharge;
         } else {
             timer = StartCoroutine(WaitTimer());
         }

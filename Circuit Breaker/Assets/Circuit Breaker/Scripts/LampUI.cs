@@ -12,17 +12,38 @@ public class LampUI : MonoBehaviour
     {
         Instance = this;
     }
+    
+    [Header("Win Conditions")]
+    public bool lampsWin = false;
+    private bool isLampsOn = false;
+    public bool reachEndWin = false;
+    private bool allSparksOn = false;
 
+    [Header("FOR UI")]
     public int lampCount = 0;
     public TextMeshProUGUI lampText;
     private int lampsOn = 0;
-    private bool isLampsOn = false;
-    private bool allSparksOn = false;
+
     private bool gameEnd = false;
+    public GameObject EndGameCanvas;
 
     void Start()
     {
-        lampText.SetText($"Lamps: {lampsOn}/{lampCount}");
+        // lampText.gameObject.SetActive(false);
+        if(lampsWin)
+        {
+            lampCount = 0;
+            Node[] nodes = FindObjectsOfType<Node>();
+            foreach (var node in nodes)
+                if (node.isLamp)
+                    lampCount++;
+            
+            // lampText.gameObject.SetActive(true);
+            lampText.SetText($"Lamps: {lampsOn}/{lampCount}");
+        }
+        
+        
+        
     }
     
 
@@ -30,7 +51,6 @@ public class LampUI : MonoBehaviour
     {
         lampsOn++;
         lampText.SetText($"Lamps: {lampsOn}/{lampCount}");
-        Debug.Log(lampsOn);
         LampsOn();
     }
 
@@ -39,6 +59,19 @@ public class LampUI : MonoBehaviour
         if(lampsOn == lampCount)
         {
             isLampsOn = true;
+        }
+    }
+
+    public void WinCondition()
+    {
+        if(lampsWin)
+        {
+            SparksReachEnd();
+            GameComplete();
+        }else if(reachEndWin)
+        {
+            SparksReachEnd();
+            GameComplete();
         }
     }
 
@@ -61,11 +94,34 @@ public class LampUI : MonoBehaviour
 
     public void GameComplete()
     {
-        if(isLampsOn && allSparksOn)
+        if(lampsWin)
         {
-            gameEnd = true;
-            Debug.Log("LEVEL COMPLETE");
-            Debug.Log("GO TO NEXT LEVEL");
+            if(lampCount == lampsOn)
+            {
+                gameEnd = true;
+                Debug.Log("Win Condition: allLampsOn");
+                Win();
+
+            }
+        }else if(reachEndWin)
+        {
+            if(allSparksOn)
+            {
+                gameEnd = true;
+                Debug.Log("Win Condition: reachEnd");
+                Win();
+            }
         }
+    }
+
+    private void Win()
+    {
+        Debug.Log("LEVEL COMPLETE");
+        var sparks = FindObjectsOfType<Spark>();
+        foreach (var spark in sparks)
+        {
+            spark.KillMe();
+        }
+        EndGameCanvas.SetActive(true);
     }
 }
