@@ -55,7 +55,8 @@ public class DragNDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         CircuitComponent circuitComp = tempComponent.GetComponent<CircuitComponent>();
         if (circuitComp != null)
         {
-            circuitComp.OnMouseDrag();
+            //circuitComp.OnMouseDrag();
+            circuitComp.OnMouseUp();
             speechBubbleManager.ComponentPlaced();
         }
         if (RectTransformUtility.RectangleContainsScreenPoint(canvasRect, eventData.position, mainCamera))
