@@ -32,6 +32,9 @@ public class ComponentFunction : MonoBehaviour
 
     [Header("Unity Setup")]
     public GameObject sparkPrefab;
+    public Sprite defaultSprite;
+    public Sprite activeSprite;
+    private SpriteRenderer spriteRenderer;
 
     // various components have states. Here is what isActive = false means for all of them
     // Switch: switch is closed
@@ -46,6 +49,27 @@ public class ComponentFunction : MonoBehaviour
     private const int FUSE = 3;
     private const int LAMP = 4;
     private const int CAPACITOR = 5;
+
+    private void Awake(){
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+    private void Update(){
+        if (!isActive){
+            spriteRenderer.sprite = defaultSprite;
+
+            if(componentType == SWITCH && parentWire != null){
+                parentWire.isOpen = true;
+            }
+
+            return;
+        }
+
+        if(componentType == SWITCH && parentWire != null){
+            parentWire.isOpen = false;
+        }
+
+        spriteRenderer.sprite = activeSprite;
+    }
 
     public void SparkActivate(Spark spark)
     {
@@ -73,16 +97,22 @@ public class ComponentFunction : MonoBehaviour
                     isActive = true;
                     parentWire.isOpen = true;
                     Debug.Log("Fuse Broken. Spark: " + spark.currentValue);
+                    spark.KillMe();
                 }
                 break;
             case LAMP:
-                //lights if spark has enough to power it
+                if(isActive){
+                    return;
+                }
+                //lights if spark has enough to power it. otherwise, destroys the spark
                 if(spark.currentValue >= value)
                 {
                     spark.currentValue -= value;
                     isActive = true;
                     Debug.Log("Lamp lit. Spark: " + spark.currentValue);
+                    break;
                 }
+                spark.KillMe();
                 break;
             case CAPACITOR:
                 //stores 1 charge for each spark that passes through it
@@ -110,12 +140,18 @@ public class ComponentFunction : MonoBehaviour
             case SWITCH:
                 //switches the... switch... state
                 isActive = !isActive;
-                parentWire.isOpen = !parentWire.isOpen;
+                parentWire.isOpen = isActive;
                 break;
             case CAPACITOR:
                 if (isActive)
                 {
-                    //Instantiate new spark
+                    GameObject newSpark = Instantiate(sparkPrefab, transform.position, Quaternion.identity);
+                    Spark sparkScript = newSpark.GetComponent<Spark>();
+                    sparkScript.wasIntantiated = true;
+                    sparkScript.currentValue = value;
+                    sparkScript.startNode = parentWire.nodes[0];
+                    sparkScript.targetNode = parentWire.GetOtherNode(parentWire.nodes[0]);
+
                     value = 0;
                     isActive = false;
                 }

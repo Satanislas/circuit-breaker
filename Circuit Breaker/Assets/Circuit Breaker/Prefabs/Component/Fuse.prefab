@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 2578324752300412894}
   - component: {fileID: 6164160007024322872}
   - component: {fileID: 4936087045881138585}
+  - component: {fileID: 5297123914974069674}
   m_Layer: 0
   m_Name: Fuse
   m_TagString: Untagged
@@ -206,8 +207,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fde7209492cc9e49bac70c9752bfa3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sparkParticles: {fileID: 0}
-  hoverHighlight: {fileID: 5590290102864646252, guid: c805eb6cd5a2cd348bd516f971842e23, type: 3}
 --- !u!114 &6164160007024322872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -224,6 +223,8 @@ MonoBehaviour:
   value: 1
   parentWire: {fileID: 0}
   sparkPrefab: {fileID: 4764249445595155011, guid: cc6b2624385357340abcbaf3df37bfa8, type: 3}
+  defaultSprite: {fileID: 21300000, guid: cc897d8465c6eb8468c6e5041c153965, type: 3}
+  activeSprite: {fileID: 21300000, guid: 6a99afddd4a8af04895cc5e225d50cef, type: 3}
   isActive: 0
 --- !u!54 &4936087045881138585
 Rigidbody:
@@ -252,3 +253,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5297123914974069674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8361794868765055550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c423df4e28459f042a25c69571c83547, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sparkParticles: {fileID: 0}
+  hoverHighlight: {fileID: 5590290102864646252, guid: c805eb6cd5a2cd348bd516f971842e23, type: 3}
