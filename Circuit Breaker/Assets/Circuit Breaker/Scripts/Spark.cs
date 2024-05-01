@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Spark : MonoBehaviour
@@ -13,6 +14,10 @@ public class Spark : MonoBehaviour
     public float minSpeed;
     public GameObject sparkPrefab;
 
+
+    [Header("UI")] public GameObject textCanvas;
+    public TextMeshProUGUI textValue;
+
     [Header("Visuals")] 
     public Gradient gradient;
     public float smallestSize;
@@ -21,12 +26,14 @@ public class Spark : MonoBehaviour
     
     [Header("Debug : don't need to be serialized")]
     public int currentValue;
-    private Transform targetNode;
+    public Transform targetNode;
     public bool wasIntantiated;
-
+    private Transform lastNode;
+    private bool mouseOver;
 
     private void Start()
     {
+        Debug.Log($"{startNode.gameObject.name} is the starting node");
         if (wasIntantiated) return;
         if (!targetNode) // prevent a death recursive loop
             GetNextNode();
@@ -42,6 +49,7 @@ public class Spark : MonoBehaviour
             Node node = startNode.GetComponent<Node>();
             if(node.isShort == true)
             {
+
                targetNode = startNode.GetComponent<Node>().GetNextNode();
             }
             else{
@@ -53,8 +61,31 @@ public class Spark : MonoBehaviour
                 else
                 {
                     targetNode = startNode.GetComponent<Node>().GetNextNode();
+
+                Split(node);
+                Destroy(gameObject);
+            }
+            else if(node.isLamp && !node.isLit)
+            {
+                if(currentValue >= node.lampChargeNeeded)
+                {
+                    Debug.Log($"{node.gameObject.name} is a lamp");
+                    LampUI.Instance.IncreaseLampCount();
+                    node.TurnOnLamp();
+                    
+                    //We don't need the spark anymore
+                    Destroy(gameObject);
+
                 }
             }
+            
+            //assign the next node
+            if (node.connectedWires[0].isOpen)
+            {
+                targetNode = null;
+                return;
+            }
+            targetNode = node.GetNextNode();
         }
         catch (Exception)
         {
@@ -65,8 +96,25 @@ public class Spark : MonoBehaviour
     private void Split(Node node)
     {
         int numberOfNodes = node.connectedWires.Length;
+        
+        //check if we don't come back from last node
+        foreach (var wire in node.connectedWires)
+        {
+            if (wire.GetOtherNode(node.transform) == lastNode || wire.isOpen)
+            {
+                numberOfNodes--;
+                break;
+            }
+        }
+        
         foreach (Wire wire in node.connectedWires)
         {
+            if (wire.GetOtherNode(node.transform) == lastNode || wire.isOpen)
+            {
+                //Debug.Log(node.name + "is same as " + wire.GetOtherNode(node.transform).name);
+                continue;
+            }
+            
             Spark spark = Instantiate(sparkPrefab,transform.position,Quaternion.identity).GetComponent<Spark>();
             spark.initialValue = initialValue;
             spark.currentValue = currentValue / numberOfNodes;
@@ -99,6 +147,22 @@ public class Spark : MonoBehaviour
 
     private void Update()
     {
+        //if target node gets destroyed or anything happen
+        if (!targetNode) return;
+        if (!mouseOver)
+        {
+            if (textCanvas.activeSelf)
+            {
+                textCanvas.SetActive(false);
+            }   
+        }
+        mouseOver = false;
+        
+        if(currentValue < 1)
+        {
+            KillMe();
+        }
+        
         UpdateVisual();
         if (Vector3.Distance(transform.position, targetNode.position) <= 0.01f)
         {
@@ -111,12 +175,24 @@ public class Spark : MonoBehaviour
 
     private void ReachTargetNode()
     {
+        lastNode = startNode;
         startNode = targetNode;
+
         Node node = startNode.GetComponent<Node>();
         Spark spark = sparkPrefab.GetComponent<Spark>();
+        
         if(node.isGround){
             node.GroundSpark(spark);
         }
+        
+        // If the startNode is a logic node input, destroy the spark and defer handling to the node
+        if (startNode.GetComponent<Node>() == null) {
+            GetComponent<SparkInteraction>().HitLogicComponentInput(startNode);
+            KillMe();
+            return;
+        }
+        
+
         GetNextNode();
         
         //if there is no wire connected
@@ -125,6 +201,47 @@ public class Spark : MonoBehaviour
             //disable the script
             print("Spark " + name + " arrived with a value of " + currentValue);
             enabled = false;
+            LampUI.Instance.WinCondition();
         }
+    }
+
+    //not sure if we want to check end node like this or if we want to actually make a node an endnode by bool up top
+    public bool IsEndNode()
+    {
+        if(targetNode == null)
+        {
+            return true;
+        }
+        return false;
+    }
+
+
+    public void KillMe()
+    {
+        Destroy(gameObject);
+    }
+
+    private IEnumerator Shrink() //we'll do an animation instead
+    {
+        while (transform.localScale.x > 0.01)
+        {
+            transform.localScale = new Vector3(transform.localScale.x * 0.8f ,transform.localScale.y* 0.8f,transform.localScale.z* 0.8f);
+            if (currentValue > 0) currentValue--;
+            yield return new WaitForSeconds(0.05f);
+        } 
+    }
+
+    private void OnMouseExit()
+    {
+        textCanvas.SetActive(false);
+        textValue.text = currentValue.ToString();
+        mouseOver = false;
+    }
+
+    private void OnMouseOver()
+    {
+        mouseOver = true;
+        textCanvas.SetActive(true);
+        textValue.text = currentValue.ToString();
     }
 }

@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - TileSpot
+  - Circuit Component
   layers:
   - Default
   - TransparentFX
@@ -40,4 +42,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Bubbles
+    uniqueID: 1105852241
     locked: 0

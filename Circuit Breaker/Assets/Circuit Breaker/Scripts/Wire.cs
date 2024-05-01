@@ -6,7 +6,7 @@ using UnityEngine;
 public class Wire : MonoBehaviour
 {
     [Header("Required")]
-    [Tooltip("Nodes this wire connects. Will only ever be two nodes.\nDo not leave empty.")]
+    [Tooltip("Nodes this wire connects. Will only ever be two nodes.\nThe first node is considered the in node while the second is considered the out node. Wires are now polarized by default, by proxy of how the nodes now point to only out wires.\nDo not leave empty.")]
     public Transform[] nodes;
 
     [Header("Optional")]
@@ -14,7 +14,7 @@ public class Wire : MonoBehaviour
     public GameObject defaultComponent;
     [Tooltip("Turn on to disable changing a component once it's placed.")]
     public bool isLocked;
-    [Tooltip("Turn on to force a Spark to only traverse from nodes[0] to nodes[1].\nEffectively disables reverse traversal.")]
+    [Tooltip("[UNUSED. SEE NODES LIST FOR DETAILS]\nTurn on to force a Spark to only traverse from nodes[0] to nodes[1].\nEffectively disables reverse traversal.")]
     public bool isPolarized;
     [Tooltip("Turn on to open this wire. Will not allow traversal across in any direction.")]
     public bool isOpen;
@@ -26,21 +26,6 @@ public class Wire : MonoBehaviour
     [Tooltip("Specifies where on the wire the tileSpot resides.\nCloser to 0 indicates closer to nodes[0].\nCloser to 1 indicates closer to nodes[1].\n0.5 indicates perfectly in the middle.")]
     public float tileOffset;
 
-    [Header("Unity Settings")]
-    [Tooltip("The transform that controls where the tile is located.\nCan also be used to position components.\nDo not change.")]
-    public Transform tileSpot;
-    [Tooltip("The visual of the empty tile. Child of tileSpot\nCan also be used to position components.\nDo not change.")]
-    public Transform tileIcon;
-
-
-    [HideInInspector]
-    private Transform activeComponent;
-
-    public Transform ActiveComponent{
-        get { return activeComponent; }
-        set { activeComponent = value; }
-    }
-
     private LineRenderer lineRenderer;
     
     private void Awake()
@@ -48,26 +33,32 @@ public class Wire : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
 
         DrawLine();
-        PositionTileSpot();
-        SpawnComponent();
+        GetComponent<ComponentSlot>().PositionTileSpot(nodes, tileOffset);
     }
 
-    // spawns a default component if needed
-    public void SpawnComponent()
+    private void Update()
     {
-        // check if we should spawn with a component
-        if (defaultComponent == null)
+        UpdateColor();
+    }
+
+    private void UpdateColor()
+    {
+        Color endColor = Color.black;
+        Color startColor = Color.white;
+        if (isOpen)
         {
-            return;
+            endColor = Color.red;
+            startColor = Color.red;
         }
 
-        // check if component already on wire
-        if (activeComponent != null)
+        if (isShort)
         {
-            return;
+            endColor = Color.blue;
+            endColor = Color.cyan;
         }
 
-        Instantiate(defaultComponent, tileSpot.position, tileSpot.rotation);
+        lineRenderer.startColor = startColor;
+        lineRenderer.endColor = endColor;
     }
 
     // draws the line between nodes
@@ -78,18 +69,6 @@ public class Wire : MonoBehaviour
         lineRenderer.enabled = true;
     }
 
-    // positions the tile graphic
-    public void PositionTileSpot()
-    {
-        float lerpX = Mathf.Lerp(nodes[0].position.x, nodes[1].position.x, tileOffset);
-        float lerpY = Mathf.Lerp(nodes[0].position.y, nodes[1].position.y, tileOffset);
-
-        Vector3 pos = new Vector3(lerpX, lerpY, 0f);
-        tileSpot.position = pos;
-        tileSpot.LookAt(nodes[0], Vector3.up);
-
-        tileIcon.LookAt(tileIcon.position + Vector3.back, tileSpot.up);
-    }
 
     // if the given node is connected to this wire, return the other node.
     // if not, return null
@@ -119,7 +98,7 @@ public class Wire : MonoBehaviour
         // sanity check
         if(i != 0 || i != 1)
         {
-            Debug.Log(i + " is not one of the two nodes.");
+            //Debug.Log(i + " is not one of the two nodes.");
             return;
         }
 
@@ -147,12 +126,12 @@ public class Wire : MonoBehaviour
         {
             if (nodes[i] == node)
             {
-                Debug.Log(node.name + " has an index of " + i + " in " + name + "'s nodes.");
+                //Debug.Log(node.name + " has an index of " + i + " in " + name + "'s nodes.");
                 return i;
             }
         }
 
-        Debug.Log(node.name + " is not connected to " + name);
+        //Debug.Log(node.name + " is not connected to " + name);
         return -1;
     }
 
@@ -161,13 +140,13 @@ public class Wire : MonoBehaviour
     {
         if (isOpen)
         {
-            Debug.Log("Wire is open. Cannot traverse.");
+            //Debug.Log("Wire is open. Cannot traverse.");
             return false;
         }
 
         if (!IsConnectedTo(node))
         {
-            Debug.Log("Node not connected. Cannot traverse from " + node.name);
+            //Debug.Log("Node not connected. Cannot traverse from " + node.name);
             return false;
         }
 
@@ -175,19 +154,17 @@ public class Wire : MonoBehaviour
         {
             if(GetNodeIndex(node) != 0)
             {
-                Debug.Log("Wire is polarized. " + node.name + " is on the wrong side.");
+                //Debug.Log("Wire is polarized. " + node.name + " is on the wrong side.");
                 return false;
             }
         }
 
-        Debug.Log("Wire is able to be traversed from " + node.name);
+        //Debug.Log("Wire is able to be traversed from " + node.name);
         return true;
     }
 
-    /*
-    public void InteractWithComponent(Spark spark)
-    {
-        activeComponent.GetComponent<CircuitComponent>().Activate(spark);
-    }
-    */
+    // public void InteractWithComponent(Spark spark)
+    // {
+    //     activeComponent.GetComponent<ComponentFunction>().SparkActivate(spark);
+    // }
 }
