@@ -78,7 +78,7 @@ public class ComponentSlot : MonoBehaviour
         Transform newTransform = Instantiate(defaultComponent, tileSpot.position + Vector3.back * 2, Quaternion.identity).transform;
         ActiveComponent = newTransform;
         newTransform.LookAt(newTransform.position + Vector3.back, tileSpot.transform.right);
-        ActiveComponent.GetComponent<CircuitComponent>().SetLastPlacedTileSlot(gameObject);
+        ActiveComponent.GetComponent<CircuitComponent>().SetLastPlacedTileSlot(tileSpot.gameObject);
     }
 
     // positions the tile graphic
