@@ -10,7 +10,7 @@ public class LampUI : MonoBehaviour
 
     void Awake()
     {
-        Instance = this;
+        Instance =  this;
     }
     
     [Header("Win Conditions")]
@@ -25,6 +25,7 @@ public class LampUI : MonoBehaviour
     private int lampsOn = 0;
 
     private bool gameEnd = false;
+    public GameObject EndGameCanvas;
 
     void Start()
     {
@@ -121,5 +122,6 @@ public class LampUI : MonoBehaviour
         {
             spark.KillMe();
         }
+        EndGameCanvas.SetActive(true);
     }
 }

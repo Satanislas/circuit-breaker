@@ -118,4 +118,5 @@ public class CircuitComponent : MonoBehaviour {
             return;
         }
     }
+
 }

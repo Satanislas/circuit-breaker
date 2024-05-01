@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 public class Node : MonoBehaviour
 {
     [Header("Required")]
-    [Tooltip("Fill with all the wires that connect to this node.\nShould never be empty.")]
+    [Tooltip("Fill with all the OUT wires that connect to this node.\nShould never be empty.")]
     public Wire[] connectedWires;
 
     [Header("Optional")]

@@ -8,7 +8,7 @@ public class ComponentSlot : MonoBehaviour
     [Tooltip("Component to default to on wire.\nFill with a CircuitComponent prefab.")]
     public GameObject defaultComponent;
 
-    private Transform activeComponent;
+    public Transform activeComponent;
 
     [Header("Unity Settings")]
     [Tooltip("The transform that controls where the tile is located.\nCan also be used to position components.\nDo not change.")]
@@ -20,19 +20,44 @@ public class ComponentSlot : MonoBehaviour
         get { return activeComponent; }
         set 
         {
+            activeComponent = value;
+
             //sets parentWire within ComponentFunction
-            // if(value != null)
-            // {
-            //     value.transform.GetComponent<ComponentFunction>().parentWire = this;
-            // }
-            activeComponent = value; 
+            if (value != null)
+            {
+                Wire test = transform.GetComponent<Wire>();
+                if(test != null)
+                {
+                    activeComponent.GetComponent<ComponentFunction>().parentWire = test;
+                }
+            }
         }
     }
 
     private void Awake()
     {
-        tileSpot.position = transform.position;
+        // only do this if ComponentSlot NOT on a wire
+        if(GetComponent<Wire>() == null)
+        {
+            tileSpot.position = transform.position;
+        }
+        
         SpawnComponent();
+    }
+
+    private void Update(){
+        if(activeComponent != null){
+            return;
+        }
+
+        Wire test = GetComponent<Wire>();
+
+        if (test == null)
+        {
+            return;
+        }
+
+        GetComponent<Wire>().isOpen = false;
     }
 
     // spawns a default component if needed
