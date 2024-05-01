@@ -10,7 +10,7 @@ public class LampUI : MonoBehaviour
 
     void Awake()
     {
-        Instance = this;
+        Instance =  this;
     }
     
     [Header("Win Conditions")]
