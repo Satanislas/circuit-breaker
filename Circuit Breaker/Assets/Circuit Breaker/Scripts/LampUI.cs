@@ -14,7 +14,7 @@ public class LampUI : MonoBehaviour
         Instance = this;
     }
     [Header("LEVEL")]
-    public int level = 1;
+    public int currentLevel = 1;
     
     [Header("Win Conditions")]
     public bool lampsWin = false;
@@ -126,7 +126,7 @@ public class LampUI : MonoBehaviour
             spark.KillMe();
         }
         EndGameCanvas.SetActive(true);
-        // Debug.Log("UNLOCKING LEVEL 2");
-        // PlayerPrefs.SetInt("Level" + level, 0);
+        Debug.Log("Unlocking Next Level: " + currentLevel+1);
+        LevelSelector.Instance.UnlockNextLevel(currentLevel);
     }
 }
