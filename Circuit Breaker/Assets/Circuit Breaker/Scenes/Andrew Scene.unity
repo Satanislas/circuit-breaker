@@ -196,6 +196,10 @@ PrefabInstance:
       propertyPath: nodes.Array.data[1]
       value: 
       objectReference: {fileID: 1508328268}
+    - target: {fileID: 2078696814566109094, guid: 607ee00e260108646b35e6e461018795, type: 3}
+      propertyPath: defaultComponent
+      value: 
+      objectReference: {fileID: 8361794868765055550, guid: 92190c916eae1e347be28a7ae0e371c0, type: 3}
     - target: {fileID: 4459861473427306715, guid: 607ee00e260108646b35e6e461018795, type: 3}
       propertyPath: m_Name
       value: BMBL

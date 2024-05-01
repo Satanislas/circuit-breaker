@@ -34,7 +34,7 @@ public class ComponentSlot : MonoBehaviour
         }
     }
 
-    private void Awake()
+    private void Start()
     {
         // only do this if ComponentSlot NOT on a wire
         if(GetComponent<Wire>() == null)
@@ -75,7 +75,10 @@ public class ComponentSlot : MonoBehaviour
             return;
         }
 
-        Instantiate(defaultComponent, tileSpot.position, tileSpot.rotation);
+        Transform newTransform = Instantiate(defaultComponent, tileSpot.position + Vector3.back * 2, Quaternion.identity).transform;
+        ActiveComponent = newTransform;
+        newTransform.LookAt(newTransform.position + Vector3.back, tileSpot.transform.right);
+        ActiveComponent.GetComponent<CircuitComponent>().SetLastPlacedTileSlot(gameObject);
     }
 
     // positions the tile graphic

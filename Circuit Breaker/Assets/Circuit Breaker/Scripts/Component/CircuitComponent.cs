@@ -29,6 +29,10 @@ public class CircuitComponent : MonoBehaviour {
 
     }
 
+    public void SetLastPlacedTileSlot(GameObject thing){
+        lastPlacedTileSlot = thing;
+    }
+
     void OnMouseDrag() {
         // Check if the mouse has been pressed for some length of time to detect a drag instead of click
         if (Time.time - clickStartTime < .1f) {
