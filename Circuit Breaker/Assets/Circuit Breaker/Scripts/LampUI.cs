@@ -13,6 +13,8 @@ public class LampUI : MonoBehaviour
     {
         Instance = this;
     }
+    [Header("LEVEL")]
+    public int level = 1;
     
     [Header("Win Conditions")]
     public bool lampsWin = false;
@@ -124,5 +126,7 @@ public class LampUI : MonoBehaviour
             spark.KillMe();
         }
         EndGameCanvas.SetActive(true);
+        // Debug.Log("UNLOCKING LEVEL 2");
+        // PlayerPrefs.SetInt("Level" + level, 0);
     }
 }
