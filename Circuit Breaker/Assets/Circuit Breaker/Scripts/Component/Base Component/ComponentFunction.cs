@@ -48,7 +48,7 @@ public class ComponentFunction : MonoBehaviour
 
     private const int RESISTOR = 0;
     private const int BATTERY = 1;
-    private const int SWITCH = 2;
+    public const int SWITCH = 2;
     private const int FUSE = 3;
     private const int LAMP = 4;
     private const int CAPACITOR = 5;
@@ -68,14 +68,14 @@ public class ComponentFunction : MonoBehaviour
             spriteRenderer.sprite = defaultSprite;
 
             if(componentType == SWITCH && parentWire != null){
-                parentWire.isOpen = true;
+                //parentWire.isOpen = true;
             }
 
             return;
         }
 
         if(componentType == SWITCH && parentWire != null){
-            parentWire.isOpen = false;
+            //parentWire.isOpen = false;
         }
 
         spriteRenderer.sprite = activeSprite;
@@ -142,6 +142,7 @@ public class ComponentFunction : MonoBehaviour
     {
         if (!IsPlaced)
         {
+            print("not placed !");
             return;
         }
 
@@ -150,7 +151,7 @@ public class ComponentFunction : MonoBehaviour
             case SWITCH:
                 //switches the... switch... state
                 isActive = !isActive;
-                parentWire.isOpen = isActive;
+                parentWire.isOpen = !isActive;
                 break;
             case CAPACITOR:
                 if (isActive)

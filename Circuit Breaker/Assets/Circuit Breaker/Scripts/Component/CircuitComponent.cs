@@ -101,7 +101,8 @@ public class CircuitComponent : MonoBehaviour {
     }
 
     public void OnMouseUp() {
-        if (Time.time - clickStartTime < .1f) {
+        if (Time.time - clickStartTime < .1f)
+        {
             componentFunction.ClickInteract();
         }
 
@@ -124,6 +125,13 @@ public class CircuitComponent : MonoBehaviour {
             Wire parentWireScipt = currentlyHoveredTileSpot.transform.parent.gameObject.GetComponent<Wire>();
             if (parentWireScipt != null) {
                 componentFunction.parentWire = parentWireScipt;
+                
+                /*
+                if (componentFunction.componentType == 3) // 3 : SWITCH
+                {
+                    parentWireScipt.isOpen = true; //to match the starting position of the switch
+                } 
+                */
             }
             lastPlacedTileSlot = currentlyHoveredTileSpot;
             // sparkParticles.Play();

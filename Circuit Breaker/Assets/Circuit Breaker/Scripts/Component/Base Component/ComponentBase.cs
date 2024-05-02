@@ -128,7 +128,7 @@ public class ComponentBase : MonoBehaviour
 
     void OnMouseUp() {
         if (Time.time - clickStartTime < .1f) {
-            componentFunction.ClickInteract();
+            //componentFunction.ClickInteract(); it was two times there ?? check CircuitComponent
         }
 
         // If the component was being hovered over a component slot, snap it into place and assign it to the wire
