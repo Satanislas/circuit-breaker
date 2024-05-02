@@ -74,8 +74,7 @@ public class ComponentSlot : MonoBehaviour
         {
             return;
         }
-
-        Instantiate(defaultComponent, tileSpot.position, tileSpot.rotation);
+        StartCoroutine(SpawnDefaultComponent());
     }
 
     // positions the tile graphic
@@ -95,5 +94,11 @@ public class ComponentSlot : MonoBehaviour
     void InteractWithComponent(Spark spark)
     {
         activeComponent.GetComponent<ComponentFunction>().SparkActivate(spark);
+    }
+
+    IEnumerator SpawnDefaultComponent()
+    {
+        yield return new WaitForSeconds(1f);
+        Instantiate(defaultComponent, tileSpot.position, tileSpot.rotation);
     }
 }

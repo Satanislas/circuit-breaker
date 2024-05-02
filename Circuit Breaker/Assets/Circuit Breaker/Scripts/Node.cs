@@ -19,16 +19,15 @@ public class Node : MonoBehaviour
     public int lampChargeNeeded = 0;
     [HideInInspector] public bool isLit;
 
-    /*  //GOT HANDLED BY THE LAMPUI SCRIPT
     void Start()
     {
-        if (isLamp)
-        {
-            LampUI.Instance.lampCount++;
-            Debug.Log($"LAMPCOUNT: {LampUI.Instance.lampCount}");
-        }
+        // if (isLamp)
+        // {
+        //     Debug.Log($"{gameObject.name} is lamp");
+        //     LampUI.Instance.lampCount++;
+        //     Debug.Log($"LAMPCOUNT: {LampUI.Instance.lampCount}");
+        // }
     }
-    */
 
     // [Tooltip("Component to default to on wire.\nFill with a CircuitComponent prefab.")]
     // public GameObject defaultComponent;
