@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 503596774968487864}
   m_Layer: 0
   m_Name: Spark
-  m_TagString: Untagged
+  m_TagString: Spark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -158,6 +158,7 @@ MonoBehaviour:
   smallestSize: 0.5
   biggestSize: 1
   currentValue: 0
+  targetNode: {fileID: 0}
   wasIntantiated: 0
 --- !u!114 &1324979431229619503
 MonoBehaviour:

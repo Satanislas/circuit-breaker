@@ -143,6 +143,12 @@ public class ComponentFunction : MonoBehaviour
                 parentWire.isOpen = isActive;
                 break;
             case CAPACITOR:
+                // make sure we're not in build mode
+                if (PlayBuildManager.instance.isBuilding)
+                {
+                    break;
+                }
+
                 if (isActive)
                 {
                     GameObject newSpark = Instantiate(sparkPrefab, transform.position, Quaternion.identity);

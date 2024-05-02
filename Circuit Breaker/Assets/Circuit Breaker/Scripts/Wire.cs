@@ -33,7 +33,13 @@ public class Wire : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
 
         DrawLine();
-        GetComponent<ComponentSlot>().PositionTileSpot(nodes, tileOffset);
+
+        var test = GetComponent<ComponentSlot>();
+
+        if(test != null)
+        {
+            test.PositionTileSpot(nodes, tileOffset);
+        }
     }
 
     private void Update()

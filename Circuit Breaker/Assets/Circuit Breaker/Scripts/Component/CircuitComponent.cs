@@ -19,6 +19,8 @@ public class CircuitComponent : MonoBehaviour {
     private GameObject lastPlacedTileSlot;
     private ComponentFunction componentFunction;
 
+    private PlayBuildManager playBuildManager;
+
     private float clickStartTime;
 
     void Start() {
@@ -26,7 +28,7 @@ public class CircuitComponent : MonoBehaviour {
         highlightColor = GetComponent<SpriteRenderer>().color;
         componentFunction = GetComponent<ComponentFunction>();
         highlightColor.a = .39f;
-
+        playBuildManager = PlayBuildManager.instance;
     }
 
     public void SetLastPlacedTileSlot(GameObject thing){
@@ -34,6 +36,11 @@ public class CircuitComponent : MonoBehaviour {
     }
 
     void OnMouseDrag() {
+        // check if in play mode
+        if (!playBuildManager.isBuilding)
+        {
+            return;
+        }
         // Check if the mouse has been pressed for some length of time to detect a drag instead of click
         if (Time.time - clickStartTime < .1f) {
             return;
