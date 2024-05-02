@@ -6,7 +6,7 @@ using UnityEngine;
 public class Wire : MonoBehaviour
 {
     [Header("Required")]
-    [Tooltip("Nodes this wire connects. Will only ever be two nodes.\nDo not leave empty.")]
+    [Tooltip("Nodes this wire connects. Will only ever be two nodes.\nThe first node is considered the in node while the second is considered the out node. Wires are now polarized by default, by proxy of how the nodes now point to only out wires.\nDo not leave empty.")]
     public Transform[] nodes;
 
     [Header("Optional")]
@@ -14,7 +14,7 @@ public class Wire : MonoBehaviour
     public GameObject defaultComponent;
     [Tooltip("Turn on to disable changing a component once it's placed.")]
     public bool isLocked;
-    [Tooltip("Turn on to force a Spark to only traverse from nodes[0] to nodes[1].\nEffectively disables reverse traversal.")]
+    [Tooltip("[UNUSED. SEE NODES LIST FOR DETAILS]\nTurn on to force a Spark to only traverse from nodes[0] to nodes[1].\nEffectively disables reverse traversal.")]
     public bool isPolarized;
     [Tooltip("Turn on to open this wire. Will not allow traversal across in any direction.")]
     public bool isOpen;
@@ -43,22 +43,22 @@ public class Wire : MonoBehaviour
 
     private void UpdateColor()
     {
+        Color endColor = Color.black;
+        Color startColor = Color.black;
         if (isOpen)
         {
-            lineRenderer.startColor = Color.red;
-            lineRenderer.endColor = Color.red;
-            return;
+            endColor = Color.red;
+            startColor = Color.red;
         }
 
         if (isShort)
         {
-            lineRenderer.startColor = Color.red;
-            lineRenderer.endColor = Color.red;
-            return;
+            endColor = Color.blue;
+            endColor = Color.cyan;
         }
 
-        lineRenderer.startColor = Color.black;
-        lineRenderer.endColor = Color.black;
+        lineRenderer.startColor = startColor;
+        lineRenderer.endColor = endColor;
     }
 
     // draws the line between nodes

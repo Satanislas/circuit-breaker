@@ -1187,6 +1187,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7603f0e9bddc9a4490b848c4b774385, type: 3}
+--- !u!1 &265076437 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8122004177122171038, guid: 73950c247b5fd47479323b613ab5ac42, type: 3}
+  m_PrefabInstance: {fileID: 6127705227022485858}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &277438849
 GameObject:
   m_ObjectHideFlags: 0
@@ -2879,7 +2884,11 @@ PrefabInstance:
     - target: {fileID: 6735289977550555721, guid: 4c3dcfb62b25b7c4ba3775411c9bc97f, type: 3}
       propertyPath: EndGameCanvas
       value: 
+<<<<<<< HEAD
       objectReference: {fileID: 1893366316}
+=======
+      objectReference: {fileID: 265076437}
+>>>>>>> a4bf6678dba6ad2c96f5d778cbc9f4b6b9d7a36e
     - target: {fileID: 8810034316245470989, guid: 4c3dcfb62b25b7c4ba3775411c9bc97f, type: 3}
       propertyPath: m_Name
       value: Win Condition for Level

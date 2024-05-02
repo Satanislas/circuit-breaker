@@ -145,6 +145,10 @@ public class Spark : MonoBehaviour
         }
         mouseOver = false;
         
+        if(currentValue < 1)
+        {
+            KillMe();
+        }
         
         UpdateVisual();
         if (Vector3.Distance(transform.position, targetNode.position) <= 0.01f)
@@ -160,6 +164,14 @@ public class Spark : MonoBehaviour
     {
         lastNode = startNode;
         startNode = targetNode;
+
+        // If the startNode is a logic node input, destroy the spark and defer handling to the node
+        if (startNode.GetComponent<Node>() == null) {
+            GetComponent<SparkInteraction>().HitLogicComponentInput(startNode);
+            KillMe();
+            return;
+        }
+
         GetNextNode();
         
         //if there is no wire connected

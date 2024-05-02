@@ -43,3 +43,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Bubbles
+    uniqueID: 1105852241
+    locked: 0

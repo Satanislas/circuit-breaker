@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,3 +41,17 @@ public class LevelSelector : MonoBehaviour
 
 
 }
+=======
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class LevelSelector : MonoBehaviour
+{
+    public void SelectLevel(string levelName)
+    {
+        Debug.Log($"GOING TO {levelName}");
+    }
+}
+>>>>>>> a4bf6678dba6ad2c96f5d778cbc9f4b6b9d7a36e

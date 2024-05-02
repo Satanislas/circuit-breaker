@@ -11,7 +11,7 @@ public class LampUI : MonoBehaviour
 
     public void Awake()
     {
-        Instance = this;
+        Instance =  this;
     }
     [Header("LEVEL")]
     public int currentLevel = 1;
