@@ -35,7 +35,7 @@ public class CircuitComponent : MonoBehaviour {
         lastPlacedTileSlot = thing;
     }
 
-    void OnMouseDrag() {
+    public void OnMouseDrag() {
         // check if in play mode
         if (!playBuildManager.isBuilding)
         {
@@ -103,11 +103,11 @@ public class CircuitComponent : MonoBehaviour {
         componentFunction.parentWire = null;
     }
 
-    void OnMouseDown() {
+    public void OnMouseDown() {
         clickStartTime = Time.time;
     }
 
-    void OnMouseUp() {
+    public void OnMouseUp() {
         if (Time.time - clickStartTime < .1f) {
             componentFunction.ClickInteract();
         }
