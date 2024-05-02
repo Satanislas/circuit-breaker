@@ -49,21 +49,7 @@ public class Spark : MonoBehaviour
             Node node = startNode.GetComponent<Node>();
             if(node.isShort == true)
             {
-
                targetNode = startNode.GetComponent<Node>().GetNextNode();
-            }
-            else{
-                if (node.IsSplit)
-                {
-                    Split(node);
-                    Destroy(this.gameObject);
-                }
-                else
-                {
-                    targetNode = startNode.GetComponent<Node>().GetNextNode();
-
-                Split(node);
-                Destroy(gameObject);
             }
             else if(node.isLamp && !node.isLit)
             {
@@ -78,6 +64,21 @@ public class Spark : MonoBehaviour
 
                 }
             }
+            else{
+                if (node.IsSplit)
+                {
+                    Split(node);
+                    Destroy(this.gameObject);
+                }
+                else
+                {
+                    targetNode = startNode.GetComponent<Node>().GetNextNode();
+
+                    Split(node);
+                    Destroy(gameObject);
+                }
+            }
+            
             
             //assign the next node
             if (node.connectedWires[0].isOpen)
@@ -182,7 +183,7 @@ public class Spark : MonoBehaviour
         Spark spark = sparkPrefab.GetComponent<Spark>();
         
         if(node.isGround){
-            node.GroundSpark(spark);
+            //node.GroundSpark(spark);
         }
         
         // If the startNode is a logic node input, destroy the spark and defer handling to the node
