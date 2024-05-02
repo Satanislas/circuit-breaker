@@ -136,7 +136,9 @@ public class ComponentBase : MonoBehaviour
             // TODO: Move this into the Logic Component class
             // If a logic component is being placed, set the logic component's slot active component to be this component
             if (componentType == "logic") {
-                currentlyHoveredTileSpot.transform.parent.GetComponent<LogicComponentSlot>().attachedLogicComponent = gameObject;
+                LogicComponentSlot logicComponentSlotScript = currentlyHoveredTileSpot.transform.parent.GetComponent<LogicComponentSlot>();
+                logicComponentSlotScript.attachedLogicComponent = gameObject;
+                logicComponentSlotScript.logicGateName = GetComponent<LogicComponent>().logicComponentName;
             }
 
             if (componentType == "circuit") {

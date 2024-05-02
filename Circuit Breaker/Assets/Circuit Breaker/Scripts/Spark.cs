@@ -38,6 +38,7 @@ public class Spark : MonoBehaviour
         if (!targetNode) // prevent a death recursive loop
             GetNextNode();
         currentValue = initialValue;
+        Debug.Log("SET CHARGE INITIAL VALUE TO " + currentValue);
         transform.position = startNode.transform.position;
         UpdateSpeed();
     }
