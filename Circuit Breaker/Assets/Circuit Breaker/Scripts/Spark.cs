@@ -47,9 +47,21 @@ public class Spark : MonoBehaviour
         try
         {
             Node node = startNode.GetComponent<Node>();
-
-            if (node.IsSplit)
+            if(node.isShort == true)
             {
+
+               targetNode = startNode.GetComponent<Node>().GetNextNode();
+            }
+            else{
+                if (node.IsSplit)
+                {
+                    Split(node);
+                    Destroy(this.gameObject);
+                }
+                else
+                {
+                    targetNode = startNode.GetComponent<Node>().GetNextNode();
+
                 Split(node);
                 Destroy(gameObject);
             }
@@ -63,6 +75,7 @@ public class Spark : MonoBehaviour
                     
                     //We don't need the spark anymore
                     Destroy(gameObject);
+
                 }
             }
             
@@ -165,12 +178,20 @@ public class Spark : MonoBehaviour
         lastNode = startNode;
         startNode = targetNode;
 
+        Node node = startNode.GetComponent<Node>();
+        Spark spark = sparkPrefab.GetComponent<Spark>();
+        
+        if(node.isGround){
+            node.GroundSpark(spark);
+        }
+        
         // If the startNode is a logic node input, destroy the spark and defer handling to the node
         if (startNode.GetComponent<Node>() == null) {
             GetComponent<SparkInteraction>().HitLogicComponentInput(startNode);
             KillMe();
             return;
         }
+        
 
         GetNextNode();
         
