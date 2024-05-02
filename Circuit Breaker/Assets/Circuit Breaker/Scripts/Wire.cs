@@ -10,8 +10,8 @@ public class Wire : MonoBehaviour
     public Transform[] nodes;
 
     [Header("Optional")]
-    [Tooltip("Component to default to on wire.\nFill with a CircuitComponent prefab.")]
-    public GameObject defaultComponent;
+    // [Tooltip("Component to default to on wire.\nFill with a CircuitComponent prefab.")]
+    // public GameObject defaultComponent;
     [Tooltip("Turn on to disable changing a component once it's placed.")]
     public bool isLocked;
     [Tooltip("[UNUSED. SEE NODES LIST FOR DETAILS]\nTurn on to force a Spark to only traverse from nodes[0] to nodes[1].\nEffectively disables reverse traversal.")]
@@ -33,7 +33,13 @@ public class Wire : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
 
         DrawLine();
-        GetComponent<ComponentSlot>().PositionTileSpot(nodes, tileOffset);
+
+        var test = GetComponent<ComponentSlot>();
+
+        if(test != null)
+        {
+            test.PositionTileSpot(nodes, tileOffset);
+        }
     }
 
     private void Update()

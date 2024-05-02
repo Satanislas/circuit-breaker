@@ -1,3 +1,4 @@
+
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -5,9 +6,11 @@ public class PanelController : MonoBehaviour, IPointerEnterHandler, IPointerExit
 {
     public RectTransform panelRect; 
     public float hiddenY; 
-    public float shownY; 
+    public float shownY;
+    public SpeechBubbleManager SpeechBubbleManager;
 
-    public bool isExpanded; 
+    public bool isExpanded;
+    private bool firstTimeOpened = true; 
 
     void Start()
     {
@@ -28,6 +31,14 @@ public class PanelController : MonoBehaviour, IPointerEnterHandler, IPointerExit
         Debug.Log("Toggle Panel Running");
         isExpanded = !isExpanded;
         UpdatePanelPosition();
+
+        if (isExpanded && firstTimeOpened)
+        {
+            firstTimeOpened = false;
+            SpeechBubbleManager.ShowNextBubbleFromPanel();
+            
+        }
+        
     }
 
     public void UpdatePanelPosition()
@@ -45,8 +56,10 @@ public class PanelController : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        isExpanded = true; 
-        UpdatePanelPosition();
+        // isExpanded = true; 
+        // UpdatePanelPosition();
+        TogglePanel();
+        
     }
 
     public void OnPointerExit(PointerEventData eventData)

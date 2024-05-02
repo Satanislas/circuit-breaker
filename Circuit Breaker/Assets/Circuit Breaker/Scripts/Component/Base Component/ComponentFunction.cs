@@ -54,6 +54,15 @@ public class ComponentFunction : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
     private void Update(){
+        if (PlayBuildManager.instance.isBuilding)
+        {
+            if(componentType == CAPACITOR)
+            {
+                isActive = false;
+                value = 0;
+            }
+        }
+
         if (!isActive){
             spriteRenderer.sprite = defaultSprite;
 
@@ -115,6 +124,12 @@ public class ComponentFunction : MonoBehaviour
                 spark.KillMe();
                 break;
             case CAPACITOR:
+                // check if the spark was made from the capacitor
+                if (spark.wasCapacitor)
+                {
+                    break;
+                }
+
                 //stores 1 charge for each spark that passes through it
                 //can click on capacitor to release all charge at once as a single spark
                 isActive = true;
@@ -143,6 +158,12 @@ public class ComponentFunction : MonoBehaviour
                 parentWire.isOpen = isActive;
                 break;
             case CAPACITOR:
+                // make sure we're not in build mode
+                if (PlayBuildManager.instance.isBuilding)
+                {
+                    break;
+                }
+
                 if (isActive)
                 {
                     GameObject newSpark = Instantiate(sparkPrefab, transform.position, Quaternion.identity);
@@ -151,6 +172,7 @@ public class ComponentFunction : MonoBehaviour
                     sparkScript.currentValue = value;
                     sparkScript.startNode = parentWire.nodes[0];
                     sparkScript.targetNode = parentWire.GetOtherNode(parentWire.nodes[0]);
+                    sparkScript.wasCapacitor = true;
 
                     value = 0;
                     isActive = false;
