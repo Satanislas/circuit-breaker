@@ -42,6 +42,9 @@ public class ComponentFunction : MonoBehaviour
     // Lamp: lamp has not been lit
     // Capacitor: capacitor has no charge
     public bool isActive = false;
+    
+    //for already placed components 
+    //private bool isPlaced;
 
     private const int RESISTOR = 0;
     private const int BATTERY = 1;
@@ -54,6 +57,13 @@ public class ComponentFunction : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
     private void Update(){
+        // if (!isPlaced && parentWire && Vector3.Distance(parentWire.tileSpot.position, transform.position) >= 0.1)
+        // {
+        //     transform.position = parentWire.tileSpot.position;
+        //     transform.rotation = new Quaternion(0, 0, parentWire.tileSpot.transform.localRotation.x, 0);
+        //     isPlaced = true;
+        // }
+        
         if (!isActive){
             spriteRenderer.sprite = defaultSprite;
 
@@ -73,11 +83,11 @@ public class ComponentFunction : MonoBehaviour
 
     public void SparkActivate(Spark spark)
     {
+       
         if (!parentWire.IsConnectedTo(spark.startNode))
         {
             return;
         }
-
         switch (componentType)
         {
             case RESISTOR:

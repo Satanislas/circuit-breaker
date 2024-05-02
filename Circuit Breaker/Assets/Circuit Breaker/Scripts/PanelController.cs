@@ -34,8 +34,9 @@ public class PanelController : MonoBehaviour, IPointerEnterHandler, IPointerExit
 
         if (isExpanded && firstTimeOpened)
         {
+            firstTimeOpened = false;
             SpeechBubbleManager.ShowNextBubbleFromPanel();
-            firstTimeOpened = false; 
+            
         }
         
     }

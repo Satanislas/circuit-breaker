@@ -19,6 +19,8 @@ public class CircuitComponent : MonoBehaviour {
     private GameObject lastPlacedTileSlot;
     private ComponentFunction componentFunction;
 
+    public bool dontMove;
+
     private float clickStartTime;
 
     void Start() {
@@ -26,10 +28,12 @@ public class CircuitComponent : MonoBehaviour {
         highlightColor = GetComponent<SpriteRenderer>().color;
         componentFunction = GetComponent<ComponentFunction>();
         highlightColor.a = .39f;
-
     }
 
-    public void OnMouseDrag() {
+    public void OnMouseDrag()
+    {
+        if (dontMove) return;
+        
         // Check if the mouse has been pressed for some length of time to detect a drag instead of click
         if (Time.time - clickStartTime < .1f) {
             return;
@@ -99,6 +103,12 @@ public class CircuitComponent : MonoBehaviour {
     public void OnMouseUp() {
         if (Time.time - clickStartTime < .1f) {
             componentFunction.ClickInteract();
+        }
+
+        if (dontMove)
+        {
+            componentFunction.ClickInteract();
+            return;
         }
 
         // If the component was being hovered over a component slot, snap it into place and assign it to the wire
