@@ -24,6 +24,8 @@ public class Spark : MonoBehaviour
     public Transform targetNode;
     public bool wasIntantiated;
     private Transform lastNode;
+    [Tooltip("Used to ignore the capacitor this is spawned from.")]
+    public bool wasCapacitor;
 
     private void Start()
     {
@@ -148,6 +150,7 @@ public class Spark : MonoBehaviour
 
     private void ReachTargetNode()
     {
+        wasCapacitor = false;
         lastNode = startNode;
         startNode = targetNode;
         GetNextNode();
