@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,12 +12,9 @@ public class PlayBuildManager : MonoBehaviour
     [Tooltip("Used to determine build or play mode")]
     public bool isBuilding;
 
-    private bool hasSpawned;
-
     private void Awake()
     {
         instance = this;
-        hasSpawned = false;
     }
 
     private void Update()
@@ -38,8 +36,18 @@ public class PlayBuildManager : MonoBehaviour
             }
             else
             {
-                // destroy all sparks
+                DestroySparks();
             }
+        }
+    }
+
+    private void DestroySparks()
+    {
+        GameObject[] sparks = GameObject.FindGameObjectsWithTag("Spark");
+
+        foreach (GameObject spark in sparks)
+        {
+            Destroy(spark);
         }
     }
 
