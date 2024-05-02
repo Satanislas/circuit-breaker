@@ -142,6 +142,8 @@ public class Spark : MonoBehaviour
         if (Vector3.Distance(transform.position, targetNode.position) <= 0.01f)
         {
             ReachTargetNode();
+            KillMe();
+            Destroy(gameObject);
             return;
         }
         
@@ -150,6 +152,13 @@ public class Spark : MonoBehaviour
 
     private void ReachTargetNode()
     {
+        // If the target was an input for a logic node, set the target to its parent
+        if (targetNode.GetComponent<NodeLogicComponentInput>() != null) {
+            GetComponent<SparkInteraction>().HitLogicComponentInput(targetNode);
+            KillMe();
+            return;
+        }
+
         wasCapacitor = false;
         lastNode = startNode;
         startNode = targetNode;
