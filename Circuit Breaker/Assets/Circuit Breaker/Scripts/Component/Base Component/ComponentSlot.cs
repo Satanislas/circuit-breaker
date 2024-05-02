@@ -77,7 +77,14 @@ public class ComponentSlot : MonoBehaviour
 
         Transform newTransform = Instantiate(defaultComponent, tileSpot.position + Vector3.back * 2, Quaternion.identity).transform;
         ActiveComponent = newTransform;
-        newTransform.LookAt(newTransform.position + Vector3.back, tileSpot.transform.right);
+
+        float tileSpotYRotation = Mathf.Round(tileSpot.transform.eulerAngles.y);
+        float yRotation = tileSpotYRotation == 0f ? 180f : 0f;
+        float zRotation = tileSpotYRotation == 90f ? 360f - tileSpot.transform.eulerAngles.x : tileSpot.transform.eulerAngles.x;
+        newTransform.rotation = Quaternion.Euler(0f, yRotation, zRotation);
+
+        //newTransform.LookAt(newTransform.position + Vector3.forward, tileSpot.transform.right);
+
         ActiveComponent.GetComponent<CircuitComponent>().SetLastPlacedTileSlot(tileSpot.gameObject);
     }
 

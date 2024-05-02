@@ -41,6 +41,7 @@ public class CircuitComponent : MonoBehaviour {
         {
             return;
         }
+
         // Check if the mouse has been pressed for some length of time to detect a drag instead of click
         if (Time.time - clickStartTime < .1f) {
             return;
@@ -116,11 +117,13 @@ public class CircuitComponent : MonoBehaviour {
         if (currentlyHoveredTileSpot) {
             Destroy(instantiatedHoverHighlight.gameObject);
             transform.position = new Vector3(currentlyHoveredTileSpot.transform.position.x, currentlyHoveredTileSpot.transform.position.y, -2f);
-            //float yRotation = currentlyHoveredTileSpot.transform.eulerAngles.y == 0f ? 180f : 0f;
-            //float zRotation = currentlyHoveredTileSpot.transform.eulerAngles.y == 90f ? -currentlyHoveredTileSpot.transform.eulerAngles.x : currentlyHoveredTileSpot.transform.eulerAngles.x;
-            //transform.rotation = Quaternion.Euler(0f, yRotation, zRotation);
 
-            transform.LookAt(transform.position + Vector3.forward, currentlyHoveredTileSpot.transform.right);
+            float tileSpotYRotation = Mathf.Round(currentlyHoveredTileSpot.transform.eulerAngles.y);
+            float yRotation = tileSpotYRotation == 0f ? 180f : 0f;
+            float zRotation = tileSpotYRotation == 90f ? 360f - currentlyHoveredTileSpot.transform.eulerAngles.x : currentlyHoveredTileSpot.transform.eulerAngles.x;
+            transform.rotation = Quaternion.Euler(0f, yRotation, zRotation);
+
+            //transform.LookAt(transform.position + Vector3.forward, currentlyHoveredTileSpot.transform.up);
 
             currentlyHoveredTileSpot.transform.parent.gameObject.GetComponent<ComponentSlot>().ActiveComponent = transform;
             Wire parentWireScipt = currentlyHoveredTileSpot.transform.parent.gameObject.GetComponent<Wire>();

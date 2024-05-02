@@ -50,7 +50,7 @@ public class Wire : MonoBehaviour
     private void UpdateColor()
     {
         Color endColor = Color.black;
-        Color startColor = Color.black;
+        Color startColor = Color.white;
         if (isOpen)
         {
             endColor = Color.red;

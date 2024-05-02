@@ -182,8 +182,6 @@ GameObject:
   - component: {fileID: 2578324752300412894}
   - component: {fileID: 6164160007024322872}
   - component: {fileID: -4698319647369394480}
-  - component: {fileID: 7629839042226064768}
-  - component: {fileID: 4229739276644423499}
   m_Layer: 0
   m_Name: Lamp
   m_TagString: Untagged
@@ -279,7 +277,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4.5, y: 4.5, z: 1000}
+  m_Size: {x: 4.5, y: 4.5, z: 10}
   m_Center: {x: 0, y: 0, z: 3.5}
 --- !u!114 &2578324752300412894
 MonoBehaviour:
@@ -294,8 +292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sparkParticles: {fileID: 0}
-  hoverHighlight: {fileID: 0}
-  dontMove: 0
+  hoverHighlight: {fileID: 5590290102864646252, guid: c805eb6cd5a2cd348bd516f971842e23, type: 3}
 --- !u!114 &6164160007024322872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,31 +339,3 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7629839042226064768
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8361794868765055550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c423df4e28459f042a25c69571c83547, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sparkParticles: {fileID: 0}
-  hoverHighlight: {fileID: 5590290102864646252, guid: c805eb6cd5a2cd348bd516f971842e23, type: 3}
---- !u!114 &4229739276644423499
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8361794868765055550}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c423df4e28459f042a25c69571c83547, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sparkParticles: {fileID: 0}
-  hoverHighlight: {fileID: 5590290102864646252, guid: c805eb6cd5a2cd348bd516f971842e23, type: 3}
