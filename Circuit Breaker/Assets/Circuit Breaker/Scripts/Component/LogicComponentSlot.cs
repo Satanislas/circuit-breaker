@@ -12,6 +12,8 @@ public class LogicComponentSlot : MonoBehaviour
     public GameObject attachedLogicComponent;
     private Coroutine timer;
 
+    public bool dontMove;
+
     void Start() {
         attachedLogicComponent = null;
         leftCharge = 0;
@@ -38,11 +40,12 @@ public class LogicComponentSlot : MonoBehaviour
         Debug.Log("right charge: " + rightCharge);
 
         // If no logic component is attached, do not store a charge, just pass it through
-        if (attachedLogicComponent == null) {
+        if (attachedLogicComponent == null && !dontMove) {
+            print("Instantiating another spark since no logic component attached");
             GameObject outputSpark = Instantiate(sparkPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
             Spark sparkScript = outputSpark.GetComponent<Spark>();
             sparkScript.startNode = transform;
-            sparkScript.initialValue = charge;
+            sparkScript.currentValue = charge;
             return;
         }
 
@@ -76,6 +79,7 @@ public class LogicComponentSlot : MonoBehaviour
         // Reset stored charges
         leftCharge = 0;
         rightCharge = 0;
+        print("output charge cumulated : " + outputSparkCharge);
 
         if (outputSparkCharge <= 0) {
             Debug.Log("Spark output is 0!");
@@ -84,9 +88,12 @@ public class LogicComponentSlot : MonoBehaviour
 
         // Spawn the new spark
         GameObject outputSpark = Instantiate(sparkPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
-        Spark sparkScript = outputSpark.GetComponent<Spark>();
-        sparkScript.startNode = transform;
-        sparkScript.initialValue = outputSparkCharge;
-        Debug.Log("output spark charge: " + sparkScript.currentValue);
+        Spark spark = outputSpark.GetComponent<Spark>();
+        spark.initialValue = outputSparkCharge;
+        spark.currentValue = outputSparkCharge;
+        spark.startNode = transform;
+        spark.targetNode = GetComponent<Node>().connectedWires[0].GetOtherNode(transform);
+        spark.wasIntantiated = true;
+        Debug.Log("output spark charge: " + spark.currentValue);
     }
 }

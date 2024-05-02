@@ -182,12 +182,14 @@ public class Spark : MonoBehaviour
         Node node = startNode.GetComponent<Node>();
         Spark spark = sparkPrefab.GetComponent<Spark>();
         
+        /*
         if(node.isGround){
             //node.GroundSpark(spark);
         }
+        */
         
         // If the startNode is a logic node input, destroy the spark and defer handling to the node
-        if (startNode.GetComponent<Node>() == null) {
+        if (node == null) {
             GetComponent<SparkInteraction>().HitLogicComponentInput(startNode);
             KillMe();
             return;

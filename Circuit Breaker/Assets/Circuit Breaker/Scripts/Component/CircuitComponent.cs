@@ -19,7 +19,7 @@ public class CircuitComponent : MonoBehaviour {
     private GameObject lastPlacedTileSlot;
     private ComponentFunction componentFunction;
 
-    public bool dontMove;
+   // public bool dontMove;
 
     private float clickStartTime;
 
@@ -32,7 +32,7 @@ public class CircuitComponent : MonoBehaviour {
 
     public void OnMouseDrag()
     {
-        if (dontMove) return;
+       //if (dontMove) return;
         
         // Check if the mouse has been pressed for some length of time to detect a drag instead of click
         if (Time.time - clickStartTime < .1f) {
@@ -105,15 +105,17 @@ public class CircuitComponent : MonoBehaviour {
             componentFunction.ClickInteract();
         }
 
+        /*
         if (dontMove)
         {
             componentFunction.ClickInteract();
             return;
         }
+        */
 
         // If the component was being hovered over a component slot, snap it into place and assign it to the wire
         if (currentlyHoveredTileSpot) {
-            Destroy(instantiatedHoverHighlight.gameObject);
+            //Destroy(instantiatedHoverHighlight.gameObject);
             transform.position = new Vector3(currentlyHoveredTileSpot.transform.position.x, currentlyHoveredTileSpot.transform.position.y, -2f);
             float yRotation = currentlyHoveredTileSpot.transform.eulerAngles.y == 0f ? 180f : 0f;
             float zRotation = currentlyHoveredTileSpot.transform.eulerAngles.y == 90f ? -currentlyHoveredTileSpot.transform.eulerAngles.x : currentlyHoveredTileSpot.transform.eulerAngles.x;

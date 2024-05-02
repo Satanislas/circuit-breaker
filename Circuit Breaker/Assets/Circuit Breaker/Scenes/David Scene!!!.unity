@@ -1354,7 +1354,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8077577580094904931, guid: b15a761b40736ff438ceab1a2a0c1c66, type: 3}
       propertyPath: logicComponentName
-      value: xor
+      value: and
       objectReference: {fileID: 0}
     - target: {fileID: 8361794868765055550, guid: b15a761b40736ff438ceab1a2a0c1c66, type: 3}
       propertyPath: m_Name
