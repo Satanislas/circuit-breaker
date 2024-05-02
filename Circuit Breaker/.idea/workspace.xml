@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="7736a73d-9468-4565-b9c2-39934044855d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Animation/GameOverCanvas.controller" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Animation/GameOverCanvas.controller.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Animation/GameOverEntrer.anim" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Animation/GameOverEntrer.anim.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Component/LogicGateComponent.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Component/LogicGateComponent.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/GameOverCanvas.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/GameOverCanvas.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Logic Node.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Logic Node.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Scene Fader.prefab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Scene Fader.prefab.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scenes/David Scene Files/and-gate.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scenes/David Scene Files/and-gate.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/Component/Base Component/ComponentBase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/Component/Base Component/ComponentBase.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/Component/Base Component/ComponentHoverHighlight.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/Component/LogicComponent.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/Component/LogicComponent.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/Component/LogicComponentSlot.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/Component/LogicComponentSlot.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/DragNDrop.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/DragNDrop.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/EndGameManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/EndGameManager.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/NodeLogicComponentInput.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/NodeLogicComponentInput.cs.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/SceneFader.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/SceneFader.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Atlas Speechbubbles Alphabet Numbers/Assets/Sprites/Speechbox_Black_0001.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Atlas Speechbubbles Alphabet Numbers/Assets/Sprites/Speechbox_Black_0001.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Atlas Speechbubbles Alphabet Numbers/Assets/Sprites/Speechbox_Universalcolor_0001.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Atlas Speechbubbles Alphabet Numbers/Assets/Sprites/Speechbox_Universalcolor_0001.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Atlas Speechbubbles Alphabet Numbers/Assets/Sprites/Speechbubble_0001.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Atlas Speechbubbles Alphabet Numbers/Assets/Sprites/Speechbubble_0001.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Atlas Speechbubbles Alphabet Numbers/Assets/Sprites/Speechbubble_0002.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Atlas Speechbubbles Alphabet Numbers/Assets/Sprites/Speechbubble_0002.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Atlas Speechbubbles Alphabet Numbers/Assets/Sprites/Speechbubble_0003.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Atlas Speechbubbles Alphabet Numbers/Assets/Sprites/Speechbubble_0003.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Atlas Speechbubbles Alphabet Numbers/Assets/Sprites/Speechbubble_0004.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Atlas Speechbubbles Alphabet Numbers/Assets/Sprites/Speechbubble_0004.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Atlas Speechbubbles Alphabet Numbers/Assets/Sprites/Speechbubble_0005.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Atlas Speechbubbles Alphabet Numbers/Assets/Sprites/Speechbubble_0005.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Atlas Speechbubbles Alphabet Numbers/Assets/Sprites/Speechbubble_0006.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Atlas Speechbubbles Alphabet Numbers/Assets/Sprites/Speechbubble_0006.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Atlas Speechbubbles Alphabet Numbers/Assets/Sprites/Speechbubble_0007.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Atlas Speechbubbles Alphabet Numbers/Assets/Sprites/Speechbubble_0007.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/2D Atlas Speechbubbles Alphabet Numbers/Assets/Sprites/Speechbubble_0008.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/2D Atlas Speechbubbles Alphabet Numbers/Assets/Sprites/Speechbubble_0008.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Level Selector Scripts.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Level Selector Scripts.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Level Selector Scripts/Level Selector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Level Selector Scripts/Level Selector.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Level Selector Scripts/Level Selector.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Level Selector Scripts/Level Selector.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Main Menu Animation.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Main Menu Animation.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Main Menu Animation/Button.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Main Menu Animation/Button.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Main Menu Animation/Button.controller.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Main Menu Animation/Button.controller.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Main Menu Scripts.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Main Menu Scripts.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Main Menu Scripts/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Main Menu Scripts/MainMenu.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Main Menu Scripts/MainMenu.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Main Menu Scripts/MainMenu.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Component.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Component.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Component/Battery.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Component/Battery.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Component/Battery.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Component/Battery.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Component/Capacitor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Component/Capacitor.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Component/Capacitor.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Component/Capacitor.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Component/CircuitComponent.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Component/CircuitComponent.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Component/CircuitComponent.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Component/CircuitComponent.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Component/Fuse.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Component/Fuse.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Component/Fuse.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Component/Fuse.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Component/HoverHighlight.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Component/HoverHighlight.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Component/HoverHighlight.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Component/HoverHighlight.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Component/Lamp.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Component/Lamp.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Component/Lamp.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Component/Lamp.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Component/Resistor.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Component/Resistor.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Component/Resistor.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Component/Resistor.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Component/Switch.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Component/Switch.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Component/Switch.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Component/Switch.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Level01.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Level01.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Level01.prefab.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Level01.prefab.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Node.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Node.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Spark.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Spark.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Wire.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Prefabs/Wire.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scenes/Andrew Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scenes/Andrew Scene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scenes/David Scene Files.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scenes/David Scene Files.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scenes/David Scene Files/Blank Component Sprite.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scenes/David Scene Files/Blank Component Sprite.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scenes/David Scene Files/resistor.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scenes/David Scene Files/resistor.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scenes/David Scene Files/resistor.svg" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scenes/David Scene Files/resistor.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scenes/David Scene Files/resistor.svg.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scenes/David Scene Files/resistor.svg.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scenes/David Scene!!!.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scenes/David Scene!!!.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scenes/LampTest.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scenes/LampTest.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scenes/LampTest.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scenes/LampTest.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scenes/LevelSelector.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scenes/LevelSelector.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scenes/LevelSelector.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scenes/LevelSelector.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scenes/Levels/Level1 Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scenes/Levels/Level1 Test.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scenes/Main Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scenes/Main Menu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scenes/Main Menu.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scenes/Main Menu.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scenes/tivaBranch.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scenes/tivaBranch.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scenes/tutorialScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scenes/tutorialScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scenes/tutorialScene.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scenes/tutorialScene.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/Component.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/Component.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/Component/CircuitComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/Component/CircuitComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/Component/CircuitComponent.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/Component/CircuitComponent.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/Component/ComponentFunction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/Component/Base Component/ComponentFunction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/Component/ComponentFunction.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/Component/Base Component/ComponentFunction.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/Component/ComponentHoverHighlight.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/Component/ComponentHoverHighlight.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/Component/Base Component/ComponentHoverHighlight.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/Component/ComponentSlot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/Component/Base Component/ComponentSlot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/Component/ComponentSlot.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/Component/Base Component/ComponentSlot.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/LampUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/LampUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/LampUI.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/LampUI.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/Node.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/Node.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/PanelController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/PanelController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/PanelController.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/PanelController.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/Spark Interaction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/Spark Interaction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/Spark Interaction.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/Spark Interaction.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/Spark.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/Spark.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/SpeechBubbleManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/SpeechBubbleManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/SpeechBubbleManager.cs.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/SpeechBubbleManager.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/Wire.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Scripts/Wire.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Textures.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Textures.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Textures/battery.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Textures/battery.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Textures/capacitor.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Textures/capacitor.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Textures/fuse.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Textures/fuse.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Textures/fuseBroken.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Textures/fuseBroken.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Textures/lampOff.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Textures/lampOff.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Textures/lampOn.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Textures/lampOn.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Textures/resistor.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Textures/resistor.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Textures/switchClosed.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Textures/switchClosed.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Circuit Breaker/Textures/switchOpen.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Circuit Breaker/Textures/switchOpen.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Circuit Breaker Font SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Circuit Breaker Font SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Circuit Breaker Font SDF.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Circuit Breaker Font SDF.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Circuit Breaker Font.otf.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Circuit Breaker Font.otf.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": -1
+}]]></component>
+  <component name="ProjectId" id="2ftAAiIuUYYUZSxTceM1GGKPmIf" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "Merging Andrew-Branch",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7736a73d-9468-4565-b9c2-39934044855d" name="Changes" comment="" />
+      <created>1714609859247</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1714609859247</updated>
+      <workItem from="1714609861562" duration="33000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
