@@ -7,11 +7,14 @@ using UnityEngine;
 public class LampUI : MonoBehaviour
 {
     public static LampUI Instance {get; private set;}
+    public int lampCount = 0;
 
-    void Awake()
+    public void Awake()
     {
-        Instance = this;
+        Instance =  this;
     }
+    [Header("LEVEL")]
+    public int currentLevel = 1;
     
     [Header("Win Conditions")]
     public bool lampsWin = false;
@@ -20,11 +23,12 @@ public class LampUI : MonoBehaviour
     private bool allSparksOn = false;
 
     [Header("FOR UI")]
-    public int lampCount = 0;
+    
     public TextMeshProUGUI lampText;
     private int lampsOn = 0;
 
     private bool gameEnd = false;
+    public GameObject EndGameCanvas;
 
     void Start()
     {
@@ -121,5 +125,8 @@ public class LampUI : MonoBehaviour
         {
             spark.KillMe();
         }
+        EndGameCanvas.SetActive(true);
+        Debug.Log("Unlocking Next Level: " + currentLevel+1);
+        LevelSelector.Instance.UnlockNextLevel(currentLevel);
     }
 }

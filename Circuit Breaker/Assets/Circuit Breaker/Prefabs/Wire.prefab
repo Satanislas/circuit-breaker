@@ -102,7 +102,7 @@ LineRenderer:
       serializedVersion: 2
       key0: {r: 0, g: 0, b: 0, a: 1}
       key1: {r: 0, g: 0, b: 0, a: 1}
-      key2: {r: 1, g: 1, b: 1, a: 0}
+      key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
       key5: {r: 0, g: 0, b: 0, a: 0}
@@ -160,6 +160,7 @@ MonoBehaviour:
   isOpen: 0
   isShort: 0
   tileOffset: 0.5
+  tileSpot: {fileID: 2732321169638248513}
 --- !u!114 &2078696814566109094
 MonoBehaviour:
   m_ObjectHideFlags: 0
