@@ -19,7 +19,11 @@ public class CircuitComponent : MonoBehaviour {
     private GameObject lastPlacedTileSlot;
     private ComponentFunction componentFunction;
 
+
     private PlayBuildManager playBuildManager;
+
+   // public bool dontMove;
+
 
     private float clickStartTime;
 
@@ -31,6 +35,7 @@ public class CircuitComponent : MonoBehaviour {
         playBuildManager = PlayBuildManager.instance;
     }
 
+
     public void SetLastPlacedTileSlot(GameObject thing){
         lastPlacedTileSlot = thing;
     }
@@ -41,6 +46,11 @@ public class CircuitComponent : MonoBehaviour {
         {
             return;
         }
+
+
+    public void OnMouseDrag()
+    {
+       //if (dontMove) return;
 
         // Check if the mouse has been pressed for some length of time to detect a drag instead of click
         if (Time.time - clickStartTime < .1f) {
@@ -109,13 +119,21 @@ public class CircuitComponent : MonoBehaviour {
     }
 
     public void OnMouseUp() {
-        if (Time.time - clickStartTime < .1f) {
+        if (Time.time - clickStartTime < .1f)
+        {
             componentFunction.ClickInteract();
         }
 
+        /*
+        if (dontMove)
+        {
+            componentFunction.ClickInteract();
+            return;
+        }
+        */
         // If the component was being hovered over a component slot, snap it into place and assign it to the wire
         if (currentlyHoveredTileSpot) {
-            Destroy(instantiatedHoverHighlight.gameObject);
+            //Destroy(instantiatedHoverHighlight.gameObject);
             transform.position = new Vector3(currentlyHoveredTileSpot.transform.position.x, currentlyHoveredTileSpot.transform.position.y, -2f);
 
             float tileSpotYRotation = Mathf.Round(currentlyHoveredTileSpot.transform.eulerAngles.y);
@@ -129,6 +147,13 @@ public class CircuitComponent : MonoBehaviour {
             Wire parentWireScipt = currentlyHoveredTileSpot.transform.parent.gameObject.GetComponent<Wire>();
             if (parentWireScipt != null) {
                 componentFunction.parentWire = parentWireScipt;
+                
+                /*
+                if (componentFunction.componentType == 3) // 3 : SWITCH
+                {
+                    parentWireScipt.isOpen = true; //to match the starting position of the switch
+                } 
+                */
             }
             lastPlacedTileSlot = currentlyHoveredTileSpot;
             // sparkParticles.Play();
