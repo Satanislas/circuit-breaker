@@ -93,7 +93,8 @@ public class Spark : MonoBehaviour
         }
         catch (Exception)
         {
-            targetNode = null;
+            // kills spark if at the end of a wire and no other nodes can be found.
+            KillMe();
         }
     }
 

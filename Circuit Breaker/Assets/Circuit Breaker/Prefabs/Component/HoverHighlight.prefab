@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2199866621123024935}
   - component: {fileID: 3540881912964180334}
-  - component: {fileID: 4616116956601766444}
+  - component: {fileID: 8259412753785358658}
   m_Layer: 0
   m_Name: HoverHighlight
   m_TagString: Untagged
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4616116956601766444
+--- !u!114 &8259412753785358658
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

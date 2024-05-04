@@ -67,14 +67,14 @@ public class ComponentFunction : MonoBehaviour
             spriteRenderer.sprite = defaultSprite;
 
             if(componentType == SWITCH && parentWire != null){
-                //parentWire.isOpen = true;
+                parentWire.isOpen = true;
             }
 
             return;
         }
 
         if(componentType == SWITCH && parentWire != null){
-            //parentWire.isOpen = false;
+            parentWire.isOpen = false;
         }
 
         spriteRenderer.sprite = activeSprite;

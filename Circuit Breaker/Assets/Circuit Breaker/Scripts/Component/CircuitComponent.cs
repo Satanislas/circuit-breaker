@@ -54,6 +54,7 @@ public class CircuitComponent : MonoBehaviour {
         if (Time.time - clickStartTime < .1f) {
             return;
         }
+
         InteractWithComponent();
         transform.rotation = Quaternion.identity;
 
