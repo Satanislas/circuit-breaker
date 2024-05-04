@@ -40,16 +40,14 @@ public class CircuitComponent : MonoBehaviour {
         lastPlacedTileSlot = thing;
     }
 
-    public void OnMouseDrag() {
+    public void OnMouseDrag()
+    {
         // check if in play mode
         if (!playBuildManager.isBuilding)
         {
             return;
         }
 
-
-    public void OnMouseDrag()
-    {
        //if (dontMove) return;
 
         // Check if the mouse has been pressed for some length of time to detect a drag instead of click

@@ -49,7 +49,7 @@ public class Spark : MonoBehaviour
             {
                 Split(node);
                 Destroy(gameObject);
-
+            }
             if(node.isShort == true)
             {
                targetNode = startNode.GetComponent<Node>().GetNextNode();
