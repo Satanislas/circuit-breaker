@@ -19,7 +19,11 @@ public class CircuitComponent : MonoBehaviour {
     private GameObject lastPlacedTileSlot;
     private ComponentFunction componentFunction;
 
+
+    private PlayBuildManager playBuildManager;
+
    // public bool dontMove;
+
 
     private float clickStartTime;
 
@@ -28,16 +32,29 @@ public class CircuitComponent : MonoBehaviour {
         highlightColor = GetComponent<SpriteRenderer>().color;
         componentFunction = GetComponent<ComponentFunction>();
         highlightColor.a = .39f;
+        playBuildManager = PlayBuildManager.instance;
+    }
+
+
+    public void SetLastPlacedTileSlot(GameObject thing){
+        lastPlacedTileSlot = thing;
     }
 
     public void OnMouseDrag()
     {
+        // check if in play mode
+        if (!playBuildManager.isBuilding)
+        {
+            return;
+        }
+
        //if (dontMove) return;
-        
+
         // Check if the mouse has been pressed for some length of time to detect a drag instead of click
         if (Time.time - clickStartTime < .1f) {
             return;
         }
+
         InteractWithComponent();
         transform.rotation = Quaternion.identity;
 
@@ -96,7 +113,7 @@ public class CircuitComponent : MonoBehaviour {
         componentFunction.parentWire = null;
     }
 
-    void OnMouseDown() {
+    public void OnMouseDown() {
         clickStartTime = Time.time;
     }
 
@@ -113,14 +130,18 @@ public class CircuitComponent : MonoBehaviour {
             return;
         }
         */
-
         // If the component was being hovered over a component slot, snap it into place and assign it to the wire
         if (currentlyHoveredTileSpot) {
             //Destroy(instantiatedHoverHighlight.gameObject);
             transform.position = new Vector3(currentlyHoveredTileSpot.transform.position.x, currentlyHoveredTileSpot.transform.position.y, -2f);
-            float yRotation = currentlyHoveredTileSpot.transform.eulerAngles.y == 0f ? 180f : 0f;
-            float zRotation = currentlyHoveredTileSpot.transform.eulerAngles.y == 90f ? -currentlyHoveredTileSpot.transform.eulerAngles.x : currentlyHoveredTileSpot.transform.eulerAngles.x;
+
+            float tileSpotYRotation = Mathf.Round(currentlyHoveredTileSpot.transform.eulerAngles.y);
+            float yRotation = tileSpotYRotation == 0f ? 180f : 0f;
+            float zRotation = tileSpotYRotation == 90f ? 360f - currentlyHoveredTileSpot.transform.eulerAngles.x : currentlyHoveredTileSpot.transform.eulerAngles.x;
             transform.rotation = Quaternion.Euler(0f, yRotation, zRotation);
+
+            //transform.LookAt(transform.position + Vector3.forward, currentlyHoveredTileSpot.transform.up);
+
             currentlyHoveredTileSpot.transform.parent.gameObject.GetComponent<ComponentSlot>().ActiveComponent = transform;
             Wire parentWireScipt = currentlyHoveredTileSpot.transform.parent.gameObject.GetComponent<Wire>();
             if (parentWireScipt != null) {
@@ -138,5 +159,4 @@ public class CircuitComponent : MonoBehaviour {
             return;
         }
     }
-
 }

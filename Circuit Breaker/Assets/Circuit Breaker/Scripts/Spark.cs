@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 
 public class Spark : MonoBehaviour
@@ -14,10 +13,6 @@ public class Spark : MonoBehaviour
     public float minSpeed;
     public GameObject sparkPrefab;
 
-
-    [Header("UI")] public GameObject textCanvas;
-    public TextMeshProUGUI textValue;
-
     [Header("Visuals")] 
     public Gradient gradient;
     public float smallestSize;
@@ -29,7 +24,8 @@ public class Spark : MonoBehaviour
     public Transform targetNode;
     public bool wasIntantiated;
     private Transform lastNode;
-    private bool mouseOver;
+    [Tooltip("Used to ignore the capacitor this is spawned from.")]
+    public bool wasCapacitor;
 
     private void Start()
     {
@@ -47,9 +43,17 @@ public class Spark : MonoBehaviour
         try
         {
             Node node = startNode.GetComponent<Node>();
+
+
+            if (node.IsSplit)
+            {
+                Split(node);
+                Destroy(gameObject);
+            }
             if(node.isShort == true)
             {
                targetNode = startNode.GetComponent<Node>().GetNextNode();
+
             }
             else if(node.isLamp && !node.isLit)
             {
@@ -61,7 +65,6 @@ public class Spark : MonoBehaviour
                     
                     //We don't need the spark anymore
                     Destroy(gameObject);
-
                 }
             }
             else{
@@ -90,7 +93,8 @@ public class Spark : MonoBehaviour
         }
         catch (Exception)
         {
-            targetNode = null;
+            // kills spark if at the end of a wire and no other nodes can be found.
+            KillMe();
         }
     }
 
@@ -150,14 +154,6 @@ public class Spark : MonoBehaviour
     {
         //if target node gets destroyed or anything happen
         if (!targetNode) return;
-        if (!mouseOver)
-        {
-            if (textCanvas.activeSelf)
-            {
-                textCanvas.SetActive(false);
-            }   
-        }
-        mouseOver = false;
         
         if(currentValue < 1)
         {
@@ -176,8 +172,10 @@ public class Spark : MonoBehaviour
 
     private void ReachTargetNode()
     {
+        wasCapacitor = false;
         lastNode = startNode;
         startNode = targetNode;
+
 
         Node node = startNode.GetComponent<Node>();
         Spark spark = sparkPrefab.GetComponent<Spark>();
@@ -229,22 +227,8 @@ public class Spark : MonoBehaviour
         while (transform.localScale.x > 0.01)
         {
             transform.localScale = new Vector3(transform.localScale.x * 0.8f ,transform.localScale.y* 0.8f,transform.localScale.z* 0.8f);
-            if (currentValue > 0) currentValue--;
+            currentValue--;
             yield return new WaitForSeconds(0.05f);
         } 
-    }
-
-    private void OnMouseExit()
-    {
-        textCanvas.SetActive(false);
-        textValue.text = currentValue.ToString();
-        mouseOver = false;
-    }
-
-    private void OnMouseOver()
-    {
-        mouseOver = true;
-        textCanvas.SetActive(true);
-        textValue.text = currentValue.ToString();
     }
 }
