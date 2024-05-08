@@ -2085,6 +2085,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5331991040440180127, guid: a9065cf7dfe7cd54b9cde1b057e9e8bf, type: 3}
+      propertyPath: isLocked
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8062531933781874844, guid: a9065cf7dfe7cd54b9cde1b057e9e8bf, type: 3}
       propertyPath: lampChargeNeeded
       value: 5
