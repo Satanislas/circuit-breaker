@@ -193,7 +193,8 @@ GameObject:
   - component: {fileID: 4646157977590424177}
   - component: {fileID: 1324979431229619503}
   - component: {fileID: 503596774968487864}
-  - component: {fileID: 6312562621266545119}
+  - component: {fileID: 6612171408993239083}
+  - component: {fileID: 717652041146932043}
   m_Layer: 0
   m_Name: Spark
   m_TagString: Spark
@@ -305,8 +306,6 @@ MonoBehaviour:
   maxSpeed: 5
   minSpeed: 2
   sparkPrefab: {fileID: 4764249445595155011}
-  textCanvas: {fileID: 2174123409281166519}
-  textValue: {fileID: 3800160197901819699}
   gradient:
     serializedVersion: 2
     key0: {r: 1, g: 0.8183799, b: 0, a: 1}
@@ -342,6 +341,7 @@ MonoBehaviour:
   currentValue: 10
   targetNode: {fileID: 0}
   wasIntantiated: 0
+  wasCapacitor: 0
 --- !u!114 &1324979431229619503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -382,7 +382,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!82 &6312562621266545119
+--- !u!114 &6612171408993239083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4764249445595155011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d84569745f12dc4aa5a918cf1459594, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 2174123409281166519}
+  text: {fileID: 3800160197901819699}
+--- !u!82 &717652041146932043
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -393,14 +407,14 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 92a85bad1690c204a813d6cfa56a944e, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.175
+  m_PlayOnAwake: 1
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 12
+  Priority: 128
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

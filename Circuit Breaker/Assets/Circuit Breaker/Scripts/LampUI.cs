@@ -59,9 +59,11 @@ public class LampUI : MonoBehaviour
 
     public void LampsOn()
     {
+        print("lamps on = " + lampsOn + " || lamps count = " + lampCount);
         if(lampsOn == lampCount)
         {
             isLampsOn = true;
+            WinCondition();
         }
     }
 

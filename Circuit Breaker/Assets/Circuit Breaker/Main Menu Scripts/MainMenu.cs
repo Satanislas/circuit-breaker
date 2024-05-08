@@ -46,6 +46,6 @@ public class MainMenu : MonoBehaviour
 
     public void Options()
     {
-
+        optionsPanel.SetActive(!optionsPanel.activeSelf);
     }
 }

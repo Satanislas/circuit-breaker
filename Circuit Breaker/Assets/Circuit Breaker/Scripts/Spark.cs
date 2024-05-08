@@ -70,20 +70,6 @@ public class Spark : MonoBehaviour
                     Destroy(gameObject);
                 }
             }
-            else{
-                if (node.IsSplit)
-                {
-                    Split(node);
-                    Destroy(this.gameObject);
-                }
-                else
-                {
-                    targetNode = startNode.GetComponent<Node>().GetNextNode();
-
-                    Split(node);
-                    Destroy(gameObject);
-                }
-            }
             
             
             //assign the next node
