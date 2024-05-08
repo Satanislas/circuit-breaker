@@ -42,10 +42,13 @@ public class ComponentFunction : MonoBehaviour
     // Lamp: lamp has not been lit
     // Capacitor: capacitor has no charge
     public bool isActive = false;
+    
+    //for already placed components 
+    //private bool isPlaced;
 
     private const int RESISTOR = 0;
     private const int BATTERY = 1;
-    private const int SWITCH = 2;
+    public const int SWITCH = 2;
     private const int FUSE = 3;
     private const int LAMP = 4;
     private const int CAPACITOR = 5;
@@ -54,18 +57,25 @@ public class ComponentFunction : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
     private void Update(){
+        // if (!isPlaced && parentWire && Vector3.Distance(parentWire.tileSpot.position, transform.position) >= 0.1)
+        // {
+        //     transform.position = parentWire.tileSpot.position;
+        //     transform.rotation = new Quaternion(0, 0, parentWire.tileSpot.transform.localRotation.x, 0);
+        //     isPlaced = true;
+        // }
+        
         if (!isActive){
             spriteRenderer.sprite = defaultSprite;
 
             if(componentType == SWITCH && parentWire != null){
-                parentWire.isOpen = true;
+                //parentWire.isOpen = true;
             }
 
             return;
         }
 
         if(componentType == SWITCH && parentWire != null){
-            parentWire.isOpen = false;
+            //parentWire.isOpen = false;
         }
 
         spriteRenderer.sprite = activeSprite;
@@ -73,11 +83,11 @@ public class ComponentFunction : MonoBehaviour
 
     public void SparkActivate(Spark spark)
     {
+       
         if (!parentWire.IsConnectedTo(spark.startNode))
         {
             return;
         }
-
         switch (componentType)
         {
             case RESISTOR:
@@ -132,6 +142,7 @@ public class ComponentFunction : MonoBehaviour
     {
         if (!IsPlaced)
         {
+            print("not placed !");
             return;
         }
 
@@ -140,7 +151,7 @@ public class ComponentFunction : MonoBehaviour
             case SWITCH:
                 //switches the... switch... state
                 isActive = !isActive;
-                parentWire.isOpen = isActive;
+                parentWire.isOpen = !isActive;
                 break;
             case CAPACITOR:
                 if (isActive)

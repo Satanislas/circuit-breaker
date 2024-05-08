@@ -13,22 +13,24 @@ public class Node : MonoBehaviour
     [Header("Optional")]
     [Tooltip("Turn on to make this node Ground. Will destroy a Spark when encountered.")]
     public bool isGround;
+
+    public bool isShort;
+
     [Header("Lamp")]
     public bool isLamp; //A LAMP NODE CANNOT ALSO BE A SPLIT NODE
     public GameObject lamp;
     public int lampChargeNeeded = 0;
     [HideInInspector] public bool isLit;
 
-    /*  //GOT HANDLED BY THE LAMPUI SCRIPT
     void Start()
     {
-        if (isLamp)
-        {
-            LampUI.Instance.lampCount++;
-            Debug.Log($"LAMPCOUNT: {LampUI.Instance.lampCount}");
-        }
+        // if (isLamp)
+        // {
+        //     Debug.Log($"{gameObject.name} is lamp");
+        //     LampUI.Instance.lampCount++;
+        //     Debug.Log($"LAMPCOUNT: {LampUI.Instance.lampCount}");
+        // }
     }
-    */
 
     // [Tooltip("Component to default to on wire.\nFill with a CircuitComponent prefab.")]
     // public GameObject defaultComponent;
@@ -38,6 +40,7 @@ public class Node : MonoBehaviour
     // public Transform tileSpot;
     // [Tooltip("The visual of the empty tile. Child of tileSpot\nCan also be used to position components.\nDo not change.")]
     // public Transform tileIcon;
+
 
     public int ConnectionNum
     {
@@ -118,21 +121,21 @@ public class Node : MonoBehaviour
         //Debug.Log(wireCheck.name + " is not connected to " + name);
         return -1;
     }
-
     public void TurnOnLamp()
     {
         lamp.SetActive(true);
         isLit = true;
     }
-
-    
-
-
-
     /*
+
     public void GroundSpark(Spark spark){
+        Debug.Log("Spark successfully grounded!");
         Destroy(spark.gameObject);
     }
+
+
+}
+
     */
 
     // positions the tile graphic
@@ -172,3 +175,4 @@ public class Node : MonoBehaviour
     //     activeComponent.GetComponent<ComponentFunction>().SparkActivate(spark);
     // }
 }
+

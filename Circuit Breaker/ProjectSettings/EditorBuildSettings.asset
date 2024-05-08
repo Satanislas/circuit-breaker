@@ -6,15 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Circuit Breaker/Scenes/DevScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/Circuit Breaker/Scenes/Levels/Level1 Test.unity
-    guid: 6fa879ee245618547b22804ccaf208c2
-  - enabled: 1
     path: Assets/Circuit Breaker/Scenes/Main Menu.unity
     guid: 16b670ef2128e3343b47ef6f6a9b5631
   - enabled: 1
     path: Assets/Circuit Breaker/Scenes/LevelSelector.unity
     guid: b850e2176c7e12741828a3d1f244d4ed
+  - enabled: 1
+    path: Assets/Circuit Breaker/Scenes/Levels/Level1.unity
+    guid: a541ef8a8660a4144a7ad43390e7dcb4
+  - enabled: 1
+    path: Assets/Circuit Breaker/Scenes/Levels/Level2.unity
+    guid: e565201a314ce7f4c811a56f0186eb86
+  - enabled: 0
+    path: Assets/Circuit Breaker/Scenes/DevScene.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 0
+    path: Assets/Circuit Breaker/Scenes/Levels/Level1 Test.unity
+    guid: 6fa879ee245618547b22804ccaf208c2
+  - enabled: 0
+    path: Assets/Circuit Breaker/Scenes/Levels/Level2 Test.unity
+    guid: b8afec9f69e6f1c41b141619fee92f4c
   m_configObjects: {}
