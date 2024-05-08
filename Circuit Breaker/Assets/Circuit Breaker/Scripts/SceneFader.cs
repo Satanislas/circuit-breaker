@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,14 @@ public class SceneFader : MonoBehaviour
     {
         StartCoroutine(TransitionToLevel());
         SceneManager.LoadScene(SceneName);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            FadeScene("Main Menu");
+        }
     }
 
     IEnumerator TransitionToLevel()

@@ -9,9 +9,12 @@ public class PlayBuildManager : MonoBehaviour
 
     [Tooltip("Fill with all Sparkbanks in the scene. Once play mode initiates, sparks will be instantiated accordingly.")]
     public Sparkbank[] sparkBanks;
+
     [Tooltip("Used to determine build or play mode")]
     public bool isBuilding;
 
+    public void setIsBuilding(bool value) => isBuilding = value;
+    
     private void Awake()
     {
         instance = this;

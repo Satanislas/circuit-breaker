@@ -277,7 +277,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4.5, y: 4.5, z: 10}
+  m_Size: {x: 4.5, y: 4.5, z: 20}
   m_Center: {x: 0, y: 0, z: 3.5}
 --- !u!114 &2578324752300412894
 MonoBehaviour:
@@ -293,7 +293,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sparkParticles: {fileID: 0}
   hoverHighlight: {fileID: 5590290102864646252, guid: c805eb6cd5a2cd348bd516f971842e23, type: 3}
-
 --- !u!114 &6164160007024322872
 MonoBehaviour:
   m_ObjectHideFlags: 0
