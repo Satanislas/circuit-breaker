@@ -12,8 +12,8 @@ public class Wire : MonoBehaviour
     [Header("Optional")]
     // [Tooltip("Component to default to on wire.\nFill with a CircuitComponent prefab.")]
     // public GameObject defaultComponent;
-    [Tooltip("Turn on to disable changing a component once it's placed.")]
-    public bool isLocked;
+    //[Tooltip("Turn on to disable changing a component once it's placed.")]
+    //public bool isLocked;
     [Tooltip("[UNUSED. SEE NODES LIST FOR DETAILS]\nTurn on to force a Spark to only traverse from nodes[0] to nodes[1].\nEffectively disables reverse traversal.")]
     public bool isPolarized;
     [Tooltip("Turn on to open this wire. Will not allow traversal across in any direction.")]

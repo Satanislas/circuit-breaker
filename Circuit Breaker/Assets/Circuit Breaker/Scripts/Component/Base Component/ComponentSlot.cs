@@ -10,6 +10,8 @@ public class ComponentSlot : MonoBehaviour
 
     public Transform activeComponent;
 
+    public bool isLocked;
+
     [Header("Unity Settings")]
     [Tooltip("The transform that controls where the tile is located.\nCan also be used to position components.\nDo not change.")]
     public Transform tileSpot;
