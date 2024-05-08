@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Circuit Breaker/Scenes/Levels/Beginner/Switch Intro.unity
     guid: 472db3cefadcd604da442ad7d18410f2
+  - enabled: 1
+    path: Assets/Circuit Breaker/Scenes/Levels/Beginner/Battery Intro.unity
+    guid: 19e4cf35722f7104cb519b294fe0e27a
   m_configObjects: {}
