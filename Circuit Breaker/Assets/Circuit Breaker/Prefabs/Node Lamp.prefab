@@ -321,5 +321,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultComponent: {fileID: 8361794868765055550, guid: a985723cce640404dac8fee33d240d2b, type: 3}
   activeComponent: {fileID: 0}
+  isLocked: 1
   tileSpot: {fileID: 5046857306684627136}
   tileIcon: {fileID: 541433340034143593}
