@@ -144,12 +144,15 @@ public class ComponentFunction : MonoBehaviour
         {
             return;
         }
-
+        // Debug.Log("Placed");
         switch (componentType)
         {
             case SWITCH:
+                // Debug.Log("IT IS A SWITCH");
+                Debug.Log($"isActive {isActive}");
                 //switches the... switch... state
                 isActive = !isActive;
+                Debug.Log($"isActive negation {isActive}");
                 parentWire.isOpen = isActive;
                 break;
             case CAPACITOR:

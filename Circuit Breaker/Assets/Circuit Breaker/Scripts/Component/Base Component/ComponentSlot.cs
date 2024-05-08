@@ -29,6 +29,7 @@ public class ComponentSlot : MonoBehaviour
                 if(test != null)
                 {
                     activeComponent.GetComponent<ComponentFunction>().parentWire = test;
+                    activeComponent.GetComponent<AudioSource>().Play();
                 }
             }
         }

@@ -101,9 +101,9 @@ public class CircuitComponent : MonoBehaviour {
     }
 
     public void OnMouseUp() {
-        if (Time.time - clickStartTime < .1f) {
-            componentFunction.ClickInteract();
-        }
+        // if (Time.time - clickStartTime < .1f) {
+        //     componentFunction.ClickInteract();
+        // }
 
         if (dontMove)
         {

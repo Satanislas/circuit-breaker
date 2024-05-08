@@ -123,16 +123,20 @@ public class ComponentBase : MonoBehaviour
     }
 
     void OnMouseDown() {
+        // Debug.Log($"ClickStartTime: {clickStartTime}");
         clickStartTime = Time.time;
     }
 
     void OnMouseUp() {
+        // Debug.Log($"Time.Time - Clickstarttime: {Time.time} - {clickStartTime} = {Time.time - clickStartTime}");
         if (Time.time - clickStartTime < .1f) {
+            Debug.Log("Click Interact");
             componentFunction.ClickInteract();
         }
 
         // If the component was being hovered over a component slot, snap it into place and assign it to the wire
         if (currentlyHoveredTileSpot != null) {
+            //POLP AUDIO HERE
             // TODO: Move this into the Logic Component class
             // If a logic component is being placed, set the logic component's slot active component to be this component
             if (componentType == "logic") {
@@ -140,6 +144,7 @@ public class ComponentBase : MonoBehaviour
             }
 
             if (componentType == "circuit") {
+
                 float tileSpotYRotation = Mathf.Round(currentlyHoveredTileSpot.transform.eulerAngles.y);
                 float yRotation = tileSpotYRotation == 0f ? 180f : 0f;
                 float zRotation = tileSpotYRotation == 90f ? 360f - currentlyHoveredTileSpot.transform.eulerAngles.x : currentlyHoveredTileSpot.transform.eulerAngles.x;
@@ -149,6 +154,7 @@ public class ComponentBase : MonoBehaviour
                 if (parentWireScipt != null) {
                     componentFunction.parentWire = parentWireScipt;
                 }
+                // GetComponent<AudioSource>().Play();
             }
 
             Destroy(instantiatedHoverHighlight.gameObject);

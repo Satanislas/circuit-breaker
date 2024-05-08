@@ -33,6 +33,7 @@ public class Spark : MonoBehaviour
 
     private void Start()
     {
+        GetComponent<AudioSource>().Play();
         Debug.Log($"{startNode.gameObject.name} is the starting node");
         if (wasIntantiated) return;
         if (!targetNode) // prevent a death recursive loop
@@ -40,10 +41,12 @@ public class Spark : MonoBehaviour
         currentValue = initialValue;
         transform.position = startNode.transform.position;
         UpdateSpeed();
+        // GetComponent<AudioSource>().Play();
     }
 
     private void GetNextNode()
     {
+        // GetComponent<AudioSource>().Play();
         try
         {
             Node node = startNode.GetComponent<Node>();
@@ -153,6 +156,8 @@ public class Spark : MonoBehaviour
         UpdateVisual();
         if (Vector3.Distance(transform.position, targetNode.position) <= 0.01f)
         {
+            Debug.Log("AUDIO");
+            GetComponent<AudioSource>().Play();
             ReachTargetNode();
             return;
         }
