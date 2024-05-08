@@ -17,11 +17,14 @@ public class MainMenu : MonoBehaviour
     {
         foreach (AudioSource audioSource in audioSources)
         {
-            if(audioSource.isPlaying)
+            if(audioSource != null)
             {
-                if(audioSource.gameObject.GetComponent<Button>() is not null)
+                if(audioSource.isPlaying)
                 {
-                    StartCoroutine(isPlaying(audioSource, sceneName));
+                    if(audioSource.gameObject.GetComponent<Button>() is not null)
+                    {
+                        StartCoroutine(isPlaying(audioSource, sceneName));
+                    }
                 }
             }
             

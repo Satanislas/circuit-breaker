@@ -42,13 +42,10 @@ public class ComponentFunction : MonoBehaviour
     // Lamp: lamp has not been lit
     // Capacitor: capacitor has no charge
     public bool isActive = false;
-    
-    //for already placed components 
-    //private bool isPlaced;
 
     private const int RESISTOR = 0;
     private const int BATTERY = 1;
-    private const int SWITCH = 2;
+    public const int SWITCH = 2;
     private const int FUSE = 3;
     private const int LAMP = 4;
     private const int CAPACITOR = 5;
@@ -57,13 +54,15 @@ public class ComponentFunction : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
     private void Update(){
-        // if (!isPlaced && parentWire && Vector3.Distance(parentWire.tileSpot.position, transform.position) >= 0.1)
-        // {
-        //     transform.position = parentWire.tileSpot.position;
-        //     transform.rotation = new Quaternion(0, 0, parentWire.tileSpot.transform.localRotation.x, 0);
-        //     isPlaced = true;
-        // }
-        
+        if (PlayBuildManager.instance.isBuilding)
+        {
+            if(componentType == CAPACITOR)
+            {
+                isActive = false;
+                value = 0;
+            }
+        }
+
         if (!isActive){
             spriteRenderer.sprite = defaultSprite;
 
@@ -83,11 +82,11 @@ public class ComponentFunction : MonoBehaviour
 
     public void SparkActivate(Spark spark)
     {
-       
         if (!parentWire.IsConnectedTo(spark.startNode))
         {
             return;
         }
+
         switch (componentType)
         {
             case RESISTOR:
@@ -125,6 +124,12 @@ public class ComponentFunction : MonoBehaviour
                 spark.KillMe();
                 break;
             case CAPACITOR:
+                // check if the spark was made from the capacitor
+                if (spark.wasCapacitor)
+                {
+                    break;
+                }
+
                 //stores 1 charge for each spark that passes through it
                 //can click on capacitor to release all charge at once as a single spark
                 isActive = true;
@@ -142,6 +147,7 @@ public class ComponentFunction : MonoBehaviour
     {
         if (!IsPlaced)
         {
+            print("not placed !");
             return;
         }
         // Debug.Log("Placed");
@@ -152,10 +158,15 @@ public class ComponentFunction : MonoBehaviour
                 Debug.Log($"isActive {isActive}");
                 //switches the... switch... state
                 isActive = !isActive;
-                Debug.Log($"isActive negation {isActive}");
-                parentWire.isOpen = isActive;
+                parentWire.isOpen = !isActive;
                 break;
             case CAPACITOR:
+                // make sure we're not in build mode
+                if (PlayBuildManager.instance.isBuilding)
+                {
+                    break;
+                }
+
                 if (isActive)
                 {
                     GameObject newSpark = Instantiate(sparkPrefab, transform.position, Quaternion.identity);
@@ -164,6 +175,7 @@ public class ComponentFunction : MonoBehaviour
                     sparkScript.currentValue = value;
                     sparkScript.startNode = parentWire.nodes[0];
                     sparkScript.targetNode = parentWire.GetOtherNode(parentWire.nodes[0]);
+                    sparkScript.wasCapacitor = true;
 
                     value = 0;
                     isActive = false;

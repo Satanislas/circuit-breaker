@@ -130,8 +130,7 @@ public class ComponentBase : MonoBehaviour
     void OnMouseUp() {
         // Debug.Log($"Time.Time - Clickstarttime: {Time.time} - {clickStartTime} = {Time.time - clickStartTime}");
         if (Time.time - clickStartTime < .1f) {
-            Debug.Log("Click Interact");
-            componentFunction.ClickInteract();
+            //componentFunction.ClickInteract(); it was two times there ?? check CircuitComponent
         }
 
         // If the component was being hovered over a component slot, snap it into place and assign it to the wire
@@ -140,7 +139,9 @@ public class ComponentBase : MonoBehaviour
             // TODO: Move this into the Logic Component class
             // If a logic component is being placed, set the logic component's slot active component to be this component
             if (componentType == "logic") {
-                currentlyHoveredTileSpot.transform.parent.GetComponent<LogicComponentSlot>().attachedLogicComponent = gameObject;
+                LogicComponentSlot logicComponentSlotScript = currentlyHoveredTileSpot.transform.parent.GetComponent<LogicComponentSlot>();
+                logicComponentSlotScript.attachedLogicComponent = gameObject;
+                logicComponentSlotScript.logicGateName = GetComponent<LogicComponent>().logicComponentName;
             }
 
             if (componentType == "circuit") {

@@ -21,6 +21,6 @@ EditorBuildSettings:
     path: Assets/Circuit Breaker/Scenes/Levels/Level2 Test.unity
     guid: 4995d9c9e26acc748b03c204b1d55d4d
   - enabled: 1
-    path: Assets/Circuit Breaker/Scenes/Levels/Level1 Test 1.unity
+    path: Assets/Circuit Breaker/Scenes/Levels/Level1.unity
     guid: a541ef8a8660a4144a7ad43390e7dcb4
   m_configObjects: {}

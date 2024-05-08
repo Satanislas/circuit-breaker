@@ -35,7 +35,7 @@ public class ComponentSlot : MonoBehaviour
         }
     }
 
-    private void Awake()
+    private void Start()
     {
         // only do this if ComponentSlot NOT on a wire
         if(GetComponent<Wire>() == null)
@@ -75,7 +75,18 @@ public class ComponentSlot : MonoBehaviour
         {
             return;
         }
-        StartCoroutine(SpawnDefaultComponent());
+
+        Transform newTransform = Instantiate(defaultComponent, tileSpot.position + Vector3.back * 2, Quaternion.identity).transform;
+        ActiveComponent = newTransform;
+
+        float tileSpotYRotation = Mathf.Round(tileSpot.transform.eulerAngles.y);
+        float yRotation = tileSpotYRotation == 0f ? 180f : 0f;
+        float zRotation = tileSpotYRotation == 90f ? 360f - tileSpot.transform.eulerAngles.x : tileSpot.transform.eulerAngles.x;
+        newTransform.rotation = Quaternion.Euler(0f, yRotation, zRotation);
+
+        //newTransform.LookAt(newTransform.position + Vector3.forward, tileSpot.transform.right);
+
+        ActiveComponent.GetComponent<CircuitComponent>().SetLastPlacedTileSlot(tileSpot.gameObject);
     }
 
     // positions the tile graphic
@@ -95,11 +106,5 @@ public class ComponentSlot : MonoBehaviour
     void InteractWithComponent(Spark spark)
     {
         activeComponent.GetComponent<ComponentFunction>().SparkActivate(spark);
-    }
-
-    IEnumerator SpawnDefaultComponent()
-    {
-        yield return new WaitForSeconds(1f);
-        Instantiate(defaultComponent, tileSpot.position, tileSpot.rotation);
     }
 }
