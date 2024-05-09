@@ -19,6 +19,7 @@ public class Node : MonoBehaviour
     [Header("Lamp")]
     public bool isLamp; //A LAMP NODE CANNOT ALSO BE A SPLIT NODE
     public GameObject lamp;
+    public ParticleSystem lampLightParticles;
     public int lampChargeNeeded = 0;
     [HideInInspector] public bool isLit;
 
@@ -125,6 +126,7 @@ public class Node : MonoBehaviour
     {
         lamp.SetActive(true);
         isLit = true;
+        lampLightParticles.Play();
     }
     /*
 

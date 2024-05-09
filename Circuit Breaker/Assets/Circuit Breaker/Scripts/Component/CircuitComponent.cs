@@ -4,7 +4,7 @@ using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 
 public class CircuitComponent : MonoBehaviour {
-    public ParticleSystem sparkParticles;
+    public ParticleSystem placeComponentParticles;
 
     public GameObject hoverHighlight;
     
@@ -121,6 +121,7 @@ public class CircuitComponent : MonoBehaviour {
         if (Time.time - clickStartTime < .1f)
         {
             componentFunction.ClickInteract();
+            return;
         }
 
         /*
@@ -155,7 +156,7 @@ public class CircuitComponent : MonoBehaviour {
                 */
             }
             lastPlacedTileSlot = currentlyHoveredTileSpot;
-            // sparkParticles.Play();
+            placeComponentParticles.Play();
             return;
         }
     }

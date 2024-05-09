@@ -8,6 +8,7 @@ public class Wire : MonoBehaviour
     [Header("Required")]
     [Tooltip("Nodes this wire connects. Will only ever be two nodes.\nThe first node is considered the in node while the second is considered the out node. Wires are now polarized by default, by proxy of how the nodes now point to only out wires.\nDo not leave empty.")]
     public Transform[] nodes;
+    public ParticleSystem closedWireParticles;
 
     [Header("Optional")]
     // [Tooltip("Component to default to on wire.\nFill with a CircuitComponent prefab.")]
@@ -45,6 +46,17 @@ public class Wire : MonoBehaviour
     private void Update()
     {
         UpdateColor();
+        if (isOpen && !closedWireParticles.isPlaying) {
+            Debug.Log("Wire is open");
+            closedWireParticles.Play();
+        } else if (!isOpen && closedWireParticles.isPlaying) {
+            Debug.Log("Wire is closed");
+            closedWireParticles.Stop();
+        }
+
+        if (closedWireParticles.isPlaying) {
+            Debug.Log(closedWireParticles.isPlaying);
+        }
     }
 
     private void UpdateColor()
