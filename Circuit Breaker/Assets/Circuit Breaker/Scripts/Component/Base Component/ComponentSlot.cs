@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,7 +32,12 @@ public class ComponentSlot : MonoBehaviour
                 if(test != null)
                 {
                     activeComponent.GetComponent<ComponentFunction>().parentWire = test;
-                    activeComponent.GetComponent<AudioSource>().Play();
+                    try {
+                        activeComponent.GetComponent<AudioSource>().Play();
+                    }
+                    catch (ArgumentException)
+                    {
+                    }
                 }
             }
         }
