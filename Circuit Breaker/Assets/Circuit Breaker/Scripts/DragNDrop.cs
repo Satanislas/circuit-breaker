@@ -53,15 +53,22 @@ public class DragNDrop : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     {
         Debug.Log("Drag ended");
         CircuitComponent circuitComp = tempComponent.GetComponent<CircuitComponent>();
+        
+        if (RectTransformUtility.RectangleContainsScreenPoint(canvasRect, eventData.position, mainCamera))
+        {
+            if (circuitComp != null)
+            {
+                Destroy(circuitComp);
+            }
+            Destroy(tempComponent);
+            
+        }
+        
         if (circuitComp != null)
         {
             //circuitComp.OnMouseDrag();
             circuitComp.OnMouseUp();
             speechBubbleManager.ComponentPlaced();
         }
-        if (RectTransformUtility.RectangleContainsScreenPoint(canvasRect, eventData.position, mainCamera))
-        {
-            Destroy(tempComponent);
-        };
     }
 }

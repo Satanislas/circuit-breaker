@@ -34,6 +34,7 @@ public class ComponentFunction : MonoBehaviour
     public GameObject sparkPrefab;
     public Sprite defaultSprite;
     public Sprite activeSprite;
+    public ParticleSystem componentActivationParticles;
     private SpriteRenderer spriteRenderer;
 
     // various components have states. Here is what isActive = false means for all of them
@@ -85,6 +86,10 @@ public class ComponentFunction : MonoBehaviour
         if (!parentWire.IsConnectedTo(spark.startNode))
         {
             return;
+        }
+
+        if (componentType != SWITCH) {
+            parentWire.componentActivateParticles.Play();
         }
 
         switch (componentType)
@@ -176,6 +181,7 @@ public class ComponentFunction : MonoBehaviour
                     sparkScript.startNode = parentWire.nodes[0];
                     sparkScript.targetNode = parentWire.GetOtherNode(parentWire.nodes[0]);
                     sparkScript.wasCapacitor = true;
+                    sparkScript.enabled = true;
 
                     value = 0;
                     isActive = false;

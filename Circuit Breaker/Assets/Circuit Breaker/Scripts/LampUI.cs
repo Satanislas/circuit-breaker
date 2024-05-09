@@ -63,7 +63,8 @@ public class LampUI : MonoBehaviour
         if(lampsOn == lampCount)
         {
             isLampsOn = true;
-            WinCondition();
+            StartCoroutine(WinDelay());
+            //WinCondition();
         }
     }
 
@@ -78,6 +79,13 @@ public class LampUI : MonoBehaviour
             SparksReachEnd();
             GameComplete();
         }
+    }
+
+    private IEnumerator WinDelay()
+    {
+        Debug.Log("Game won!");
+        yield return new WaitForSeconds(.4f);
+        WinCondition();
     }
 
     public void SparksReachEnd()

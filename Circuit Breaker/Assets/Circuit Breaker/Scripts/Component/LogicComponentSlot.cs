@@ -15,7 +15,7 @@ public class LogicComponentSlot : MonoBehaviour
     public bool dontMove;
 
     void Start() {
-        attachedLogicComponent = null;
+        //attachedLogicComponent = null;
         leftCharge = 0;
         rightCharge = 0;
     }
@@ -23,8 +23,10 @@ public class LogicComponentSlot : MonoBehaviour
     // Wait 5 seconds. If no other sparks arrive within that time, reset both inputs
     private IEnumerator WaitTimer() {
         Debug.Log("Waiting for a charge");
+        attachedLogicComponent.GetComponent<SpriteRenderer>().sprite = attachedLogicComponent.GetComponent<LogicComponent>().waitingForChargeSprite;
         yield return new WaitForSeconds(5);
         Debug.Log("Done waiting");
+        attachedLogicComponent.GetComponent<SpriteRenderer>().sprite = attachedLogicComponent.GetComponent<LogicComponent>().baseSprite;
         leftCharge = 0;
         rightCharge = 0;
     }
@@ -94,6 +96,7 @@ public class LogicComponentSlot : MonoBehaviour
         spark.startNode = transform;
         spark.targetNode = GetComponent<Node>().connectedWires[0].GetOtherNode(transform);
         spark.wasIntantiated = true;
+        spark.enabled = true;
         Debug.Log("output spark charge: " + spark.currentValue);
     }
 }
