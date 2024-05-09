@@ -292,7 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fde7209492cc9e49bac70c9752bfa3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sparkParticles: {fileID: 0}
+  placeComponentParticles: {fileID: 0}
   hoverHighlight: {fileID: 5590290102864646252, guid: c805eb6cd5a2cd348bd516f971842e23, type: 3}
 --- !u!114 &6164160007024322872
 MonoBehaviour:
@@ -312,6 +312,7 @@ MonoBehaviour:
   sparkPrefab: {fileID: 4764249445595155011, guid: cc6b2624385357340abcbaf3df37bfa8, type: 3}
   defaultSprite: {fileID: 21300000, guid: 006c6c72c2b431349882ac74065e141e, type: 3}
   activeSprite: {fileID: 21300000, guid: aa71bea2688374547bda2fe8b4c8e20f, type: 3}
+  componentActivationParticles: {fileID: 0}
   isActive: 0
 --- !u!54 &-4698319647369394480
 Rigidbody:
@@ -351,7 +352,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 6504714465888784655, guid: 20f38ad2935282040bcda0f39817e44e, type: 2}
   m_audioClip: {fileID: 8300000, guid: 1b99a7f4e70b6e64f8d6b2da75ea00f0, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.153
   m_Pitch: 1
   Loop: 0
