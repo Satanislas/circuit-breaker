@@ -1252,6 +1252,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6735289977550555721, guid: 4c3dcfb62b25b7c4ba3775411c9bc97f, type: 3}
+      propertyPath: currentLevel
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6735289977550555721, guid: 4c3dcfb62b25b7c4ba3775411c9bc97f, type: 3}
       propertyPath: EndGameCanvas
       value: 
       objectReference: {fileID: 265076437}
@@ -3282,7 +3286,7 @@ PrefabInstance:
       objectReference: {fileID: 1101597524}
     - target: {fileID: 7501912206521983963, guid: 73950c247b5fd47479323b613ab5ac42, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: Capacitor Intro
+      value: Resistor Fuse Intro
       objectReference: {fileID: 0}
     - target: {fileID: 8122004177122171038, guid: 73950c247b5fd47479323b613ab5ac42, type: 3}
       propertyPath: m_Name
