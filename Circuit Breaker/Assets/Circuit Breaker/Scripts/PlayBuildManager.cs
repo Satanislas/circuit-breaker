@@ -20,6 +20,7 @@ public class PlayBuildManager : MonoBehaviour
         instance = this;
     }
 
+    /*
     private void Update()
     {
         if (Input.GetMouseButton(0))
@@ -43,6 +44,7 @@ public class PlayBuildManager : MonoBehaviour
             }
         }
     }
+    */
 
     private void DestroySparks()
     {
