@@ -121,6 +121,7 @@ public class LampUI : MonoBehaviour
 
     private void Win()
     {
+        GetComponent<AudioSource>().Play();
         Debug.Log("LEVEL COMPLETE");
         var sparks = FindObjectsOfType<Spark>();
         foreach (var spark in sparks)

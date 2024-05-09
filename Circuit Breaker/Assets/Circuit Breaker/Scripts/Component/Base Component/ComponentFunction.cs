@@ -150,10 +150,12 @@ public class ComponentFunction : MonoBehaviour
             print("not placed !");
             return;
         }
-
+        // Debug.Log("Placed");
         switch (componentType)
         {
             case SWITCH:
+                // Debug.Log("IT IS A SWITCH");
+                Debug.Log($"isActive {isActive}");
                 //switches the... switch... state
                 isActive = !isActive;
                 parentWire.isOpen = !isActive;

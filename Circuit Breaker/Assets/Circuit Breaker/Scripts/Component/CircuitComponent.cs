@@ -48,6 +48,12 @@ public class CircuitComponent : MonoBehaviour {
             return;
         }
 
+        //check if componentSlot is locked
+        if(lastPlacedTileSlot != null && lastPlacedTileSlot.GetComponentInParent<ComponentSlot>().isLocked)
+        {
+            return;
+        }
+
        //if (dontMove) return;
 
         // Check if the mouse has been pressed for some length of time to detect a drag instead of click

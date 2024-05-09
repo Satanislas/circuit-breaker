@@ -5285,7 +5285,7 @@ GameObject:
   m_Layer: 0
   m_Name: Node Lamp
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 3443629218296621865, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -5373,6 +5373,7 @@ MonoBehaviour:
   - {fileID: 0}
   isGround: 0
   isShort: 0
+  isShort: 0
   isLamp: 1
   lamp: {fileID: 1382324586985389426}
   lampLightParticles: {fileID: 3609436434598472333}
@@ -5392,5 +5393,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultComponent: {fileID: 8361794868765055550, guid: a985723cce640404dac8fee33d240d2b, type: 3}
   activeComponent: {fileID: 0}
+  isLocked: 1
   tileSpot: {fileID: 5046857306684627136}
   tileIcon: {fileID: 541433340034143593}
