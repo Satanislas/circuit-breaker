@@ -10,6 +10,7 @@ public class SparkInteraction : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        Debug.Log("COLLIDING WITH: " + other.name);
         ComponentFunction functionScript = other.GetComponent<ComponentFunction>();
 
         // For interaction with circuit components on wires

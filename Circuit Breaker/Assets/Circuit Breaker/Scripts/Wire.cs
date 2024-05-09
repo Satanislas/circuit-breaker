@@ -9,6 +9,7 @@ public class Wire : MonoBehaviour
     [Tooltip("Nodes this wire connects. Will only ever be two nodes.\nThe first node is considered the in node while the second is considered the out node. Wires are now polarized by default, by proxy of how the nodes now point to only out wires.\nDo not leave empty.")]
     public Transform[] nodes;
     public ParticleSystem closedWireParticles;
+    public ParticleSystem componentActivateParticles;
 
     [Header("Optional")]
     // [Tooltip("Component to default to on wire.\nFill with a CircuitComponent prefab.")]

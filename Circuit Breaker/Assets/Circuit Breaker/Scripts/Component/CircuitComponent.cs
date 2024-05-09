@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEditor.U2D.Aseprite;
 using UnityEngine;
 
@@ -73,6 +74,7 @@ public class CircuitComponent : MonoBehaviour {
         // Search for nearby component slots
         currentlyHoveredTileSpot = null;
         GameObject[] allTileSpots = GameObject.FindGameObjectsWithTag("TileSpot");
+        GameObject closestTileSpot = null;
         foreach (GameObject tileSpot in allTileSpots) {
             // Ignore Node component slots since circuit components only go on wire
             if (tileSpot.transform.parent.gameObject.GetComponent<Wire>() == null) {
@@ -83,19 +85,27 @@ public class CircuitComponent : MonoBehaviour {
             if (Vector3.Distance(transform.position, tileSpot.transform.position) < 3f) {
                 // Ignore tile slots that already have a component on them
                 if (tileSpot.transform.parent.gameObject.GetComponent<ComponentSlot>().ActiveComponent != null) {
-                    break;
+                    continue;
                 }
-                currentlyHoveredTileSpot = tileSpot;
-                if (instantiatedHoverHighlight == null) {
-                    instantiatedHoverHighlight = Instantiate(hoverHighlight);
-                    hoverHighlightScript = instantiatedHoverHighlight.GetComponent<ComponentHoverHighlight>();
-                    instantiatedHoverHighlight.transform.rotation = Quaternion.Euler(0f, 0f, tileSpot.transform.eulerAngles.x);
-                    instantiatedHoverHighlight.GetComponent<SpriteRenderer>().sprite = componentSprite;
-                    instantiatedHoverHighlight.GetComponent<SpriteRenderer>().color = highlightColor;
+                if (closestTileSpot == null || Vector3.Distance(transform.position, tileSpot.transform.position) < Vector3.Distance(transform.position, closestTileSpot.transform.position))
+                {
+                    closestTileSpot = tileSpot;
                 }
-                hoverHighlightScript.SnapToComponentSlot(tileSpot.transform);
-                break;
             }
+        }
+
+        if (closestTileSpot != null)
+        {
+            currentlyHoveredTileSpot = closestTileSpot;
+            if (instantiatedHoverHighlight == null)
+            {
+                instantiatedHoverHighlight = Instantiate(hoverHighlight);
+                hoverHighlightScript = instantiatedHoverHighlight.GetComponent<ComponentHoverHighlight>();
+                instantiatedHoverHighlight.transform.rotation = Quaternion.Euler(0f, 0f, closestTileSpot.transform.eulerAngles.x);
+                instantiatedHoverHighlight.GetComponent<SpriteRenderer>().sprite = componentSprite;
+                instantiatedHoverHighlight.GetComponent<SpriteRenderer>().color = highlightColor;
+            }
+            hoverHighlightScript.SnapToComponentSlot(closestTileSpot.transform);
         }
 
         // Destroy the transparent component when out of range
@@ -163,6 +173,7 @@ public class CircuitComponent : MonoBehaviour {
             }
             lastPlacedTileSlot = currentlyHoveredTileSpot;
             placeComponentParticles.Play();
+            Destroy(instantiatedHoverHighlight.gameObject);
             return;
         }
     }
