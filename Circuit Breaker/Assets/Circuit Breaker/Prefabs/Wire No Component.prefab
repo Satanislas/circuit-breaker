@@ -152,6 +152,7 @@ MonoBehaviour:
   nodes:
   - {fileID: 0}
   - {fileID: 0}
+  closedWireParticles: {fileID: 7462665331604414320, guid: 2074698b4f1b1c5439cb70390a6b6d42, type: 3}
   isLocked: 0
   isPolarized: 0
   isOpen: 0

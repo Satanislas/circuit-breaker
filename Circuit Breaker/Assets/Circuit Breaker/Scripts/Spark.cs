@@ -12,6 +12,7 @@ public class Spark : MonoBehaviour
     public float maxSpeed;
     public float minSpeed;
     public GameObject sparkPrefab;
+    public ParticleSystem sparkParticle;
 
     [Header("Visuals")] 
     public Gradient gradient;
@@ -20,6 +21,7 @@ public class Spark : MonoBehaviour
     
     
     [Header("Debug : don't need to be serialized")]
+    public int maxValue;
     public int currentValue;
     public Transform targetNode;
     public bool wasIntantiated;
@@ -125,8 +127,13 @@ public class Spark : MonoBehaviour
 
     private void UpdateVisual()
     {
-        var ratio = (float)currentValue / initialValue;
+        float ratio = (float)currentValue / maxValue;
         GetComponent<Renderer>().material.color = gradient.Evaluate(ratio);
+        var sparkParticleMain = sparkParticle.main;
+        try {
+            sparkParticleMain.startColor = gradient.Evaluate(ratio);
+        } catch (NullReferenceException) {
+        }
 
         var size = Mathf.Lerp(smallestSize, biggestSize, ratio);
         transform.localScale = new Vector3(size,size,size);

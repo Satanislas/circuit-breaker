@@ -3771,6 +3771,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4425787033395346367, guid: 1ec1fad85b3c8c542819410c6b4a2a13, type: 3}
+      propertyPath: isBuilding
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7769239729118646552, guid: 1ec1fad85b3c8c542819410c6b4a2a13, type: 3}
       propertyPath: m_Name
       value: PlayBuild Manager
